@@ -112,7 +112,7 @@ export const profileData: ProfileData = {
   title2: "Web Developer",
   about: "I'm a passionate Flutter Developer with a background in web development and React over 3.5+ experience. I specialize in creating high-performing, cross-platform applications with a focus on clean, efficient code and seamless user experiences.",
   about2: "Active in open-source communities, I'm always learning and exploring emerging technologies. Outside of work, I enjoy music, reading, and experimenting with creative recipes.",
-  profileIconUrl: "/images/profile.jpg", // YOU MUST PROVIDE THIS IMAGE
+  profileIconUrl: "/images/profileImg.jpg", // YOU MUST PROVIDE THIS IMAGE
   logoUrl: "/images/webLogo.svg",      // YOU MUST PROVIDE THIS IMAGE
   email: "arun.devfolio@gmail.com", // Added email here
   // phone: "+123 456 7890", // Uncomment and add if you want to display phone
@@ -142,7 +142,7 @@ export const profileData: ProfileData = {
     { text: "Open Source Contributions", icon: "Github" }
   ],
   starAwardDetails: {
-    imageUrl: "/images/your-star-award-image.jpg", // <<-- IMPORTANT: REPLACE THIS PATH
+    imageUrl: "/images/starAward.jpg", // <<-- IMPORTANT: REPLACE THIS PATH
     title: "Star Award - Service Excellence",
     description: "Recognized by AU Small Finance Bank for outstanding contributions and dedication across multiple projects."
   },
@@ -168,12 +168,17 @@ export const services: Service[] = [
 ];
 
 export const technologies: Technology[] = [
+  { name: "Flutter", iconUrl: "/images/flutter.jpg" }, 
+  { name: "React JS", iconUrl: "/images/tech/react.svg" },
+
+  { name: "TypeScript", iconUrl: "/images/tech/typescript.png" }, // Uncomment if needed
+  { name: "Next", iconUrl: "/images/nextjs.png" },
+  { name: "JavaScript", iconUrl: "/images/tech/js.svg" },
+  // Uncomment if needed
   { name: "HTML 5", iconUrl: "/images/tech/html.svg" },
   { name: "CSS 3", iconUrl: "/images/tech/css.svg" },
-  { name: "JavaScript", iconUrl: "/images/tech/js.svg" },
   { name: "Ruby", iconUrl: "/images/tech/ruby.svg" },
   { name: "Ruby On Rails", iconUrl: "/images/tech/ror.png" },
-  { name: "React JS", iconUrl: "/images/tech/react.svg" },
   { name: "Redux Toolkit", iconUrl: "/images/tech/redux.svg" },
   { name: "Material UI", iconUrl: "/images/tech/MI.png" },
   { name: "Tailwind CSS", iconUrl: "/images/tech/tailwind.svg" },
@@ -183,10 +188,10 @@ export const technologies: Technology[] = [
   { name: "Git", iconUrl: "/images/tech/git.png" },
   { name: "Figma", iconUrl: "/images/tech/figma.png" },
   { name: "Dialog flow", iconUrl: "/images/tech/dialogflow.png" },
-  { name: "Flutter", iconUrl: "/images/flutter.jpg" }, // Note: path was /images/flutter.jpg
+ // Note: path was /images/flutter.jpg
   // { name: "Docker", iconUrl: "/images/tech/docker.png" }, // Uncomment if needed
   // { name: "MongoDB", iconUrl: "/images/tech/mongodb.png" }, // Uncomment if needed
-  // { name: "TypeScript", iconUrl: "/images/tech/typescript.png" }, // Uncomment if needed
+
   // { name: "Three JS", iconUrl: "/images/tech/threejs.svg" }, // Uncomment if needed
   // { name: "Jira", iconUrl: "/images/tech/jira_logo.jpg.png" }, // Uncomment if needed
 ];
@@ -305,10 +310,10 @@ export const projects: Project[] = [
 
     impact: "Enabled Commercial Banking teams to create, track, and process requests more efficiently with configurable workflows, transparent audit trails, and improved end-user satisfaction.",
     tags: [
-      { name: "Raect", color: "redTextGradient" },
-      { name: "Html", color: "blueTextGradient" },
-      { name: "Tailwind css", color: "yellowTextGradient" },
-      { name: "Javascript", color: "purpleTextGradient" },
+      { name: "React", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
+      { name: "HTML", color: "linear-gradient(90deg, #ff512f 0%, #dd2476 100%)" },
+      { name: "Tailwind CSS", color: "linear-gradient(90deg, #06beb6 0%, #48b1f3 100%)" },
+      { name: "JavaScript", color: "linear-gradient(90deg, #f7971e 0%, #ffd200 100%)" },
     ],
 
     imageUrl: "/images/niyan_dashboard.PNG", // Main image for card
@@ -336,10 +341,10 @@ export const projects: Project[] = [
     conclusion: "The Zoom integration successfully provided a robust and user-friendly video communication tool within AU HUB, meeting the project's core objectives.", // Placeholder
     impact: "This feature significantly improved remote collaboration and support capabilities, reducing the need for external conferencing tools and streamlining communication workflows for thousands of users.", // Placeholder
     tags: [
-      { name: "Flutter", color: "redTextGradient" },
-      { name: "GetX", color: "blueTextGradient" },
-      { name: "Zoom SDK", color: "yellowTextGradient" },
-      { name: "PiP Mode", color: "purpleTextGradient" },
+      { name: "Flutter", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
+      { name: "GetX", color: "linear-gradient(90deg, #43e97b 0%, #38f9d7 100%)" },
+      { name: "Zoom SDK", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
+      { name: "PiP Mode", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
     ],
     imageUrl: "/images/sam_assignTask.png", // Main image for card
     galleryImages: [
@@ -367,13 +372,23 @@ export const projects: Project[] = [
     conclusion: "Summarize the outcomes and learnings from the Sampark RM App project.", // Placeholder
     impact: "Explain the impact Sampark RM App had or is expected to have.", // Placeholder
     tags: [
-      { name: "Flutter", color: "redTextGradient" },
-      { name: "GetX", color: "blueTextGradient" },
-      { name: "Exotel", color: "orangeTextGradient" },
-      { name: "Call Recording", color: "purpleTextGradient" },
+      { name: "Flutter", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
+      { name: "GetX", color: "linear-gradient(90deg, #43e97b 0%, #38f9d7 100%)" },
+      { name: "Exotel", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
+      { name: "Call Recording", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
     ],
-    imageUrl: "/images/sampark_app_main.png", // Placeholder - imageList was empty
-    galleryImages: [], // imageList was empty
+    imageUrl: "/images/samm_dashboard.jpg", // Placeholder - imageList was empty
+    galleryImages: [
+      { url: "/images/samm_login.jpg", alt: "Sampark RM App Login" },
+      { url: "/images/samm_dashboard.jpg", alt: "Sampark RM App Dashboard" },
+      { url: "/images/sam_dashboard_drawer.jpg", alt: "Sampark RM App Dashboard" },
+      { url: "/images/sam_pef.png", alt: "Sampark RM App Table View" }, 
+      { url: "/images/sam_captureLead.jpg", alt: "Sampark RM App Table View" }, 
+      { url: "/images/sam_assignTask.png", alt: "Sampark RM App Assign Task" },
+      { url: "/images/sam_assignTask2.jpg", alt: "Sampark RM App Assign Task" },
+      { url: "/images/sam_assignTask2.jpg", alt: "Sampark RM App Assign Task" },
+     
+    ], // imageList was empty
     sourceCodeLink: "#",
     liveLink: "#",
   },
@@ -392,9 +407,9 @@ export const projects: Project[] = [
     conclusion: "Summarize the outcomes and learnings from the Tura Municipal Board Website project.", // Placeholder
     impact: "Explain the impact Tura Municipal Board Website had or is expected to have.", // Placeholder
     tags: [
-      { name: "Flutter", color: "redTextGradient" },
-      { name: "SBI ePay", color: "blueTextGradient" },
-      { name: "Approval Workflow", color: "greenTextGradient" },
+      { name: "Flutter", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
+      { name: "SBI ePay", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
+      { name: "Approval Workflow", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
     ],
     imageUrl: "/images/tura_login.PNG",
     galleryImages: [
@@ -422,15 +437,16 @@ export const projects: Project[] = [
     conclusion: "Summarize the outcomes and learnings from the Sampark RM Website project.", // Placeholder
     impact: "Explain the impact Sampark RM Website had or is expected to have.", // Placeholder
     tags: [
-      { name: "Flutter", color: "redTextGradient" },
-      { name: "Task Management", color: "blueTextGradient" },
-      { name: "Lead Management", color: "greenTextGradient" },
+      { name: "Flutter", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
+      { name: "Task Management", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
+      { name: "Lead Management", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
     ],
-    imageUrl: "/images/smapark_dashboard.PNG",
+    imageUrl: "/images/dashboard.PNG",
     galleryImages: [
-      { url: "/images/smapark_login.PNG", alt: "Sampark Web Login" },
-      { url: "/images/smapark_dashboard.PNG", alt: "Sampark Web Dashboard" },
-      { url: "/images/smapark_table.PNG", alt: "Sampark Web Table View" },
+      { url: "/images/loginImg.PNG", alt: "Sampark Web Login" },
+      { url: "/images/dashboard.PNG", alt: "Sampark Web Dashboard" },
+      { url: "/images/table.PNG", alt: "Sampark Web Table View" },
+      
     ],
     sourceCodeLink: "#",
     liveLink: "#",
@@ -455,7 +471,7 @@ strugglesAndSolutions:
 "Built highly dynamic forms handling multiple user roles, confidential instruction flows, Excel file parsing for bulk actionables, and real-time notifications for each role. Complex workflows for deviations, approvals, and clarifications were mapped into front-end logic integrated with backend API flows.",
 
 designThinking:
-"Designed intuitive role-specific dashboards, responsive layouts for real-time actionable status, Excel-based bulk upload flows, and dynamic search/filtering mechanisms. Ensured compliance with AU’s Figma design system while making the UI highly modular and scalable.",
+"Designed intuitive role-specific dashboards, responsive layouts for real-time actionable status, Excel-based bulk upload flows, and dynamic search/filtering mechanisms. Ensured compliance with AU's Figma design system while making the UI highly modular and scalable.",
 
 approach:
 "Developed reusable UI modules for each role type (Maker, Checker, HOD, SPOC, FPR, Observer). Integrated dynamic forms with backend APIs for uploading instructions, assigning roles, processing deviations, tracking closures, and full audit history visualizations. Implemented real-time bell notifications and scheduled email summaries.",
@@ -471,10 +487,10 @@ impact:
 
 
     tags: [
-      { name: "React", color: "redTextGradient" },
-      { name: "Tailwind css", color: "blueTextGradient" },
-      { name: "Javascript", color: "greenTextGradient" },
-      { name: "Html", color: "greenTextGradient" },
+      { name: "React", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
+      { name: "Tailwind CSS", color: "linear-gradient(90deg, #06beb6 0%, #48b1f3 100%)" },
+      { name: "JavaScript", color: "linear-gradient(90deg, #f7971e 0%, #ffd200 100%)" },
+      { name: "HTML", color: "linear-gradient(90deg, #ff512f 0%, #dd2476 100%)" },
     ],
     imageUrl: "/images/dhristi_dashboard.PNG",
     galleryImages: [
@@ -503,10 +519,10 @@ impact:
     conclusion: "The Branch and User Class Change module successfully automated a critical but repetitive administrative task. It provides a secure, auditable, and user-friendly platform that empowers employees and managers, while significantly reducing the burden on the IT team. The project demonstrated how thoughtful application design can streamline internal business processes and improve operational efficiency.",
     impact: "The module is projected to reduce IT service tickets related to branch and user class changes by 30-40%, freeing up the IT team to focus on more critical tasks. It enhances operational agility by speeding up the approval process for employee transfers and role changes. The system provides a transparent and accountable workflow, improving the experience for both employees and their managers.",
     tags: [
-      { name: "Flutter", color: "redTextGradient" },
-      { name: "GetX", color: "blueTextGradient" },
-      { name: "Workflow Automation", color: "greenTextGradient" },
-      { name: "HRMS Integration", color: "pinkTextGradient" },
+      { name: "Flutter", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
+      { name: "GetX", color: "linear-gradient(90deg, #43e97b 0%, #38f9d7 100%)" },
+      { name: "Workflow Automation", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
+      { name: "HRMS Integration", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
     ],
     imageUrl: "/images/CrossSell.jpg", // Assuming this is a relevant image, was CommonStyle.crossSell
     galleryImages: [{ url: "/images/CrossSell.jpg", alt: "Branch Class Change Module" }],
@@ -528,10 +544,10 @@ impact:
     conclusion: "The Cross-Sell v3.0 module successfully delivered a comprehensive lead management solution that streamlined operations for all branch employees. The project reinforced the importance of clear specifications and user-centric design in developing effective enterprise tools. Key takeaways include the power of role-based UI customization for improving user adoption and the efficiency of using a robust state management solution like GetX for handling complex, dynamic data flows in a mobile application.",
     impact: "The new module is expected to significantly improve the lead conversion rate by ensuring timely assignment and action on leads. It enhances accountability by providing clear visibility into lead statuses for all stakeholders. By empowering every employee to contribute to lead generation, the application widens the sales funnel. The streamlined workflows reduce administrative overhead for Branch Managers and allow Relationship Managers to focus more on customer interaction, ultimately driving business growth and improving overall sales performance.",
     tags: [
-      { name: "Flutter", color: "redTextGradient" },
-      { name: "GetX", color: "blueTextGradient" },
-      { name: "Lead Management", color: "greenTextGradient" },
-      { name: "REST API", color: "pinkTextGradient" },
+      { name: "Flutter", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
+      { name: "GetX", color: "linear-gradient(90deg, #43e97b 0%, #38f9d7 100%)" },
+      { name: "Lead Management", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
+      { name: "REST API", color: "linear-gradient(90deg, #f953c6 0%, #b91d73 100%)" },
     ],
     imageUrl: "/images/CrossSell.jpg", // Assuming this is a relevant image
     galleryImages: [{ url: "/images/CrossSell.jpg", alt: "CrossSell Module" }],
@@ -539,31 +555,50 @@ impact:
     liveLink: "#",
   },
   {
-    id: 'cell-gene-therapy',
-    title: "Cell and Gene Therapy Ecosystem",
-    category: "Web",
-    description: "Cell and Gene Therapy project, which involves developing a next-generation ecosystem for therapy that utilizes the biological properties of cells/DNA/RNA to target and cure diseases. The therapies consist of living cells, which act as the drug and produce the desired therapeutic effect. Examples include stem cell-based treatments, bone marrow transplants, and CAR-Ts. The CGT solution ecosystem includes a range of stakeholders, such as Pharma Companies/Sponsors, Treating Hospitals, Patients, Apheresis/Collection Centers, Specialty Distributors, Logistics, CDMOs, QC Labs, Monitoring Hospitals, and Insurance providers.",
-    shortDescription: "Next-gen ecosystem for cell/gene therapy, connecting stakeholders from pharma to patients for advanced treatments.",
-    introduction: "Briefly introduce the Cell and Gene Therapy Ecosystem project here.", // Placeholder
-    problemStatement: "Describe the core problem Cell and Gene Therapy Ecosystem aimed to solve.", // Placeholder
-    developmentJourney: "Share insights into the development process of Cell and Gene Therapy Ecosystem.", // Placeholder
-    strugglesAndSolutions: "Detail any challenges faced and how they were overcome during Cell and Gene Therapy Ecosystem development.", // Placeholder
-    designThinking: "Explain the design philosophy and process behind Cell and Gene Therapy Ecosystem.", // Placeholder
-    approach: "Describe the technical approach and architecture for Cell and Gene Therapy Ecosystem.", // Placeholder
-    conclusion: "Summarize the outcomes and learnings from the Cell and Gene Therapy Ecosystem project.", // Placeholder
-    impact: "Explain the impact Cell and Gene Therapy Ecosystem had or is expected to have.", // Placeholder
-    tags: [
-      { name: "JavaScript", color: "redTextGradient" },
-      { name: "React", color: "blueTextGradient" },
-      { name: "Redux", color: "greenTextGradient" },
-      { name: "Material UI", color: "pinkTextGradient" },
-      { name: "CSS", color: "blueTextGradient" },
-    ],
+    id: "mosymphony-cgt",
+    title: "Mosymphony-CGT",
+    category: "Web Application",
+    shortDescription: "A comprehensive platform for managing Cell-Gene Therapy ecosystems, enabling secure collaboration between organizations, researchers, and healthcare providers.",
+    description: "Mosymphony-CGT is an advanced web platform designed to facilitate and streamline Cell-Gene Therapy research and collaboration. The system implements a robust user management system with role-based access control, secure authentication, and comprehensive organization management capabilities.",
     imageUrl: "/images/cgt.png",
-    galleryImages: [{ url: "/images/cgt.png", alt: "Cell and Gene Therapy Project" }],
-    sourceCodeLink: "#",
+    galleryImages: [
+      { url: "/images/cgt.png", alt: "Cell and Gene Therapy Project" },
+      { url: "/images/cgt.png", alt: "User Management Interface" },
+      { url: "/images/cgt.png", alt: "Organization Management View" }
+    ],
+    tags: [
+      { name: "React", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
+      { name: "Node.js", color: "linear-gradient(90deg, #43cea2 0%, #185a9d 100%)" },
+      { name: "PostgreSQL", color: "linear-gradient(90deg, #1e3c72 0%, #2a5298 100%)" },
+      { name: "JWT", color: "linear-gradient(90deg, #f7971e 0%, #ffd200 100%)" },
+      { name: "REST API", color: "linear-gradient(90deg, #f953c6 0%, #b91d73 100%)" },
+      { name: "Two-Factor Authentication", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
+      { name: "Role-Based Access Control", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
+      { name: "Organization Management", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
+    ],
+    technologiesUsed: [
+      "React.js",
+      "Node.js",
+      "PostgreSQL",
+      "JWT Authentication",
+      "RESTful APIs",
+      "Two-Factor Authentication",
+      "Role-Based Access Control",
+      "Organization Management"
+    ],
     liveLink: "#",
+    sourceCodeLink: "#",
+    introduction: "Mosymphony-CGT is a specialized platform designed to address the unique needs of Cell-Gene Therapy research and collaboration. The system provides a secure and efficient way for organizations, researchers, and healthcare providers to collaborate while maintaining strict data security and compliance requirements.",
+    problemStatement: "The Cell-Gene Therapy field faces several challenges:\n\n1. Complex collaboration requirements between multiple organizations\n2. Need for secure data sharing and access control\n3. Difficulty in managing user roles and permissions across different organizations\n4. Lack of standardized processes for ecosystem management\n5. Security concerns in handling sensitive research data",
+    developmentJourney: "The development journey involved several key phases:\n\n1. Initial Planning and Architecture Design\n   - Defined system requirements and architecture\n   - Designed database schema for user and organization management\n   - Planned API structure and authentication flow\n\n2. Core Development\n   - Implemented user registration and authentication system\n   - Developed organization management features\n   - Created role-based access control system\n   - Built two-factor authentication mechanism\n\n3. Security Implementation\n   - Implemented JWT-based authentication\n   - Added two-step verification process\n   - Developed secure password management\n   - Created secure API endpoints\n\n4. Testing and Optimization\n   - Conducted security testing\n   - Performed load testing\n   - Optimized database queries\n   - Enhanced user experience",
+    strugglesAndSolutions: "Key challenges and their solutions:\n\n1. Complex User Management\n   - Implemented a flexible role-based system\n   - Created separate flows for different user types\n   - Developed comprehensive permission management\n\n2. Security Concerns\n   - Implemented two-factor authentication\n   - Added OTP verification system\n   - Created secure token management\n\n3. Organization Management\n   - Developed hierarchical organization structure\n   - Created flexible collaboration models\n   - Implemented organization-specific settings\n\n4. Data Security\n   - Implemented end-to-end encryption\n   - Created secure data sharing mechanisms\n   - Developed audit logging system",
+    designThinking: "The design process focused on:\n\n1. User Experience\n   - Intuitive interface for complex operations\n   - Clear navigation structure\n   - Responsive design for all devices\n\n2. Security First\n   - Multiple authentication layers\n   - Secure data transmission\n   - Role-based access control\n\n3. Scalability\n   - Modular architecture\n   - Flexible organization structure\n   - Extensible API design",
+    approach: "The development approach included:\n\n1. Agile Methodology\n   - Iterative development cycles\n   - Regular stakeholder feedback\n   - Continuous improvement\n\n2. Security-First Development\n   - Regular security audits\n   - Penetration testing\n   - Compliance verification\n\n3. User-Centered Design\n   - User research and feedback\n   - Usability testing\n   - Performance optimization",
+    conclusion: "Mosymphony-CGT successfully addresses the complex needs of Cell-Gene Therapy research collaboration. The platform provides a secure, scalable, and user-friendly solution for managing research ecosystems, enabling effective collaboration while maintaining strict security standards.",
+    impact: "The platform has made significant impact in the Cell-Gene Therapy field:\n\n1. Improved Collaboration\n   - Streamlined communication between organizations\n   - Enhanced data sharing capabilities\n   - Reduced administrative overhead\n\n2. Enhanced Security\n   - Reduced security incidents\n   - Improved compliance with regulations\n   - Better data protection\n\n3. Increased Efficiency\n   - Faster onboarding process\n   - Reduced manual work\n   - Better resource utilization",
+    
   },
+
   {
     id: 'mosymphony-qem',
     title: "Mosymphony | Quality Event Module",
@@ -579,11 +614,11 @@ impact:
     conclusion: "Summarize the outcomes and learnings from the Mosymphony QEM project.", // Placeholder
     impact: "Explain the impact Mosymphony QEM had or is expected to have.", // Placeholder
     tags: [
-      { name: "JavaScript", color: "redTextGradient" },
-      { name: "React", color: "blueTextGradient" },
-      { name: "Redux", color: "greenTextGradient" },
-      { name: "Material UI", color: "pinkTextGradient" },
-      { name: "CSS", color: "blueTextGradient" },
+      { name: "JavaScript", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
+      { name: "React", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
+      { name: "Redux", color: "linear-gradient(90deg, #a770ef 0%, #f6d365 100%)" },
+      { name: "Material UI", color: "linear-gradient(90deg, #2193b0 0%, #6dd5ed 100%)" },
+      { name: "CSS", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
     ],
     imageUrl: "/images/qem.png",
     galleryImages: [{ url: "/images/qem.png", alt: "Mosymphony QEM" }],
@@ -605,10 +640,10 @@ impact:
     conclusion: "Summarize the outcomes and learnings from the Netflix Clone project.", // Placeholder
     impact: "Explain the impact Netflix Clone had or is expected to have.", // Placeholder
     tags: [
-      { name: "ReactJS", color: "greenTextGradient" },
-      { name: "GraphQL API", color: "blueTextGradient" },
-      { name: "DataStax AstraDB", color: "yellowTextGradient" },
-      { name: "Netlify", color: "blueTextGradient" },
+      { name: "ReactJS", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
+      { name: "GraphQL API", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
+      { name: "DataStax AstraDB", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
+      { name: "Netlify", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
     ],
     imageUrl: "/images/net.jpg", // was CommonStyle.netflix
     galleryImages: [{ url: "/images/net.jpg", alt: "Netflix Clone" }],
@@ -630,15 +665,16 @@ impact:
     conclusion: "Summarize the outcomes and learnings from the Node Mailer Application project.", // Placeholder
     impact: "Explain the impact Node Mailer Application had or is expected to have.", // Placeholder
     tags: [
-      { name: "NodeJS", color: "greenTextGradient" },
-      { name: "JavaScript", color: "blueTextGradient" },
-      { name: "SQL", color: "yellowTextGradient" },
+      { name: "NodeJS", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
+      { name: "JavaScript", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
+      { name: "SQL", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
     ],
     imageUrl: "/images/nodeM.png", // was CommonStyle.nodeMailer
     galleryImages: [{ url: "/images/nodeM.png", alt: "Node Mailer App" }],
     sourceCodeLink: "https://github.com/arun2github/Nodemailer/tree/master",
     liveLink: "#",
   },
+  
 ];
 
 export const socialMediaLinks: SocialMediaLink[] = [

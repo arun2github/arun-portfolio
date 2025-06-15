@@ -19,8 +19,8 @@ const Hero = () => {
 
   // Placeholder URLs - replace with your actual links
   const socialLinks = {
-    linkedin: "https://www.instagram.com/infamous_fluky?igsh=MWQ4MTUzbjFibTM2MA==",
-    instagram: "https://www.linkedin.com/in/imarunjnv/",
+    linkedin: "https://www.linkedin.com/in/imarunjnv/",
+    instagram: "https://www.instagram.com/infamous_fluky?igsh=MWQ4MTUzbjFibTM2MA==",
     github: "https://github.com/arun2github",
   };
 
