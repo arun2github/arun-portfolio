@@ -1,0 +1,680 @@
+// src/data/portfolioData.ts
+
+// --- INTERFACES ---
+export interface ProfileData {
+  name: string;
+  helloTag: string;
+  welcomeTag: string;
+  title1: string;
+  title2: string;
+  about: string;
+  about2: string;
+  profileIconUrl: string; // Path to profile image
+  logoUrl: string;
+  // New fields for detailed modal
+  detailedIntro?: string;
+  codingJourney?: string;
+  achievements?: string[];
+  motivation?: string;
+  philosophy?: string;
+  passionsOutsideCode?: string[];
+  email?: string; // Added email to profileData
+  phone?: string; // Optional phone
+  location?: string; // Optional location
+  openTo?: { text: string; icon?: string }[]; // For contact section points
+  starAwardDetails?: {
+    imageUrl: string;
+    title?: string;
+    description?: string;
+  };
+  skillSet?: {
+    name: string;
+    level: number; // Percentage 0-100
+    color?: string; // Optional: for skill bar color e.g., 'bg-sky-500'
+  }[];
+}
+
+export interface Service {
+  title: string;
+  iconUrl: string;
+}
+
+export interface Technology {
+  name: string;
+  iconUrl: string;
+}
+
+export interface ExperiencePoint {
+  companyName: string;
+  title: string;
+  iconUrl: string;
+  iconBg: string; // Background color for the icon container
+  date: string;
+  points: string[];
+}
+
+export interface EducationEntry {
+  title: string;
+  collegeName: string;
+  iconUrl: string;
+  iconBg: string;
+  date: string;
+  branch: string;
+  percentage: string;
+}
+
+export interface ProjectImage {
+  url: string;
+  alt: string;
+}
+
+export interface ProjectTag { // Renamed from Technology for project-specific tags
+  name: string;
+  color?: string; // Optional color, maps to your Dart color string
+}
+
+export interface Project {
+  id: string; // Unique ID for URL routing
+  title: string; // Was 'name' in your Dart structure
+  description: string; // Full description
+  shortDescription?: string; // For project listing cards
+  category?: string; // e.g., 'Mobile App', 'Web Application'
+  tags: ProjectTag[]; // Was 'tags' with name and color
+  imageUrl: string; // Main thumbnail for project list (was first of imageList or separate)
+  galleryImages?: ProjectImage[]; // Was 'imageList'
+  sourceCodeLink?: string; // Was 'sourceCodeLink'
+  liveLink?: string; // Add if available
+  // Detailed Page Content from previous structure
+  introduction?: string; // New field
+  problemStatement?: string;
+  strugglesAndSolutions?: string;
+  designThinking?: string;
+  approach?: string;
+  developmentJourney?: string; // New field
+  conclusion?: string; // New field
+  impact?: string; // New field
+  technologiesUsed?: string[]; // Can be derived from tags or be a separate list
+}
+
+export interface SocialMediaLink {
+  name: string;
+  iconUrl: string; // Path to icon (lucide-react names can be used later if preferred)
+  url: string; // Was 'sourceLink'
+}
+
+// --- DATA ---
+
+export const profileData: ProfileData = {
+  name: "I'm Arun Kumar,",
+  helloTag: "Hi there,",
+  welcomeTag: "Welcome to My Tech Haven",
+  title1: "Mobile Application Developer",
+  title2: "Web Developer",
+  about: "I'm a passionate Flutter Developer with a background in web development and React over 3.5+ experience. I specialize in creating high-performing, cross-platform applications with a focus on clean, efficient code and seamless user experiences.",
+  about2: "Active in open-source communities, I'm always learning and exploring emerging technologies. Outside of work, I enjoy music, reading, and experimenting with creative recipes.",
+  profileIconUrl: "/images/profile.jpg", // YOU MUST PROVIDE THIS IMAGE
+  logoUrl: "/images/webLogo.svg",      // YOU MUST PROVIDE THIS IMAGE
+  email: "arun.devfolio@gmail.com", // Added email here
+  // phone: "+123 456 7890", // Uncomment and add if you want to display phone
+  // location: "City, Country", // Uncomment and add if you want to display location
+  // Placeholder content for new detailed fields
+  detailedIntro: "Beyond the titles and technologies, I see myself as a problem-solver at heart, driven by a curiosity to understand how things work and a desire to build solutions that make a tangible difference. My journey into tech was fueled by this very curiosity, and it continues to be the force behind my learning and growth.",
+  codingJourney: "My coding adventure began with a fascination for how software could bring ideas to life. Starting with web fundamentals, I quickly found a passion for creating interactive user experiences. This led me to explore mobile development with Flutter, where I discovered the joy of building beautiful and performant cross-platform applications. Each project has been a stepping stone, teaching me not just new languages and frameworks, but also the importance of collaboration, perseverance, and user-centric design.",
+  achievements: [
+    "Successfully led the development and integration of 50+ micro-apps in the AU HUB mobile application.",
+    "Key contributor to optimizing business workflows, resulting in measurable efficiency gains.",
+    "Recognized for innovative solutions in projects like the Drishti 3D Dashboard and Sampark Lead Management.",
+    "Received the 'Star Award' at AU Small Finance Bank for exceptional service and contributions to multiple key projects.",
+    "Active participant and contributor to open-source projects related to Flutter and Dart."
+  ],
+  motivation: "My motivation stems from the challenge of solving complex problems and the satisfaction of seeing a well-crafted piece of software empower users. I'm driven by the constant evolution of technology and the endless opportunities to learn and create something new and impactful. The ability to collaborate with talented teams and contribute to meaningful projects is what keeps me energized.",
+  philosophy: "I believe in writing clean, maintainable, and scalable code. For me, software development is as much an art as it is a science. A strong emphasis on user experience, coupled with robust technical architecture, is key to building successful products. Continuous learning and adapting to new paradigms are fundamental to staying relevant and effective in this dynamic field.",
+  passionsOutsideCode: [
+    "Exploring new genres of music and attending live concerts.",
+    "Diving into captivating books, from tech biographies to fantasy novels.",
+    "Experimenting with global cuisines and honing my culinary skills.",
+    "Hiking and connecting with nature to recharge and find inspiration."
+  ],
+  openTo: [
+    { text: "New Project Collaborations", icon: "Briefcase" },
+    { text: "Freelance Opportunities", icon: "DollarSign" },
+    { text: "Tech Chats & Brainstorming", icon: "MessageSquare" },
+    { text: "Open Source Contributions", icon: "Github" }
+  ],
+  starAwardDetails: {
+    imageUrl: "/images/your-star-award-image.jpg", // <<-- IMPORTANT: REPLACE THIS PATH
+    title: "Star Award - Service Excellence",
+    description: "Recognized by AU Small Finance Bank for outstanding contributions and dedication across multiple projects."
+  },
+  skillSet: [
+    { name: "Flutter", level: 90, color: "bg-sky-500" },
+    { name: "React", level: 85, color: "bg-cyan-500" },
+    { name: "Next.js", level: 80, color: "bg-neutral-300" },
+    { name: "Tailwind CSS", level: 95, color: "bg-teal-500" },
+    { name: "HTML5", level: 98, color: "bg-orange-500" },
+    { name: "CSS3", level: 95, color: "bg-blue-500" },
+    { name: "Node.js", level: 70, color: "bg-green-500" },
+    { name: "Generative AI", level: 65, color: "bg-purple-500" },
+    { name: "Llama3", level: 60, color: "bg-pink-500" },
+    { name: "LangGraph", level: 55, color: "bg-indigo-500" },
+  ]
+};
+
+export const services: Service[] = [
+  { title: "Web Developer", iconUrl: "/images/web.png" },       // YOU MUST PROVIDE THESE IMAGES
+  { title: "Flutter Developer", iconUrl: "/images/mobile.png" },// YOU MUST PROVIDE THESE IMAGES
+  { title: "Backend Developer", iconUrl: "/images/backend.png" },// YOU MUST PROVIDE THESE IMAGES
+  // { title: "Content Creator", iconUrl: "/images/creator.png" },// YOU MUST PROVIDE THESE IMAGES
+];
+
+export const technologies: Technology[] = [
+  { name: "HTML 5", iconUrl: "/images/tech/html.svg" },
+  { name: "CSS 3", iconUrl: "/images/tech/css.svg" },
+  { name: "JavaScript", iconUrl: "/images/tech/js.svg" },
+  { name: "Ruby", iconUrl: "/images/tech/ruby.svg" },
+  { name: "Ruby On Rails", iconUrl: "/images/tech/ror.png" },
+  { name: "React JS", iconUrl: "/images/tech/react.svg" },
+  { name: "Redux Toolkit", iconUrl: "/images/tech/redux.svg" },
+  { name: "Material UI", iconUrl: "/images/tech/MI.png" },
+  { name: "Tailwind CSS", iconUrl: "/images/tech/tailwind.svg" },
+  { name: "Node JS", iconUrl: "/images/tech/nodejs.svg" },
+  { name: "SQL", iconUrl: "/images/tech/sql.png" },
+  { name: "JWT", iconUrl: "/images/tech/jwt.png" },
+  { name: "Git", iconUrl: "/images/tech/git.png" },
+  { name: "Figma", iconUrl: "/images/tech/figma.png" },
+  { name: "Dialog flow", iconUrl: "/images/tech/dialogflow.png" },
+  { name: "Flutter", iconUrl: "/images/flutter.jpg" }, // Note: path was /images/flutter.jpg
+  // { name: "Docker", iconUrl: "/images/tech/docker.png" }, // Uncomment if needed
+  // { name: "MongoDB", iconUrl: "/images/tech/mongodb.png" }, // Uncomment if needed
+  // { name: "TypeScript", iconUrl: "/images/tech/typescript.png" }, // Uncomment if needed
+  // { name: "Three JS", iconUrl: "/images/tech/threejs.svg" }, // Uncomment if needed
+  // { name: "Jira", iconUrl: "/images/tech/jira_logo.jpg.png" }, // Uncomment if needed
+];
+
+export const experiences: ExperiencePoint[] = [
+  {
+    title: "Flutter Developer | Front-end Developer",
+    companyName: "AU Small Finance Bank",
+    iconUrl: "/images/ausmall.jpg", // YOU MUST PROVIDE THIS IMAGE
+    iconBg: "#383E56",
+    date: "Jun 2023 - Present",
+    points: [
+      "Developed and maintained the AU HUB mobile application using Flutter, integrating 50+ micro-apps.",
+      "Optimized and automated multiple business verticals, reducing dependencies and improving workflow efficiency.",
+      "Implemented GetX for state management, ensuring smooth UI interactions and improved performance.",
+      "Led the development of micro-apps such as CrossSell, BC Attendance, and Branch Class Change.",
+      "Designed and enhanced the Drishti 3D Dashboard for compliance monitoring, increasing data visibility for HODs & SPOCs.",
+      "Developed the Sampark – Task & Lead Management web module for Relationship Managers (RMs) and Branch Officers (BOs) to track tasks and leads.",
+      "Built an admin dashboard for centralized task assignments, lead management, and customer mappings.",
+      "Integrated Exotel API into the Sampark app to enable direct calling, call logging, and recording for RMs, improving customer communication and audit trails.",
+      "Implemented Zoom SDK integration within AU HUB for real-time video conferencing with features like call recording, playback, and Picture-in-Picture (PiP) floating window support on both Android and iOS.",
+      "Deployed Sampark on internal MDM hosting for secure access and optimized UI/UX for improved user engagement.",
+      "Awarded 'Star Award' for dedicated service and contributions across multiple impactful projects within the bank."
+    ],
+  },
+  {
+    title: "Freelance Web Developer",
+    companyName: "Meghalaya Government | Tura Municipal Board",
+    iconUrl: "/images/fincare.png", // Note: icon was CommonStyle.fincare, check if this is correct for Tura
+    iconBg: "#E6DEDD",
+    date: "Dec 2023 - Present",
+    points: [
+      "Developed the official website for the Tura Municipal Board using Flutter for a dynamic and scalable experience.",
+      "Designed and implemented a structured approval workflow requiring two levels of verification for submitted forms.",
+      "Integrated the SBI ePay payment gateway, enabling secure online transactions before final form submission.",
+      "Optimized the web interface for seamless user experience and regulatory compliance.",
+    ],
+  },
+  {
+    title: "React.js Developer",
+    companyName: "Schrocken Inc.",
+    iconUrl: "/images/company/schrocken.png", // YOU MUST PROVIDE THIS IMAGE
+    iconBg: "#383E56",
+    date: "May 2022 - April 2023",
+    points: [
+      "Developed and maintained web applications using React.js and Material UI, enhancing user engagement.",
+      "Implemented Redux for state management, improving application efficiency and scalability.",
+      "Collaborated with backend and UX teams for seamless API integration and user experience design.",
+      "Optimized web performance and responsiveness for cross-device compatibility.",
+    ],
+  },
+  {
+    title: "Associate NodeJS Developer",
+    companyName: "Celebal Technology",
+    iconUrl: "/images/company/ct.jpg", // YOU MUST PROVIDE THIS IMAGE
+    iconBg: "#E6DEDD",
+    date: "Sep 2021 - May 2022",
+    points: [
+      "Developed and maintained AI-powered chatbots using Node.js and Google Dialogflow.",
+      "Integrated third-party APIs for enhanced chatbot functionalities and real-time data processing.",
+      "Designed conversational flows for improved user interactions and engagement.",
+    ],
+  },
+];
+
+export const education: EducationEntry[] = [
+  {
+    title: "B.Tech",
+    collegeName: "Greater Noida Institute Of Technology",
+    iconUrl: "/images/education/gniot.jpg",    // YOU MUST PROVIDE THIS IMAGE
+    iconBg: "#383E56",
+    date: "May 2015 - May 2019",
+    branch: 'Computer Science Engineering',
+    percentage: '69.2%',
+  },
+  {
+    title: "Intermediate",
+    collegeName: "Jawahar Navodaya Vidyalaya RangaReddy Hyderabad",
+    iconUrl: "/images/education/JNV_Logo.jpg", // YOU MUST PROVIDE THIS IMAGE
+    iconBg: "#383E56",
+    date: "May 2012 - May 2015",
+    branch: 'Mathematics',
+    percentage: '82.2%',
+  },
+  {
+    title: "Matriculation",
+    collegeName: "Jawahar Navodaya Vidyalaya Supaul Bihar",
+    iconUrl: "/images/education/JNV_Logo.jpg", // YOU MUST PROVIDE THIS IMAGE (same as above, confirm if correct)
+    iconBg: "#383E56",
+    date: "May 2010 - May 2012",
+    branch: 'Mathematics',
+    percentage: '84.6%',
+  }
+];
+
+export const projects: Project[] = [
+  {
+    id: 'au-niyantaran',
+    title: "Niyantaran",
+    category: "Web",
+    description: "Revamped Niyantran's front-end UI with complete redesign based on Figma prototypes. Built dynamic forms for role-based workflows, integrated draft management, and implemented responsive, user-friendly interfaces supporting complex rule configurations. Ensured seamless interaction with backend APIs for rule-driven request processing, role assignments, and real-time audit tracking.",
+    shortDescription: "Redesigned Niyantran UI with rule-based dynamic workflows, role-driven forms, draft management, and responsive design.",
+
+    introduction: "Modernized Niyantran's front-end to support flexible, rule-driven workflows while enhancing usability, responsiveness, and real-time process tracking.",
+
+    problemStatement: "Existing static front-end lacked flexibility for dynamic roles, workflows, and draft management, creating rigid user experience and operational delays.",
+    strugglesAndSolutions: "Implemented dynamic forms driven by backend rule configurations, built flexible UI components for sequential/parallel approvals, role-based filters, draft saving, and history visualization while ensuring full responsiveness and cross-browser compatibility.",
+
+    designThinking: "Focused on clean, intuitive interfaces with Figma-based design implementation, quick access dashboards, modular request pages, and simplified user journeys to minimize errors.",
+
+    approach: "Utilized modern front-end frameworks, component-based architecture, reusable UI modules, and API integrations to handle dynamic data, validations, role-based visibility, and real-time history logs.",
+
+    developmentJourney: "Started with UI redesign and layout structuring, progressively built request creation forms, recommender/approver workflows, draft-save capabilities, and integrated complex backend APIs for rule-based validations.",
+
+    conclusion: "Delivered a highly flexible, user-friendly, rule-driven front-end that supports business scalability while improving user productivity and minimizing process errors.",
+
+    impact: "Enabled Commercial Banking teams to create, track, and process requests more efficiently with configurable workflows, transparent audit trails, and improved end-user satisfaction.",
+    tags: [
+      { name: "Raect", color: "redTextGradient" },
+      { name: "Html", color: "blueTextGradient" },
+      { name: "Tailwind css", color: "yellowTextGradient" },
+      { name: "Javascript", color: "purpleTextGradient" },
+    ],
+
+    imageUrl: "/images/niyan_dashboard.PNG", // Main image for card
+    galleryImages: [
+      { url: "/images/niyan_forInfo.PNG", alt: "AU Hub Zoom Login" },
+      { url: "/images/niyan_login.PNG", alt: "AU Hub Zoom Feature 1" },
+      { url: "/images/niyan_myRequest.PNG", alt: "AU Hub Zoom Feature 2" },
+      { url: "/images/niyan_newRequest.PNG", alt: "AU Hub Zoom Feature 3" },
+    ],
+    sourceCodeLink: "#", // Assumed private or not available
+    liveLink: "#",
+  },
+  {
+    id: 'au-hub-zoom',
+    title: "AU HUB | Zoom Call Feature and Recording",
+    category: "mobile",
+    description: "Developed a Zoom Call feature module within the AU HUB application, enabling Business Correspondents (BCs) and employees to initiate, record, and playback Zoom video calls. The solution involved writing platform-specific code for Android and iOS using Zoom SDK integration. Key features include call recording, playback functionality, and Picture-in-Picture (PiP) mode for floating window support. Leveraging Flutter with GetX for state management, the module ensures seamless cross-platform experience. Utilized native integration for Zoom SDK, and packages like `flutter_zoom_sdk`, `flutter_pip`, and `video_player` for enhanced functionality.",
+    shortDescription: "Integrated Zoom SDK into AU HUB for video calls with recording, playback, and PiP mode on iOS & Android.",
+    introduction: "This project aimed to seamlessly integrate video conferencing capabilities into the existing AU HUB application, enhancing communication for BCs and employees.", // Placeholder
+    problemStatement: "The primary challenge was to enable reliable video call functionality, including recording and easy playback, directly within the AU HUB ecosystem, which is used across diverse network conditions and devices. Ensuring a consistent user experience on both Android and iOS while managing SDK complexities was crucial.", // Example - you might already have this
+    strugglesAndSolutions: "Integrating the Zoom SDK required careful handling of native modules for both Android (Java/Kotlin) and iOS (Swift/Objective-C). Managing permissions, call states, and background processes for PiP mode presented significant hurdles. These were overcome by creating specific Flutter platform channels and robust error handling.", // Example
+    designThinking: "The design focused on intuitive user flows for initiating, joining, and managing calls. The PiP feature was designed to be non-intrusive, allowing users to multitask. Playback controls were kept simple and familiar.", // Example
+    approach: "A modular approach was taken, encapsulating Zoom functionalities within a dedicated Flutter service. GetX was used for reactive state management of call statuses and UI updates. Extensive testing was conducted on various devices and network scenarios.", // Example
+    developmentJourney: "The development started with a proof-of-concept for basic SDK integration. Iteratively, features like recording, PiP, and platform-specific optimizations were added. Regular feedback from a pilot user group helped refine the user experience.", // Placeholder
+    conclusion: "The Zoom integration successfully provided a robust and user-friendly video communication tool within AU HUB, meeting the project's core objectives.", // Placeholder
+    impact: "This feature significantly improved remote collaboration and support capabilities, reducing the need for external conferencing tools and streamlining communication workflows for thousands of users.", // Placeholder
+    tags: [
+      { name: "Flutter", color: "redTextGradient" },
+      { name: "GetX", color: "blueTextGradient" },
+      { name: "Zoom SDK", color: "yellowTextGradient" },
+      { name: "PiP Mode", color: "purpleTextGradient" },
+    ],
+    imageUrl: "/images/sam_assignTask.png", // Main image for card
+    galleryImages: [
+      { url: "/images/au_hub_login.jpg", alt: "AU Hub Zoom Login" },
+      { url: "/images/au_hub_p1.jpg", alt: "AU Hub Zoom Feature 1" },
+      { url: "/images/au_hub_p2.jpg", alt: "AU Hub Zoom Feature 2" },
+      { url: "/images/au_hub_p3.jpg", alt: "AU Hub Zoom Feature 3" },
+      { url: "/images/au_hub_vedio.jpg", alt: "AU Hub Zoom Video Playback" },
+    ],
+    sourceCodeLink: "#", // Assumed private or not available
+    liveLink: "#",
+  },
+  {
+    id: 'sampark-rm-app',
+    title: "Relationship Manager App (Sampark)",
+    category: "Mobile",
+    description: "Sampark is a mobile application designed for Relationship Managers (RMs) and Branch Officers (BOs) to efficiently track and manage leads, customer interactions, and task assignments. Built using Flutter and GetX, the app enables seamless task updates, real-time customer engagement, and streamlined lead management. A key feature of the app is Exotel integration, allowing RMs to initiate calls directly from the app, with automatic call logging and recording for compliance and review purposes. The app operates securely within an internal MDM-hosted environment, ensuring restricted access and data privacy. Its intuitive UI and offline functionality significantly boost on-field productivity, making it a crucial tool for managing day-to-day operations.",
+    shortDescription: "Flutter & GetX mobile app for RMs to manage leads & tasks, with Exotel call integration and recording.",
+    introduction: "Briefly introduce the Sampark RM App project here.", // Placeholder
+    problemStatement: "Describe the core problem Sampark RM App aimed to solve.", // Placeholder
+    developmentJourney: "Share insights into the development process of Sampark RM App.", // Placeholder
+    strugglesAndSolutions: "Detail any challenges faced and how they were overcome during Sampark RM App development.", // Placeholder
+    designThinking: "Explain the design philosophy and process behind Sampark RM App.", // Placeholder
+    approach: "Describe the technical approach and architecture for Sampark RM App.", // Placeholder
+    conclusion: "Summarize the outcomes and learnings from the Sampark RM App project.", // Placeholder
+    impact: "Explain the impact Sampark RM App had or is expected to have.", // Placeholder
+    tags: [
+      { name: "Flutter", color: "redTextGradient" },
+      { name: "GetX", color: "blueTextGradient" },
+      { name: "Exotel", color: "orangeTextGradient" },
+      { name: "Call Recording", color: "purpleTextGradient" },
+    ],
+    imageUrl: "/images/sampark_app_main.png", // Placeholder - imageList was empty
+    galleryImages: [], // imageList was empty
+    sourceCodeLink: "#",
+    liveLink: "#",
+  },
+  {
+    id: 'tura-municipal-board-website',
+    title: "Tura Municipal Board Website",
+    category: "web",
+    description: "The Tura Municipal Board website is a government portal developed using Flutter, designed to streamline form submissions and approvals. The platform features a multi-step approval system where user-submitted forms undergo two rounds of validation before final approval. If a payment is required, users can securely complete transactions via the integrated SBI ePay gateway before printing the approved form. The website enhances administrative efficiency by automating workflows and providing a user-friendly interface for citizens and government officials.",
+    shortDescription: "Flutter-based government portal for Tura Municipal Board with form submission, multi-level approval, and SBI ePay integration.",
+    introduction: "Briefly introduce the Tura Municipal Board Website project here.", // Placeholder
+    problemStatement: "Describe the core problem Tura Municipal Board Website aimed to solve.", // Placeholder
+    developmentJourney: "Share insights into the development process of Tura Municipal Board Website.", // Placeholder
+    strugglesAndSolutions: "Detail any challenges faced and how they were overcome during Tura Municipal Board Website development.", // Placeholder
+    designThinking: "Explain the design philosophy and process behind Tura Municipal Board Website.", // Placeholder
+    approach: "Describe the technical approach and architecture for Tura Municipal Board Website.", // Placeholder
+    conclusion: "Summarize the outcomes and learnings from the Tura Municipal Board Website project.", // Placeholder
+    impact: "Explain the impact Tura Municipal Board Website had or is expected to have.", // Placeholder
+    tags: [
+      { name: "Flutter", color: "redTextGradient" },
+      { name: "SBI ePay", color: "blueTextGradient" },
+      { name: "Approval Workflow", color: "greenTextGradient" },
+    ],
+    imageUrl: "/images/tura_login.PNG",
+    galleryImages: [
+      { url: "/images/tura_login.PNG", alt: "Tura Website Login" },
+      { url: "/images/tura_reg.PNG", alt: "Tura Website Registration" },
+      { url: "/images/tura_home.PNG", alt: "Tura Website Home" },
+      { url: "/images/tura_tura_about.PNG", alt: "Tura Website About" },
+      { url: "/images/tura_tura_scheme.PNG", alt: "Tura Website Scheme" },
+    ],
+    sourceCodeLink: "https://turamunicipalboard.com/home", // This was likely the live link
+    liveLink: "https://turamunicipalboard.com/home",
+  },
+  {
+    id: 'sampark-rm-website',
+    title: "Relationship Manager Website (Sampark)",
+    category: "Web",
+    description: "Sampark is a web module designed for Relationship Managers (RMs) and Branch Officers (BOs) to efficiently manage tasks, leads, and customer interactions. The platform allows the Central Team (Admins) to assign tasks, oversee lead management, and streamline customer mapping. Built using Flutter, the website provides an intuitive interface for RMs to track and engage with leads, enhancing operational efficiency. The system ensures seamless communication and data synchronization while offering a private and secure deployment on internal MDM hosting.",
+    shortDescription: "Flutter web module for RMs/BOs to manage tasks & leads, with admin oversight for assignments.",
+    introduction: "Briefly introduce the Sampark RM Website project here.", // Placeholder
+    problemStatement: "Describe the core problem Sampark RM Website aimed to solve.", // Placeholder
+    developmentJourney: "Share insights into the development process of Sampark RM Website.", // Placeholder
+    strugglesAndSolutions: "Detail any challenges faced and how they were overcome during Sampark RM Website development.", // Placeholder
+    designThinking: "Explain the design philosophy and process behind Sampark RM Website.", // Placeholder
+    approach: "Describe the technical approach and architecture for Sampark RM Website.", // Placeholder
+    conclusion: "Summarize the outcomes and learnings from the Sampark RM Website project.", // Placeholder
+    impact: "Explain the impact Sampark RM Website had or is expected to have.", // Placeholder
+    tags: [
+      { name: "Flutter", color: "redTextGradient" },
+      { name: "Task Management", color: "blueTextGradient" },
+      { name: "Lead Management", color: "greenTextGradient" },
+    ],
+    imageUrl: "/images/smapark_dashboard.PNG",
+    galleryImages: [
+      { url: "/images/smapark_login.PNG", alt: "Sampark Web Login" },
+      { url: "/images/smapark_dashboard.PNG", alt: "Sampark Web Dashboard" },
+      { url: "/images/smapark_table.PNG", alt: "Sampark Web Table View" },
+    ],
+    sourceCodeLink: "#",
+    liveLink: "#",
+  },
+  {
+    id: 'dhirst-website',
+    title: "Dhirst Website",
+    category: "web",
+    description:
+"Developed the front-end for AU Compliance Actionable Tracker as per RBI regulatory guidelines, implementing dynamic workflows, multi-role management, real-time compliance tracking, and confidential instruction processing. Built complex UI components for Makers, HODs, SPOCs, FPRs, Checkers, and Observers with role-based access and dynamic Excel-based actionable uploads. Ensured audit trails, notifications, and escalations are fully integrated into the responsive design.",
+
+shortDescription:
+"Built dynamic UI for AU Compliance Tracker with role-based workflows, Excel uploads, audit trails, and notification system.",
+
+introduction:
+"The project aimed to build a centralized digital compliance tracking system for AU Small Finance Bank in alignment with RBI/2023-24/117 circular, eliminating manual Excel-based compliance tracking and improving transparency, auditability, and governance.",
+
+problemStatement:
+"The compliance team manually tracked regulatory obligations, leading to risks of data manipulation, regulatory penalties, and inefficient management across departments and regulators.",
+
+strugglesAndSolutions:
+"Built highly dynamic forms handling multiple user roles, confidential instruction flows, Excel file parsing for bulk actionables, and real-time notifications for each role. Complex workflows for deviations, approvals, and clarifications were mapped into front-end logic integrated with backend API flows.",
+
+designThinking:
+"Designed intuitive role-specific dashboards, responsive layouts for real-time actionable status, Excel-based bulk upload flows, and dynamic search/filtering mechanisms. Ensured compliance with AU’s Figma design system while making the UI highly modular and scalable.",
+
+approach:
+"Developed reusable UI modules for each role type (Maker, Checker, HOD, SPOC, FPR, Observer). Integrated dynamic forms with backend APIs for uploading instructions, assigning roles, processing deviations, tracking closures, and full audit history visualizations. Implemented real-time bell notifications and scheduled email summaries.",
+
+developmentJourney:
+"Started with login, user management, role assignment screens, followed by confidential instruction creation, Excel import flows, role-wise dashboards, actionable processing screens, deviation workflows, and integrated notification modules.",
+
+conclusion:
+"Delivered a centralized, fully digital compliance management system enabling real-time tracking, reducing compliance gaps, and ensuring regulatory adherence with audit trails.",
+
+impact:
+"Enabled AU Small Finance Bank to meet RBI compliance mandates, reduced regulatory risks, improved transparency across departments, and provided centralized compliance visibility to senior management.",
+
+
+    tags: [
+      { name: "React", color: "redTextGradient" },
+      { name: "Tailwind css", color: "blueTextGradient" },
+      { name: "Javascript", color: "greenTextGradient" },
+      { name: "Html", color: "greenTextGradient" },
+    ],
+    imageUrl: "/images/dhristi_dashboard.PNG",
+    galleryImages: [
+      { url: "/images/dhiristi_edit.PNG", alt: "Sampark Web Login" },
+      { url: "/images/dhiristi_editHistory.PNG", alt: "Sampark Web Dashboard" },
+      { url: "/images/dhiristi_return.PNG", alt: "Sampark Web Table View" },
+      { url: "/images/dhristi_createnew.PNG", alt: "Sampark Web Table View" },
+      { url: "/images/dhristi_login.PNG", alt: "Sampark Web Table View" },
+      { url: "/images/dhristi_return_id.PNG", alt: "Sampark Web Table View" },
+    ],
+    sourceCodeLink: "#",
+    liveLink: "#",
+  },
+  {
+    id: 'fincareone-branch-change',
+    title: "FincareOne | Branch Class Change",
+    category: "mobile",
+    description: "A comprehensive module within the FincareOne application that digitizes the process of requesting and approving branch and user class changes for employees. It provides a user-friendly interface for employees to submit requests with details like deputation branch and duration. Requests are routed through a two-level approval hierarchy pulled from HRMS. Reporting managers can review, approve, or reject requests through an intuitive interface with swipe gestures. Approved changes are automatically executed by a daily cron job, significantly reducing manual intervention from the IT team.",
+    shortDescription: "Flutter module in FincareOne to automate Branch & User Class change requests with a two-level approval workflow based on HRMS hierarchy.",
+    introduction: "This project was conceptualized to address the high volume of manual service tickets for branch and user class modifications. The objective was to build a self-service module within the FincareOne super-app, empowering employees to manage their own operational changes while providing a structured and secure approval framework for management.",
+    problemStatement: "The IT Business-as-usual (BAU) team was inundated with service requests for branch and user class changes, accounting for 30-40% of their ticket volume. This manual process, which relied on approvals via email or other channels, was inefficient, prone to delays, and lacked a centralized audit trail. The bank needed an automated solution to offload this work from the IT team and place the approval authority directly with the relevant business managers.",
+    developmentJourney: "The development process began by mapping out the two-level approval flow based on the HRMS structure. Following the Figma designs, we built distinct UIs for employees and managers using Flutter and GetX. Key features implemented include the request submission form with calendar controls for duration, the manager's approval dashboard with swipeable cards, and API integrations to fetch HRMS data. A significant part of the journey was setting up the daily cron job for executing approved requests and the logic for auto-reverting temporary branch changes.",
+    strugglesAndSolutions: "A key challenge was integrating with the HRMS system to dynamically fetch the correct two-level reporting hierarchy for every employee. This was solved by creating a robust backend service that securely communicates with the HRMS database. Implementing the swipe-to-approve/reject functionality with confirmation dialogs required careful state management to ensure a smooth and intuitive user experience. Another challenge was ensuring the cron job was reliable and correctly handled various scenarios, like permanent vs. temporary changes, which was addressed through rigorous testing and scheduling logic.",
+    designThinking: "The design, guided by the provided Figma link, focused on creating a clear and efficient user experience. For employees, the process of raising a request was simplified into a single form. For managers, the design prioritized quick decision-making through an 'at-a-glance' card view with employee details and swipe gestures for actions. The inclusion of a confirmation pop-up for rejections was a key design choice to prevent accidental decisions and capture necessary feedback, enhancing the overall usability and reliability of the workflow.",
+    approach: "The solution was architected as a module within the Flutter-based FincareOne application. We implemented a role-based access system to differentiate between an employee's view and a manager's view. The business logic for the approval workflow and HRMS integration was handled by backend services. A daily cron job was scheduled on the server-side to process all approved requests in a batch, ensuring system changes are made in a controlled manner during off-peak hours. All data related to requests and approvals was stored in a dedicated database schema to maintain a clear audit trail.",
+    conclusion: "The Branch and User Class Change module successfully automated a critical but repetitive administrative task. It provides a secure, auditable, and user-friendly platform that empowers employees and managers, while significantly reducing the burden on the IT team. The project demonstrated how thoughtful application design can streamline internal business processes and improve operational efficiency.",
+    impact: "The module is projected to reduce IT service tickets related to branch and user class changes by 30-40%, freeing up the IT team to focus on more critical tasks. It enhances operational agility by speeding up the approval process for employee transfers and role changes. The system provides a transparent and accountable workflow, improving the experience for both employees and their managers.",
+    tags: [
+      { name: "Flutter", color: "redTextGradient" },
+      { name: "GetX", color: "blueTextGradient" },
+      { name: "Workflow Automation", color: "greenTextGradient" },
+      { name: "HRMS Integration", color: "pinkTextGradient" },
+    ],
+    imageUrl: "/images/CrossSell.jpg", // Assuming this is a relevant image, was CommonStyle.crossSell
+    galleryImages: [{ url: "/images/CrossSell.jpg", alt: "Branch Class Change Module" }],
+    sourceCodeLink: "#",
+    liveLink: "#",
+  },
+  {
+    id: 'fincareone-crosssell',
+    title: "FincareOne | CrossSell",
+    category: "mobile",
+    description: "The Cross-Sell v3.0 module is an advanced lead management system integrated within the Fincare One application. It empowers branch employees, including Branch Managers (BMs), Branch Operations Managers (BOMs), and Relationship Managers (RMs), to seamlessly manage the entire lead lifecycle. The module features role-based user flows for lead submission, assignment, and actioning. BMs/BOMs can assign leads from a central queue, while RMs can act on their assigned leads by calling customers and updating statuses. All employees can submit new leads through a dedicated form with product selection. The system is designed to enhance sales productivity, streamline lead tracking, and improve customer conversion rates through an intuitive, role-specific UI.",
+    shortDescription: "A Flutter & GetX lead management module for bank employees to submit, assign, and act on sales leads, with role-based workflows for managers and executives.",
+    introduction: "The FincareOne Cross-Sell project was initiated to overhaul the existing lead management process within the Fincare One super-app. The goal was to create a centralized, efficient, and user-friendly module that caters to the specific needs of different employee roles, from lead creation to conversion, ultimately boosting the bank's cross-selling capabilities.",
+    problemStatement: "The previous lead management system was fragmented and lacked clear, role-based workflows. Branch Managers struggled with efficiently distributing leads to their teams, and Relationship Managers lacked a streamlined interface to act upon and track their assigned leads. There was no unified process for all employees to submit potential leads, leading to missed opportunities and inefficient tracking. The lack of a centralized system made it difficult to monitor lead status and measure conversion effectiveness across the branch network.",
+    developmentJourney: "The development of Cross-Sell v3.0 was guided by detailed user stories and Figma designs. The process began with building the core UI components in Flutter, such as the dynamic lead card widgets and the new landing page. We implemented distinct user flows for BMs/BOMs and RMs, focusing on state management with GetX to handle queues like 'Yet to assign' and 'In Progress'. A key part of the journey was creating the lead submission form with client-side validation and integrating it with the existing 'Create Lead' backend API. The final phase involved linking all screens and ensuring smooth navigation as per the new design.",
+    strugglesAndSolutions: "A primary challenge was implementing the role-based access control to display different UIs and functionalities for BMs, RMs, and other employees. This was solved by fetching the user's role upon login and using conditional rendering within the Flutter widgets. Another challenge was managing the state of leads across different queues ('Yet to assign', 'In Progress', 'Closed') efficiently. We leveraged GetX state management to create reactive data stores that updated the UI in real-time as leads were assigned, actioned, or created. Ensuring the form validations for lead submission were robust and user-friendly also required careful implementation of Flutter's form handling capabilities.",
+    designThinking: "The design process was user-centric, driven by the detailed Figma mockups provided. The core philosophy was to simplify complex workflows into intuitive, role-specific interfaces. For Branch Managers, the design focused on providing a clear overview and quick assignment capabilities. For Relationship Managers, the focus was on enabling swift action on leads. The UI for lead submission was designed to be clean and straightforward, minimizing friction for all employees. The use of distinct tabs, clear call-to-action buttons, and structured lead cards was a direct result of design thinking aimed at improving user efficiency and satisfaction.",
+    approach: "The module was developed using Flutter with GetX for state management, following a modular architecture within the main Fincare One application. We created reusable widgets for lead cards, which could be configured based on the user's role and the lead's status. The front-end logic was separated from the UI, with services dedicated to API interactions, such as creating new leads and updating their status. We adhered strictly to the provided Figma designs for UI implementation and ensured all new components were responsive and performed well on various devices.",
+    conclusion: "The Cross-Sell v3.0 module successfully delivered a comprehensive lead management solution that streamlined operations for all branch employees. The project reinforced the importance of clear specifications and user-centric design in developing effective enterprise tools. Key takeaways include the power of role-based UI customization for improving user adoption and the efficiency of using a robust state management solution like GetX for handling complex, dynamic data flows in a mobile application.",
+    impact: "The new module is expected to significantly improve the lead conversion rate by ensuring timely assignment and action on leads. It enhances accountability by providing clear visibility into lead statuses for all stakeholders. By empowering every employee to contribute to lead generation, the application widens the sales funnel. The streamlined workflows reduce administrative overhead for Branch Managers and allow Relationship Managers to focus more on customer interaction, ultimately driving business growth and improving overall sales performance.",
+    tags: [
+      { name: "Flutter", color: "redTextGradient" },
+      { name: "GetX", color: "blueTextGradient" },
+      { name: "Lead Management", color: "greenTextGradient" },
+      { name: "REST API", color: "pinkTextGradient" },
+    ],
+    imageUrl: "/images/CrossSell.jpg", // Assuming this is a relevant image
+    galleryImages: [{ url: "/images/CrossSell.jpg", alt: "CrossSell Module" }],
+    sourceCodeLink: "#",
+    liveLink: "#",
+  },
+  {
+    id: 'cell-gene-therapy',
+    title: "Cell and Gene Therapy Ecosystem",
+    category: "Web",
+    description: "Cell and Gene Therapy project, which involves developing a next-generation ecosystem for therapy that utilizes the biological properties of cells/DNA/RNA to target and cure diseases. The therapies consist of living cells, which act as the drug and produce the desired therapeutic effect. Examples include stem cell-based treatments, bone marrow transplants, and CAR-Ts. The CGT solution ecosystem includes a range of stakeholders, such as Pharma Companies/Sponsors, Treating Hospitals, Patients, Apheresis/Collection Centers, Specialty Distributors, Logistics, CDMOs, QC Labs, Monitoring Hospitals, and Insurance providers.",
+    shortDescription: "Next-gen ecosystem for cell/gene therapy, connecting stakeholders from pharma to patients for advanced treatments.",
+    introduction: "Briefly introduce the Cell and Gene Therapy Ecosystem project here.", // Placeholder
+    problemStatement: "Describe the core problem Cell and Gene Therapy Ecosystem aimed to solve.", // Placeholder
+    developmentJourney: "Share insights into the development process of Cell and Gene Therapy Ecosystem.", // Placeholder
+    strugglesAndSolutions: "Detail any challenges faced and how they were overcome during Cell and Gene Therapy Ecosystem development.", // Placeholder
+    designThinking: "Explain the design philosophy and process behind Cell and Gene Therapy Ecosystem.", // Placeholder
+    approach: "Describe the technical approach and architecture for Cell and Gene Therapy Ecosystem.", // Placeholder
+    conclusion: "Summarize the outcomes and learnings from the Cell and Gene Therapy Ecosystem project.", // Placeholder
+    impact: "Explain the impact Cell and Gene Therapy Ecosystem had or is expected to have.", // Placeholder
+    tags: [
+      { name: "JavaScript", color: "redTextGradient" },
+      { name: "React", color: "blueTextGradient" },
+      { name: "Redux", color: "greenTextGradient" },
+      { name: "Material UI", color: "pinkTextGradient" },
+      { name: "CSS", color: "blueTextGradient" },
+    ],
+    imageUrl: "/images/cgt.png",
+    galleryImages: [{ url: "/images/cgt.png", alt: "Cell and Gene Therapy Project" }],
+    sourceCodeLink: "#",
+    liveLink: "#",
+  },
+  {
+    id: 'mosymphony-qem',
+    title: "Mosymphony | Quality Event Module",
+    category: "Web",
+    description: "Mosymphony is a cutting-edge application designed to streamline contract manufacturing processes for enterprises in the pharmaceutical industry. The platform fosters transparency and communication between Pharma sponsors and CMOs, while the quality event module tracks and records every event and quality control to ensure accountability. By providing secure communication channels, reliable data sharing, and real-time updates, Mosymphony builds trust and guarantees smooth manufacturing and distribution processes.",
+    shortDescription: "Application for pharma contract manufacturing, with a module for quality event tracking and sponsor-CMO communication.",
+    introduction: "Briefly introduce the Mosymphony QEM project here.", // Placeholder
+    problemStatement: "Describe the core problem Mosymphony QEM aimed to solve.", // Placeholder
+    developmentJourney: "Share insights into the development process of Mosymphony QEM.", // Placeholder
+    strugglesAndSolutions: "Detail any challenges faced and how they were overcome during Mosymphony QEM development.", // Placeholder
+    designThinking: "Explain the design philosophy and process behind Mosymphony QEM.", // Placeholder
+    approach: "Describe the technical approach and architecture for Mosymphony QEM.", // Placeholder
+    conclusion: "Summarize the outcomes and learnings from the Mosymphony QEM project.", // Placeholder
+    impact: "Explain the impact Mosymphony QEM had or is expected to have.", // Placeholder
+    tags: [
+      { name: "JavaScript", color: "redTextGradient" },
+      { name: "React", color: "blueTextGradient" },
+      { name: "Redux", color: "greenTextGradient" },
+      { name: "Material UI", color: "pinkTextGradient" },
+      { name: "CSS", color: "blueTextGradient" },
+    ],
+    imageUrl: "/images/qem.png",
+    galleryImages: [{ url: "/images/qem.png", alt: "Mosymphony QEM" }],
+    sourceCodeLink: "#",
+    liveLink: "#",
+  },
+  {
+    id: 'netflix-clone',
+    title: "Netflix Clone",
+    category: "Web",
+    description: "The Netflix Clone project is aimed at creating a replica of the popular streaming platform, Netflix, using React and GraphQL. The project will allow users to browse and watch movies and TV shows, just like on the original platform.",
+    shortDescription: "A Netflix replica built with React and GraphQL for browsing and watching movies/TV shows.",
+    introduction: "Briefly introduce the Netflix Clone project here.", // Placeholder
+    problemStatement: "Describe the core problem Netflix Clone aimed to solve.", // Placeholder
+    developmentJourney: "Share insights into the development process of Netflix Clone.", // Placeholder
+    strugglesAndSolutions: "Detail any challenges faced and how they were overcome during Netflix Clone development.", // Placeholder
+    designThinking: "Explain the design philosophy and process behind Netflix Clone.", // Placeholder
+    approach: "Describe the technical approach and architecture for Netflix Clone.", // Placeholder
+    conclusion: "Summarize the outcomes and learnings from the Netflix Clone project.", // Placeholder
+    impact: "Explain the impact Netflix Clone had or is expected to have.", // Placeholder
+    tags: [
+      { name: "ReactJS", color: "greenTextGradient" },
+      { name: "GraphQL API", color: "blueTextGradient" },
+      { name: "DataStax AstraDB", color: "yellowTextGradient" },
+      { name: "Netlify", color: "blueTextGradient" },
+    ],
+    imageUrl: "/images/net.jpg", // was CommonStyle.netflix
+    galleryImages: [{ url: "/images/net.jpg", alt: "Netflix Clone" }],
+    sourceCodeLink: "https://github.com/arun2github/workshop-graphql-netflix",
+    liveLink: "#", // Add if deployed
+  },
+  {
+    id: 'node-mailer-app',
+    title: "Node Mailer Application",
+    category: "web",
+    description: "The project is aimed at building an application that enables users to send a large number of emails using Node.js and the nodemailer library. The application will allow users to compose and send personalized emails to a large number of recipients with ease.",
+    shortDescription: "Application for sending bulk personalized emails using Node.js and Nodemailer.",
+    introduction: "Briefly introduce the Node Mailer Application project here.", // Placeholder
+    problemStatement: "Describe the core problem Node Mailer Application aimed to solve.", // Placeholder
+    developmentJourney: "Share insights into the development process of Node Mailer Application.", // Placeholder
+    strugglesAndSolutions: "Detail any challenges faced and how they were overcome during Node Mailer Application development.", // Placeholder
+    designThinking: "Explain the design philosophy and process behind Node Mailer Application.", // Placeholder
+    approach: "Describe the technical approach and architecture for Node Mailer Application.", // Placeholder
+    conclusion: "Summarize the outcomes and learnings from the Node Mailer Application project.", // Placeholder
+    impact: "Explain the impact Node Mailer Application had or is expected to have.", // Placeholder
+    tags: [
+      { name: "NodeJS", color: "greenTextGradient" },
+      { name: "JavaScript", color: "blueTextGradient" },
+      { name: "SQL", color: "yellowTextGradient" },
+    ],
+    imageUrl: "/images/nodeM.png", // was CommonStyle.nodeMailer
+    galleryImages: [{ url: "/images/nodeM.png", alt: "Node Mailer App" }],
+    sourceCodeLink: "https://github.com/arun2github/Nodemailer/tree/master",
+    liveLink: "#",
+  },
+];
+
+export const socialMediaLinks: SocialMediaLink[] = [
+  {
+    name: 'linkedin',
+    iconUrl: "/images/ln.png", // This iconUrl is NOT used by Contact.tsx's socialIconMap, but keep for other components if needed
+    url: "https://www.linkedin.com/in/imarunjnv/",
+  },
+  {
+    name: 'instagram',
+    iconUrl: "/images/instagram.png",
+    url: 'https://www.instagram.com/infamous_fluky/',
+  },
+  {
+    name: 'facebook',
+    iconUrl: "/images/facebook.png",
+    url: 'https://www.facebook.com/arun.disambiguation?mibextid=ZbWKwL',
+  },
+  {
+    name: 'github',
+    iconUrl: "/images/github.png",
+    url: 'https://github.com/arun2github',
+  },
+];
+
+// --- FONTS (Informational, not directly used by Next.js like this) ---
+export const fonts = {
+  FONT_MONTSERRAT: "Montserrat", // For reference, Next/Font is preferred
+  FONT_POPPINS: "Poppins",       // For reference, Next/Font is preferred
+};
+
+// --- RAW ASSET PATHS (Informational, actual paths are now in the data objects above) ---
+// You will need to move these images into your /public folder
+// and update the paths in the data objects above if they differ.
+/*
+Example:
+CommonStyle.PROFILE_ICON = 'assets/images/profile.jpg'; becomes profileIconUrl: "/images/profile.jpg",
+CommonStyle.css = 'assets/images/tech/css.svg'; becomes iconUrl: "/images/tech/css.svg",
+*/ 
