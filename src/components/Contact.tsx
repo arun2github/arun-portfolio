@@ -150,9 +150,9 @@ const Contact = () => {
           {/* Left Column: Contact Info & Socials (takes 2/5ths width on md+) */}
           <motion.div variants={itemVariants} className="md:col-span-2 space-y-10">
             <div>
-              <h3 className="text-3xl font-semibold text-[#A0AEC0] mb-4">Let's Connect</h3>
+              <h3 className="text-3xl font-semibold text-[#A0AEC0] mb-4">Let&apos;s Connect</h3>
               <p className="text-neutral-300 leading-relaxed mb-8">
-                I'm always open to discussing new projects, creative ideas, or opportunities to be part of something amazing. Feel free to reach out!
+                I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of something amazing. Feel free to reach out!
               </p>
               <div className="space-y-5 mb-10">
                 {profileData.email && 
@@ -169,7 +169,7 @@ const Contact = () => {
 
             {profileData.openTo && profileData.openTo.length > 0 && (
               <div>
-                <h4 className="text-2xl font-medium text-[#A0AEC0] mb-5">I'm Currently Open To:</h4>
+                <h4 className="text-2xl font-medium text-[#A0AEC0] mb-5">I&apos;m Currently Open To:</h4>
                 <div className="space-y-3">
                   {profileData.openTo.map((item, index) => {
                     const Icon = item.icon && openToIconMap[item.icon.toLowerCase()] ? openToIconMap[item.icon.toLowerCase()] : UserCheck;

@@ -3,24 +3,10 @@ import React from 'react';
 import { Parallax, ParallaxBanner, ParallaxBannerLayer } from 'react-scroll-parallax';
 import Card3D from './ui/3d-card';
 import { profileData } from '@/data/portfolioData';
-import { Layers, Code2, Palette, Server, Brain, ArrowRight } from 'lucide-react';
+import { Layers, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-
-// Define a type for skill icons for better mapping
-const skillIconMap: { [key: string]: React.ReactNode } = {
-  flutter: <Code2 size={18} className="text-sky-400" />, 
-  react: <Code2 size={18} className="text-cyan-400" />,
-  nextjs: <Code2 size={18} className="text-neutral-400" />,
-  tailwindcss: <Palette size={18} className="text-teal-400" />,
-  html5: <Code2 size={18} className="text-orange-400" />,
-  css3: <Palette size={18} className="text-blue-400" />,
-  nodejs: <Server size={18} className="text-green-400" />,
-  generativeai: <Brain size={18} className="text-purple-400" />,
-  llama3: <Brain size={18} className="text-pink-400" />,
-  langgraph: <Brain size={18} className="text-indigo-400" />,
-  default: <Code2 size={18} className="text-neutral-500" />
-};
+import Image from 'next/image';
 
 const About = () => {
   return (
@@ -64,10 +50,11 @@ const About = () => {
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.7, ease: "easeOut" }}
                 >
-                  {/* Placeholder for user image. Replace with next/image if optimization is needed and configured. */}
-                  <img 
+                  <Image 
                     src="/images/prImg.jpg" 
                     alt={profileData.name || "Profile Picture"} 
+                    width={500}
+                    height={500}
                     className="w-full h-auto object-cover rounded-lg"
                   />
                 </motion.div>

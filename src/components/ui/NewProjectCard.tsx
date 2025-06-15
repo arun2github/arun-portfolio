@@ -9,7 +9,6 @@ interface NewProjectCardProps {
 
 const NewProjectCard: React.FC<NewProjectCardProps> = ({ project }) => {
   const isMobileApp = project.category?.toLowerCase().includes('mobile');
-  const secondImage = project.galleryImages?.[0]?.url || project.imageUrl;
 
   if (isMobileApp) {
     return (
