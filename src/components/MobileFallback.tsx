@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { profileData, socialMediaLinks } from '@/data/portfolioData';
-import { Mail, Phone, Linkedin, Github, Instagram, Facebook, Twitter, Sparkles, Compass } from 'lucide-react';
+import { Mail, Linkedin, Github, Instagram, Facebook, Twitter, Sparkles, Compass } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const socialIconMap: { [key: string]: React.ElementType } = {

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Zap, Rocket, Award, Heart, Coffee, BookOpen, Disc, MountainSnow, Star, ArrowLeft, CheckCircle, Sparkles, GitBranch } from 'lucide-react';
+import { Zap, Rocket, Award, Heart, Coffee, BookOpen, Disc, MountainSnow, Star, ArrowLeft, Sparkles, GitBranch } from 'lucide-react';
 import { profileData, ProfileData } from '@/data/portfolioData';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -237,7 +237,7 @@ const AboutDetailsPage = () => {
             href="/#contact" 
             className="px-12 py-4 bg-gradient-to-r from-[#6A77C2] to-[#8A9BCA] hover:from-[#8A9BCA] hover:to-[#6A77C2] text-white font-bold rounded-xl text-xl md:text-2xl transition-all duration-300 ease-in-out shadow-2xl hover:shadow-[#8A9BCA]/30 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-[#8A9BCA]/50"
           >
-            Let's Innovate Together
+            Let&apos;s Innovate Together
           </Link>
         </motion.div>
 

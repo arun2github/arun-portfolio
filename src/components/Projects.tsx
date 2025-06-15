@@ -1,10 +1,9 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import NewProjectCard from './ui/NewProjectCard';
-import { projects as projectsData, Project } from '@/data/portfolioData';
-import { motion, AnimatePresence } from 'framer-motion'; // Import AnimatePresence
+import { projects as projectsData } from '@/data/portfolioData';
+import { motion } from 'framer-motion';
 
 const Projects: React.FC = () => {
   const [activeFilter, setActiveFilter] = React.useState<'mobile' | 'web'>('mobile');

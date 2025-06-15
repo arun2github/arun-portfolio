@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { experiences } from '@/data/portfolioData';
-import { Briefcase, CalendarDays, MapPin } from 'lucide-react';
+import { Briefcase, MapPin } from 'lucide-react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 

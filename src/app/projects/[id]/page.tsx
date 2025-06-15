@@ -1,5 +1,5 @@
 import React from 'react';
-import { projects as projectsData, Project } from '@/data/portfolioData';
+import { projects as projectsData } from '@/data/portfolioData';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, ExternalLink, Github, Target, KeyRound, Lightbulb, Workflow, HelpCircle, CheckCircle, Brain, Route, Smartphone } from 'lucide-react';
