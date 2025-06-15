@@ -139,8 +139,8 @@ const Hero = ()=>{
     const devCharacters = "const function async await => {} [] () : Widget build StatelessWidget StatefulWidget Future<void> " + "import export default class interface type new return if else for while true false null undefined " + "React.FC useState useEffect useRef useCallback useMemo useContext useReducer <div/> <span/> <p/> " + "NextPage GetServerSideProps GetStaticProps App Router API Route Middleware Edge Functions " + "TailwindCSS @apply theme extend plugins JIT AOT Flutter Dart Material Cupertino BLoC Provider Riverpod " + "setState build(BuildContext context) Scaffold AppBar Text Center Column Row Stack Padding Image.asset " + "010101011100101010111101010101010000111101010101010101<λ> ()=> γ Σ α β ƒ π ∞ ≠ ≤ ≥ ≈ Δ";
     // Placeholder URLs - replace with your actual links
     const socialLinks = {
-        linkedin: "https://www.instagram.com/infamous_fluky?igsh=MWQ4MTUzbjFibTM2MA==",
-        instagram: "https://www.linkedin.com/in/imarunjnv/",
+        linkedin: "https://www.linkedin.com/in/imarunjnv/",
+        instagram: "https://www.instagram.com/infamous_fluky?igsh=MWQ4MTUzbjFibTM2MA==",
         github: "https://github.com/arun2github"
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -252,7 +252,7 @@ const Hero = ()=>{
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                         href: "#projects",
-                        className: "group relative px-8 py-3 bg-[#535C91] text-white font-semibold rounded-lg text-lg  overflow-hidden shadow-lg transform transition-all duration-300  hover:shadow-2xl hover:scale-105  animate-fadeInUp",
+                        className: "group relative px-8 py-3 bg-[#535C91] text-white font-semibold rounded-lg text-lg    overflow-hidden shadow-lg transform transition-all duration-300    hover:shadow-2xl hover:scale-105    animate-fadeInUp",
                         style: {
                             animationDelay: `${headline.length * 0.05 + 0.9}s`
                         },
@@ -617,7 +617,7 @@ const profileData = {
     title2: "Web Developer",
     about: "I'm a passionate Flutter Developer with a background in web development and React over 3.5+ experience. I specialize in creating high-performing, cross-platform applications with a focus on clean, efficient code and seamless user experiences.",
     about2: "Active in open-source communities, I'm always learning and exploring emerging technologies. Outside of work, I enjoy music, reading, and experimenting with creative recipes.",
-    profileIconUrl: "/images/profile.jpg",
+    profileIconUrl: "/images/profileImg.jpg",
     logoUrl: "/images/webLogo.svg",
     email: "arun.devfolio@gmail.com",
     // phone: "+123 456 7890", // Uncomment and add if you want to display phone
@@ -659,7 +659,7 @@ const profileData = {
         }
     ],
     starAwardDetails: {
-        imageUrl: "/images/your-star-award-image.jpg",
+        imageUrl: "/images/starAward.jpg",
         title: "Star Award - Service Excellence",
         description: "Recognized by AU Small Finance Bank for outstanding contributions and dedication across multiple projects."
     },
@@ -732,6 +732,27 @@ const services = [
 ];
 const technologies = [
     {
+        name: "Flutter",
+        iconUrl: "/images/flutter.jpg"
+    },
+    {
+        name: "React JS",
+        iconUrl: "/images/tech/react.svg"
+    },
+    {
+        name: "TypeScript",
+        iconUrl: "/images/tech/typescript.png"
+    },
+    {
+        name: "Next",
+        iconUrl: "/images/nextjs.png"
+    },
+    {
+        name: "JavaScript",
+        iconUrl: "/images/tech/js.svg"
+    },
+    // Uncomment if needed
+    {
         name: "HTML 5",
         iconUrl: "/images/tech/html.svg"
     },
@@ -740,20 +761,12 @@ const technologies = [
         iconUrl: "/images/tech/css.svg"
     },
     {
-        name: "JavaScript",
-        iconUrl: "/images/tech/js.svg"
-    },
-    {
         name: "Ruby",
         iconUrl: "/images/tech/ruby.svg"
     },
     {
         name: "Ruby On Rails",
         iconUrl: "/images/tech/ror.png"
-    },
-    {
-        name: "React JS",
-        iconUrl: "/images/tech/react.svg"
     },
     {
         name: "Redux Toolkit",
@@ -790,10 +803,6 @@ const technologies = [
     {
         name: "Dialog flow",
         iconUrl: "/images/tech/dialogflow.png"
-    },
-    {
-        name: "Flutter",
-        iconUrl: "/images/flutter.jpg"
     }
 ];
 const experiences = [
@@ -902,20 +911,20 @@ const projects = [
         impact: "Enabled Commercial Banking teams to create, track, and process requests more efficiently with configurable workflows, transparent audit trails, and improved end-user satisfaction.",
         tags: [
             {
-                name: "Raect",
-                color: "redTextGradient"
+                name: "React",
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             },
             {
-                name: "Html",
-                color: "blueTextGradient"
+                name: "HTML",
+                color: "linear-gradient(90deg, #ff512f 0%, #dd2476 100%)"
             },
             {
-                name: "Tailwind css",
-                color: "yellowTextGradient"
+                name: "Tailwind CSS",
+                color: "linear-gradient(90deg, #06beb6 0%, #48b1f3 100%)"
             },
             {
-                name: "Javascript",
-                color: "purpleTextGradient"
+                name: "JavaScript",
+                color: "linear-gradient(90deg, #f7971e 0%, #ffd200 100%)"
             }
         ],
         imageUrl: "/images/niyan_dashboard.PNG",
@@ -957,19 +966,19 @@ const projects = [
         tags: [
             {
                 name: "Flutter",
-                color: "redTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             },
             {
                 name: "GetX",
-                color: "blueTextGradient"
+                color: "linear-gradient(90deg, #43e97b 0%, #38f9d7 100%)"
             },
             {
                 name: "Zoom SDK",
-                color: "yellowTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             },
             {
                 name: "PiP Mode",
-                color: "purpleTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             }
         ],
         imageUrl: "/images/sam_assignTask.png",
@@ -1015,23 +1024,56 @@ const projects = [
         tags: [
             {
                 name: "Flutter",
-                color: "redTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             },
             {
                 name: "GetX",
-                color: "blueTextGradient"
+                color: "linear-gradient(90deg, #43e97b 0%, #38f9d7 100%)"
             },
             {
                 name: "Exotel",
-                color: "orangeTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             },
             {
                 name: "Call Recording",
-                color: "purpleTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             }
         ],
-        imageUrl: "/images/sampark_app_main.png",
-        galleryImages: [],
+        imageUrl: "/images/samm_dashboard.jpg",
+        galleryImages: [
+            {
+                url: "/images/samm_login.jpg",
+                alt: "Sampark RM App Login"
+            },
+            {
+                url: "/images/samm_dashboard.jpg",
+                alt: "Sampark RM App Dashboard"
+            },
+            {
+                url: "/images/sam_dashboard_drawer.jpg",
+                alt: "Sampark RM App Dashboard"
+            },
+            {
+                url: "/images/sam_pef.png",
+                alt: "Sampark RM App Table View"
+            },
+            {
+                url: "/images/sam_captureLead.jpg",
+                alt: "Sampark RM App Table View"
+            },
+            {
+                url: "/images/sam_assignTask.png",
+                alt: "Sampark RM App Assign Task"
+            },
+            {
+                url: "/images/sam_assignTask2.jpg",
+                alt: "Sampark RM App Assign Task"
+            },
+            {
+                url: "/images/sam_assignTask2.jpg",
+                alt: "Sampark RM App Assign Task"
+            }
+        ],
         sourceCodeLink: "#",
         liveLink: "#"
     },
@@ -1052,15 +1094,15 @@ const projects = [
         tags: [
             {
                 name: "Flutter",
-                color: "redTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             },
             {
                 name: "SBI ePay",
-                color: "blueTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             },
             {
                 name: "Approval Workflow",
-                color: "greenTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             }
         ],
         imageUrl: "/images/tura_login.PNG",
@@ -1106,29 +1148,29 @@ const projects = [
         tags: [
             {
                 name: "Flutter",
-                color: "redTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             },
             {
                 name: "Task Management",
-                color: "blueTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             },
             {
                 name: "Lead Management",
-                color: "greenTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             }
         ],
-        imageUrl: "/images/smapark_dashboard.PNG",
+        imageUrl: "/images/dashboard.PNG",
         galleryImages: [
             {
-                url: "/images/smapark_login.PNG",
+                url: "/images/loginImg.PNG",
                 alt: "Sampark Web Login"
             },
             {
-                url: "/images/smapark_dashboard.PNG",
+                url: "/images/dashboard.PNG",
                 alt: "Sampark Web Dashboard"
             },
             {
-                url: "/images/smapark_table.PNG",
+                url: "/images/table.PNG",
                 alt: "Sampark Web Table View"
             }
         ],
@@ -1144,7 +1186,7 @@ const projects = [
         introduction: "The project aimed to build a centralized digital compliance tracking system for AU Small Finance Bank in alignment with RBI/2023-24/117 circular, eliminating manual Excel-based compliance tracking and improving transparency, auditability, and governance.",
         problemStatement: "The compliance team manually tracked regulatory obligations, leading to risks of data manipulation, regulatory penalties, and inefficient management across departments and regulators.",
         strugglesAndSolutions: "Built highly dynamic forms handling multiple user roles, confidential instruction flows, Excel file parsing for bulk actionables, and real-time notifications for each role. Complex workflows for deviations, approvals, and clarifications were mapped into front-end logic integrated with backend API flows.",
-        designThinking: "Designed intuitive role-specific dashboards, responsive layouts for real-time actionable status, Excel-based bulk upload flows, and dynamic search/filtering mechanisms. Ensured compliance with AU’s Figma design system while making the UI highly modular and scalable.",
+        designThinking: "Designed intuitive role-specific dashboards, responsive layouts for real-time actionable status, Excel-based bulk upload flows, and dynamic search/filtering mechanisms. Ensured compliance with AU's Figma design system while making the UI highly modular and scalable.",
         approach: "Developed reusable UI modules for each role type (Maker, Checker, HOD, SPOC, FPR, Observer). Integrated dynamic forms with backend APIs for uploading instructions, assigning roles, processing deviations, tracking closures, and full audit history visualizations. Implemented real-time bell notifications and scheduled email summaries.",
         developmentJourney: "Started with login, user management, role assignment screens, followed by confidential instruction creation, Excel import flows, role-wise dashboards, actionable processing screens, deviation workflows, and integrated notification modules.",
         conclusion: "Delivered a centralized, fully digital compliance management system enabling real-time tracking, reducing compliance gaps, and ensuring regulatory adherence with audit trails.",
@@ -1152,19 +1194,19 @@ const projects = [
         tags: [
             {
                 name: "React",
-                color: "redTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             },
             {
-                name: "Tailwind css",
-                color: "blueTextGradient"
+                name: "Tailwind CSS",
+                color: "linear-gradient(90deg, #06beb6 0%, #48b1f3 100%)"
             },
             {
-                name: "Javascript",
-                color: "greenTextGradient"
+                name: "JavaScript",
+                color: "linear-gradient(90deg, #f7971e 0%, #ffd200 100%)"
             },
             {
-                name: "Html",
-                color: "greenTextGradient"
+                name: "HTML",
+                color: "linear-gradient(90deg, #ff512f 0%, #dd2476 100%)"
             }
         ],
         imageUrl: "/images/dhristi_dashboard.PNG",
@@ -1214,19 +1256,19 @@ const projects = [
         tags: [
             {
                 name: "Flutter",
-                color: "redTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             },
             {
                 name: "GetX",
-                color: "blueTextGradient"
+                color: "linear-gradient(90deg, #43e97b 0%, #38f9d7 100%)"
             },
             {
                 name: "Workflow Automation",
-                color: "greenTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             },
             {
                 name: "HRMS Integration",
-                color: "pinkTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             }
         ],
         imageUrl: "/images/CrossSell.jpg",
@@ -1256,19 +1298,19 @@ const projects = [
         tags: [
             {
                 name: "Flutter",
-                color: "redTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             },
             {
                 name: "GetX",
-                color: "blueTextGradient"
+                color: "linear-gradient(90deg, #43e97b 0%, #38f9d7 100%)"
             },
             {
                 name: "Lead Management",
-                color: "greenTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             },
             {
                 name: "REST API",
-                color: "pinkTextGradient"
+                color: "linear-gradient(90deg, #f953c6 0%, #b91d73 100%)"
             }
         ],
         imageUrl: "/images/CrossSell.jpg",
@@ -1282,50 +1324,80 @@ const projects = [
         liveLink: "#"
     },
     {
-        id: 'cell-gene-therapy',
-        title: "Cell and Gene Therapy Ecosystem",
-        category: "Web",
-        description: "Cell and Gene Therapy project, which involves developing a next-generation ecosystem for therapy that utilizes the biological properties of cells/DNA/RNA to target and cure diseases. The therapies consist of living cells, which act as the drug and produce the desired therapeutic effect. Examples include stem cell-based treatments, bone marrow transplants, and CAR-Ts. The CGT solution ecosystem includes a range of stakeholders, such as Pharma Companies/Sponsors, Treating Hospitals, Patients, Apheresis/Collection Centers, Specialty Distributors, Logistics, CDMOs, QC Labs, Monitoring Hospitals, and Insurance providers.",
-        shortDescription: "Next-gen ecosystem for cell/gene therapy, connecting stakeholders from pharma to patients for advanced treatments.",
-        introduction: "Briefly introduce the Cell and Gene Therapy Ecosystem project here.",
-        problemStatement: "Describe the core problem Cell and Gene Therapy Ecosystem aimed to solve.",
-        developmentJourney: "Share insights into the development process of Cell and Gene Therapy Ecosystem.",
-        strugglesAndSolutions: "Detail any challenges faced and how they were overcome during Cell and Gene Therapy Ecosystem development.",
-        designThinking: "Explain the design philosophy and process behind Cell and Gene Therapy Ecosystem.",
-        approach: "Describe the technical approach and architecture for Cell and Gene Therapy Ecosystem.",
-        conclusion: "Summarize the outcomes and learnings from the Cell and Gene Therapy Ecosystem project.",
-        impact: "Explain the impact Cell and Gene Therapy Ecosystem had or is expected to have.",
-        tags: [
-            {
-                name: "JavaScript",
-                color: "redTextGradient"
-            },
-            {
-                name: "React",
-                color: "blueTextGradient"
-            },
-            {
-                name: "Redux",
-                color: "greenTextGradient"
-            },
-            {
-                name: "Material UI",
-                color: "pinkTextGradient"
-            },
-            {
-                name: "CSS",
-                color: "blueTextGradient"
-            }
-        ],
+        id: "mosymphony-cgt",
+        title: "Mosymphony-CGT",
+        category: "Web Application",
+        shortDescription: "A comprehensive platform for managing Cell-Gene Therapy ecosystems, enabling secure collaboration between organizations, researchers, and healthcare providers.",
+        description: "Mosymphony-CGT is an advanced web platform designed to facilitate and streamline Cell-Gene Therapy research and collaboration. The system implements a robust user management system with role-based access control, secure authentication, and comprehensive organization management capabilities.",
         imageUrl: "/images/cgt.png",
         galleryImages: [
             {
                 url: "/images/cgt.png",
                 alt: "Cell and Gene Therapy Project"
+            },
+            {
+                url: "/images/cgt.png",
+                alt: "User Management Interface"
+            },
+            {
+                url: "/images/cgt.png",
+                alt: "Organization Management View"
             }
         ],
+        tags: [
+            {
+                name: "React",
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
+            },
+            {
+                name: "Node.js",
+                color: "linear-gradient(90deg, #43cea2 0%, #185a9d 100%)"
+            },
+            {
+                name: "PostgreSQL",
+                color: "linear-gradient(90deg, #1e3c72 0%, #2a5298 100%)"
+            },
+            {
+                name: "JWT",
+                color: "linear-gradient(90deg, #f7971e 0%, #ffd200 100%)"
+            },
+            {
+                name: "REST API",
+                color: "linear-gradient(90deg, #f953c6 0%, #b91d73 100%)"
+            },
+            {
+                name: "Two-Factor Authentication",
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
+            },
+            {
+                name: "Role-Based Access Control",
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
+            },
+            {
+                name: "Organization Management",
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
+            }
+        ],
+        technologiesUsed: [
+            "React.js",
+            "Node.js",
+            "PostgreSQL",
+            "JWT Authentication",
+            "RESTful APIs",
+            "Two-Factor Authentication",
+            "Role-Based Access Control",
+            "Organization Management"
+        ],
+        liveLink: "#",
         sourceCodeLink: "#",
-        liveLink: "#"
+        introduction: "Mosymphony-CGT is a specialized platform designed to address the unique needs of Cell-Gene Therapy research and collaboration. The system provides a secure and efficient way for organizations, researchers, and healthcare providers to collaborate while maintaining strict data security and compliance requirements.",
+        problemStatement: "The Cell-Gene Therapy field faces several challenges:\n\n1. Complex collaboration requirements between multiple organizations\n2. Need for secure data sharing and access control\n3. Difficulty in managing user roles and permissions across different organizations\n4. Lack of standardized processes for ecosystem management\n5. Security concerns in handling sensitive research data",
+        developmentJourney: "The development journey involved several key phases:\n\n1. Initial Planning and Architecture Design\n   - Defined system requirements and architecture\n   - Designed database schema for user and organization management\n   - Planned API structure and authentication flow\n\n2. Core Development\n   - Implemented user registration and authentication system\n   - Developed organization management features\n   - Created role-based access control system\n   - Built two-factor authentication mechanism\n\n3. Security Implementation\n   - Implemented JWT-based authentication\n   - Added two-step verification process\n   - Developed secure password management\n   - Created secure API endpoints\n\n4. Testing and Optimization\n   - Conducted security testing\n   - Performed load testing\n   - Optimized database queries\n   - Enhanced user experience",
+        strugglesAndSolutions: "Key challenges and their solutions:\n\n1. Complex User Management\n   - Implemented a flexible role-based system\n   - Created separate flows for different user types\n   - Developed comprehensive permission management\n\n2. Security Concerns\n   - Implemented two-factor authentication\n   - Added OTP verification system\n   - Created secure token management\n\n3. Organization Management\n   - Developed hierarchical organization structure\n   - Created flexible collaboration models\n   - Implemented organization-specific settings\n\n4. Data Security\n   - Implemented end-to-end encryption\n   - Created secure data sharing mechanisms\n   - Developed audit logging system",
+        designThinking: "The design process focused on:\n\n1. User Experience\n   - Intuitive interface for complex operations\n   - Clear navigation structure\n   - Responsive design for all devices\n\n2. Security First\n   - Multiple authentication layers\n   - Secure data transmission\n   - Role-based access control\n\n3. Scalability\n   - Modular architecture\n   - Flexible organization structure\n   - Extensible API design",
+        approach: "The development approach included:\n\n1. Agile Methodology\n   - Iterative development cycles\n   - Regular stakeholder feedback\n   - Continuous improvement\n\n2. Security-First Development\n   - Regular security audits\n   - Penetration testing\n   - Compliance verification\n\n3. User-Centered Design\n   - User research and feedback\n   - Usability testing\n   - Performance optimization",
+        conclusion: "Mosymphony-CGT successfully addresses the complex needs of Cell-Gene Therapy research collaboration. The platform provides a secure, scalable, and user-friendly solution for managing research ecosystems, enabling effective collaboration while maintaining strict security standards.",
+        impact: "The platform has made significant impact in the Cell-Gene Therapy field:\n\n1. Improved Collaboration\n   - Streamlined communication between organizations\n   - Enhanced data sharing capabilities\n   - Reduced administrative overhead\n\n2. Enhanced Security\n   - Reduced security incidents\n   - Improved compliance with regulations\n   - Better data protection\n\n3. Increased Efficiency\n   - Faster onboarding process\n   - Reduced manual work\n   - Better resource utilization"
     },
     {
         id: 'mosymphony-qem',
@@ -1344,23 +1416,23 @@ const projects = [
         tags: [
             {
                 name: "JavaScript",
-                color: "redTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             },
             {
                 name: "React",
-                color: "blueTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             },
             {
                 name: "Redux",
-                color: "greenTextGradient"
+                color: "linear-gradient(90deg, #a770ef 0%, #f6d365 100%)"
             },
             {
                 name: "Material UI",
-                color: "pinkTextGradient"
+                color: "linear-gradient(90deg, #2193b0 0%, #6dd5ed 100%)"
             },
             {
                 name: "CSS",
-                color: "blueTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             }
         ],
         imageUrl: "/images/qem.png",
@@ -1390,19 +1462,19 @@ const projects = [
         tags: [
             {
                 name: "ReactJS",
-                color: "greenTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             },
             {
                 name: "GraphQL API",
-                color: "blueTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             },
             {
                 name: "DataStax AstraDB",
-                color: "yellowTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             },
             {
                 name: "Netlify",
-                color: "blueTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             }
         ],
         imageUrl: "/images/net.jpg",
@@ -1432,15 +1504,15 @@ const projects = [
         tags: [
             {
                 name: "NodeJS",
-                color: "greenTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             },
             {
                 name: "JavaScript",
-                color: "blueTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             },
             {
                 name: "SQL",
-                color: "yellowTextGradient"
+                color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)"
             }
         ],
         imageUrl: "/images/nodeM.png",
@@ -1823,7 +1895,7 @@ const About = ()=>{
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                             href: "/ARUN_RESUME.pdf",
                                             download: "Arun_Resume.pdf",
-                                            className: "group relative inline-block px-8 py-3 bg-neutral-100 text-[#535C91] font-semibold rounded-lg text-lg  shadow-md transform transition-all duration-300  hover:shadow-xl hover:scale-105 focus:outline-none focus:ring-2 focus:ring-neutral-300 focus:ring-opacity-50 mt-4 md:mt-0 self-center md:self-start",
+                                            className: "group relative inline-block px-8 py-3 bg-neutral-100 text-[#535C91] font-semibold rounded-lg text-lg    shadow-md transform transition-all duration-300    hover:shadow-xl hover:scale-105 focus:outline-none focus:ring-2 focus:ring-neutral-300 focus:ring-opacity-50   mt-4 md:mt-0 self-center md:self-start",
                                             children: "Download Resume"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/About.tsx",
@@ -1884,6 +1956,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 ;
 const NewProjectCard = ({ project })=>{
     const isMobileApp = project.category?.toLowerCase().includes('mobile');
+    const secondImage = project.galleryImages?.[0]?.url || project.imageUrl;
     if (isMobileApp) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "group relative w-full max-w-sm mx-auto bg-gradient-to-br from-[#0F172A] to-[#1E293B] rounded-3xl shadow-2xl overflow-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#7E8CE0]/30",
@@ -1891,168 +1964,109 @@ const NewProjectCard = ({ project })=>{
                 className: "p-6",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "relative w-full h-[360px] mx-auto mb-6 perspective-1000 flex justify-center items-center gap-4",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "relative w-32 h-full transform-gpu group-hover:rotate-y-12 group-hover:-translate-x-8 transition-all duration-700 ease-out",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "absolute inset-0 bg-[#1A1D24] rounded-[2rem] border-[6px] border-[#2A2D35] shadow-2xl overflow-hidden",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "absolute top-0 left-1/2 transform -translate-x-1/2 w-16 h-2 bg-[#2A2D35] rounded-b-xl flex items-center justify-center",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "w-1.5 h-1.5 rounded-full bg-[#3DDC84]"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                                                    lineNumber: 22,
-                                                    columnNumber: 19
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                                                lineNumber: 21,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                                src: project.imageUrl,
-                                                alt: "Android Version",
-                                                layout: "fill",
-                                                objectFit: "cover",
-                                                className: "transition-transform duration-700 group-hover:scale-110"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                                                lineNumber: 24,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "absolute bottom-2 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full border-2 border-[#3DDC84]/30"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                                                lineNumber: 31,
-                                                columnNumber: 17
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                                        lineNumber: 20,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "absolute inset-0 bg-gradient-to-tr from-[#3DDC84]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                                        lineNumber: 33,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                                lineNumber: 19,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "relative w-32 h-full transform-gpu group-hover:rotate-y-[-12deg] group-hover:translate-x-8 transition-all duration-700 ease-out",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "absolute inset-0 bg-[#1A1D24] rounded-[2rem] border-[6px] border-[#2A2D35] shadow-2xl overflow-hidden",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "absolute top-0 left-1/2 transform -translate-x-1/2 w-20 h-4 bg-[#2A2D35] rounded-b-xl flex items-center justify-center",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "w-10 h-2 bg-[#007AFF] rounded-lg opacity-30"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                                                    lineNumber: 40,
-                                                    columnNumber: 19
-                                                }, this)
+                        className: "relative w-[280px] h-[560px] mx-auto mb-6 perspective-1000",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "absolute inset-0 bg-[#1A1D24] rounded-[3rem] border-[8px] border-[#2A2D35] shadow-2xl overflow-hidden",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-6 bg-[#1A1D24] rounded-b-2xl z-10"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/ui/NewProjectCard.tsx",
+                                    lineNumber: 22,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "relative w-full h-full",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                            src: project.imageUrl,
+                                            alt: project.title,
+                                            layout: "fill",
+                                            objectFit: "cover",
+                                            className: "transition-transform duration-700 group-hover:scale-110"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/ui/NewProjectCard.tsx",
+                                            lineNumber: 26,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/ui/NewProjectCard.tsx",
+                                            lineNumber: 33,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/ui/NewProjectCard.tsx",
+                                    lineNumber: 25,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center transform transition-transform duration-300 hover:scale-110",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                                src: "/images/android.png",
+                                                alt: "Get it on Google Play",
+                                                width: 24,
+                                                height: 24,
+                                                className: "opacity-70 hover:opacity-100 transition-opacity"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/ui/NewProjectCard.tsx",
                                                 lineNumber: 39,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                                src: project.imageUrl,
-                                                alt: "iOS Version",
-                                                layout: "fill",
-                                                objectFit: "cover",
-                                                className: "transition-transform duration-700 group-hover:scale-110"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                                                lineNumber: 42,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "absolute bottom-2 left-1/2 transform -translate-x-1/2 w-8 h-0.5 rounded-full bg-[#007AFF]/30"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                                                lineNumber: 49,
-                                                columnNumber: 17
+                                                columnNumber: 19
                                             }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                                        lineNumber: 38,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "absolute inset-0 bg-gradient-to-tr from-[#007AFF]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                                        lineNumber: 51,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                                lineNumber: 37,
-                                columnNumber: 13
-                            }, this)
-                        ]
-                    }, void 0, true, {
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/ui/NewProjectCard.tsx",
+                                            lineNumber: 38,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center transform transition-transform duration-300 hover:scale-110",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                                src: "/images/app-store.png",
+                                                alt: "Download on App Store",
+                                                width: 24,
+                                                height: 24,
+                                                className: "opacity-70 hover:opacity-100 transition-opacity"
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/ui/NewProjectCard.tsx",
+                                                lineNumber: 48,
+                                                columnNumber: 19
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/ui/NewProjectCard.tsx",
+                                            lineNumber: 47,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/ui/NewProjectCard.tsx",
+                                    lineNumber: 37,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/ui/NewProjectCard.tsx",
+                            lineNumber: 20,
+                            columnNumber: 13
+                        }, this)
+                    }, void 0, false, {
                         fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                        lineNumber: 17,
+                        lineNumber: 19,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "text-center space-y-4",
                         children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex justify-center gap-3 mb-2",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                        src: "/images/android.png",
-                                        alt: "Get it on Google Play",
-                                        width: 24,
-                                        height: 24,
-                                        className: "opacity-70 hover:opacity-100 transition-opacity"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                                        lineNumber: 57,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                        src: "/images/app-store.png",
-                                        alt: "Download on App Store",
-                                        width: 24,
-                                        height: 24,
-                                        className: "opacity-70 hover:opacity-100 transition-opacity"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                                        lineNumber: 64,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                                lineNumber: 56,
-                                columnNumber: 13
-                            }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                 className: "text-2xl font-bold bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent",
                                 children: project.title
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                                lineNumber: 72,
+                                lineNumber: 61,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2060,22 +2074,31 @@ const NewProjectCard = ({ project })=>{
                                 children: project.shortDescription
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                                lineNumber: 73,
+                                lineNumber: 62,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex flex-wrap justify-center gap-2",
-                                children: project.tags.slice(0, 3).map((tag, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "px-3 py-1 text-xs font-medium text-white rounded-full bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-colors duration-300",
+                                className: "flex flex-wrap gap-2 mt-4",
+                                children: project.tags.map((tag, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        className: "px-4 py-1.5 text-xs font-semibold rounded-full shadow-md",
+                                        style: {
+                                            background: tag.color,
+                                            color: "#fff",
+                                            border: "none",
+                                            minWidth: "80px",
+                                            display: "inline-block",
+                                            textAlign: "center",
+                                            letterSpacing: "0.02em"
+                                        },
                                         children: tag.name
                                     }, index, false, {
                                         fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                                        lineNumber: 78,
+                                        lineNumber: 67,
                                         columnNumber: 17
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                                lineNumber: 76,
+                                lineNumber: 65,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -2086,7 +2109,7 @@ const NewProjectCard = ({ project })=>{
                                         children: "View Details"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                                        lineNumber: 90,
+                                        lineNumber: 88,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -2101,43 +2124,44 @@ const NewProjectCard = ({ project })=>{
                                             d: "M14 5l7 7m0 0l-7 7m7-7H3"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                                            lineNumber: 92,
+                                            lineNumber: 90,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                                        lineNumber: 91,
+                                        lineNumber: 89,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                                lineNumber: 86,
+                                lineNumber: 84,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                        lineNumber: 55,
+                        lineNumber: 60,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                lineNumber: 16,
+                lineNumber: 17,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-            lineNumber: 15,
+            lineNumber: 16,
             columnNumber: 7
         }, this);
     }
+    // Web Project Card
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "group relative w-full max-w-sm mx-auto bg-[#1A1D24] rounded-2xl shadow-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#7E8CE0]/30",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "relative h-56",
+                className: "relative h-[280px]",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                         src: project.imageUrl,
@@ -2147,20 +2171,20 @@ const NewProjectCard = ({ project })=>{
                         className: "transition-transform duration-500 group-hover:scale-110"
                     }, void 0, false, {
                         fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                        lineNumber: 104,
+                        lineNumber: 103,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"
                     }, void 0, false, {
                         fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                        lineNumber: 111,
+                        lineNumber: 110,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                lineNumber: 103,
+                lineNumber: 102,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2171,7 +2195,7 @@ const NewProjectCard = ({ project })=>{
                         children: project.title
                     }, void 0, false, {
                         fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                        lineNumber: 114,
+                        lineNumber: 113,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2179,26 +2203,31 @@ const NewProjectCard = ({ project })=>{
                         children: project.shortDescription
                     }, void 0, false, {
                         fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                        lineNumber: 115,
+                        lineNumber: 114,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "mt-4 flex flex-wrap gap-2 mb-4",
-                        children: project.tags.slice(0, 3).map((tag, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "inline-block px-2 py-1 text-xs font-medium rounded-full",
+                        className: "flex flex-wrap gap-2 mt-4",
+                        children: project.tags.map((tag, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                className: "px-4 py-1.5 text-xs font-semibold rounded-full shadow-md",
                                 style: {
-                                    backgroundColor: tag.color || '#7E8CE0',
-                                    color: 'white'
+                                    background: tag.color,
+                                    color: "#fff",
+                                    border: "none",
+                                    minWidth: "80px",
+                                    display: "inline-block",
+                                    textAlign: "center",
+                                    letterSpacing: "0.02em"
                                 },
                                 children: tag.name
                             }, index, false, {
                                 fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                                lineNumber: 120,
+                                lineNumber: 119,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                        lineNumber: 118,
+                        lineNumber: 117,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2209,24 +2238,24 @@ const NewProjectCard = ({ project })=>{
                             children: "View Details →"
                         }, void 0, false, {
                             fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                            lineNumber: 130,
+                            lineNumber: 137,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                        lineNumber: 129,
+                        lineNumber: 136,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-                lineNumber: 113,
+                lineNumber: 112,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/ui/NewProjectCard.tsx",
-        lineNumber: 102,
+        lineNumber: 101,
         columnNumber: 5
     }, this);
 };
@@ -2537,7 +2566,7 @@ const TechCard = ({ tech, index })=>{
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
         variants: cardVariants,
-        className: "group flex flex-col items-center justify-center p-6 bg-[#2D3748]/40 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-[#535C91]/30  border border-transparent hover:border-[#535C91]/50 transition-all duration-300 transform hover:-translate-y-1 h-full",
+        className: "group flex flex-col items-center justify-center p-6 bg-[#2D3748]/40 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-[#535C91]/30    border border-transparent hover:border-[#535C91]/50 transition-all duration-300 transform hover:-translate-y-1 h-full",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "relative w-16 h-16 md:w-20 md:h-20 mb-4 transition-transform duration-300 group-hover:scale-110",
@@ -3397,7 +3426,7 @@ const Contact = ()=>{
         columnNumber: 5
     }, this);
 };
-_s(Contact, "mKYqhYzHibfjnZYgmgvOAY4DTPs=");
+_s(Contact, "3+JiFBTuWF93iXofxsFiyaefnns=");
 _c1 = Contact;
 const __TURBOPACK__default__export__ = Contact;
 var _c, _c1;
