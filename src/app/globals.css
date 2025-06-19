@@ -45,12 +45,15 @@
 
 body {
   cursor: none; /* Hide the default system cursor */
+  --cursor-moving: 0;
 }
 
 /* Optional: Hide cursor for specific interactive elements if the custom cursor handles them */
 a,
-button {
-  cursor: none; /* Ensure links and buttons also hide default cursor */
+button,
+input,
+textarea {
+  cursor: none; /* Ensure interactive elements also hide default cursor */
 }
 
 /* Keyframes for character stagger animation */
@@ -69,6 +72,183 @@ button {
   display: inline-block; /* Ensures transform is applied correctly */
   opacity: 0; /* Start hidden */
   animation: char-reveal 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Advanced cursor animations */
+@keyframes hologram-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+  75% { opacity: 0.9; }
+}
+
+@keyframes data-flow {
+  0% {
+    transform: translateX(-20px) scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(20px) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes quantum-pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: hue-rotate(0deg);
+  }
+  25% {
+    transform: scale(1.1);
+    filter: hue-rotate(90deg);
+  }
+  50% {
+    transform: scale(0.9);
+    filter: hue-rotate(180deg);
+  }
+  75% {
+    transform: scale(1.05);
+    filter: hue-rotate(270deg);
+  }
+}
+
+@keyframes digital-glitch {
+  0%, 100% { transform: translate(0); }
+  10% { transform: translate(-1px, 1px); }
+  20% { transform: translate(1px, -1px); }
+  30% { transform: translate(-1px, -1px); }
+  40% { transform: translate(1px, 1px); }
+  50% { transform: translate(-1px, 1px); }
+  60% { transform: translate(1px, -1px); }
+  70% { transform: translate(-1px, -1px); }
+  80% { transform: translate(1px, 1px); }
+  90% { transform: translate(-1px, 1px); }
+}
+
+@keyframes energy-wave {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes scan-line {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Utility classes for cursor effects */
+.hologram-flicker {
+  animation: hologram-flicker 2s ease-in-out infinite;
+}
+
+.data-flow {
+  animation: data-flow 1.5s ease-out infinite;
+}
+
+.quantum-pulse {
+  animation: quantum-pulse 3s ease-in-out infinite;
+}
+
+.digital-glitch {
+  animation: digital-glitch 0.3s ease-in-out infinite;
+}
+
+.energy-wave {
+  animation: energy-wave 1s ease-out infinite;
+}
+
+.scan-line {
+  animation: scan-line 2s linear infinite;
+}
+
+/* Enhanced hover effects */
+[data-project-card]:hover {
+  --cursor-intensity: 2;
+}
+
+[data-project-card]:hover::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #8B5CF6, #06B6D4, #10B981, #8B5CF6);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0.3;
+  animation: quantum-pulse 2s ease-in-out infinite;
+}
+
+/* Interactive element enhancements */
+a:hover, button:hover {
+  --cursor-intensity: 1.5;
+}
+
+/* Smooth transitions for all elements */
+* {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom scrollbar for better aesthetics */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(26, 29, 36, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.5);
+}
+
+/* Cursor movement state effects */
+body[style*="--cursor-moving: 1"] {
+  --cursor-trail-opacity: 1;
+}
+
+body[style*="--cursor-moving: 0"] {
+  --cursor-trail-opacity: 0;
+}
+
+/* Text selection styling */
+::selection {
+  background: rgba(59, 130, 246, 0.3);
+  color: white;
+}
+
+::-moz-selection {
+  background: rgba(59, 130, 246, 0.3);
+  color: white;
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid #3B82F6;
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 :root {
@@ -138,6 +318,106 @@ button {
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+}
+
+body {
+  cursor: none; /* Hide the default system cursor */
+  --cursor-moving: 0;
+}
+
+/* Optional: Hide cursor for specific interactive elements if the custom cursor handles them */
+a,
+button,
+input,
+textarea {
+  cursor: none; /* Ensure interactive elements also hide default cursor */
+}
+
+/* Advanced cursor animations */
+@keyframes hologram-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+  75% { opacity: 0.9; }
+}
+
+@keyframes data-flow {
+  0% {
+    transform: translateX(-20px) scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(20px) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes quantum-pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: hue-rotate(0deg);
+  }
+  25% {
+    transform: scale(1.1);
+    filter: hue-rotate(90deg);
+  }
+  50% {
+    transform: scale(0.9);
+    filter: hue-rotate(180deg);
+  }
+  75% {
+    transform: scale(1.05);
+    filter: hue-rotate(270deg);
+  }
+}
+
+@keyframes digital-glitch {
+  0%, 100% { transform: translate(0); }
+  10% { transform: translate(-1px, 1px); }
+  20% { transform: translate(1px, -1px); }
+  30% { transform: translate(-1px, -1px); }
+  40% { transform: translate(1px, 1px); }
+  50% { transform: translate(-1px, 1px); }
+  60% { transform: translate(1px, -1px); }
+  70% { transform: translate(-1px, -1px); }
+  80% { transform: translate(1px, 1px); }
+  90% { transform: translate(-1px, 1px); }
+}
+
+@keyframes energy-wave {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Enhanced hover effects */
+[data-project-card]:hover {
+  --cursor-intensity: 2;
+}
+
+/* Custom scrollbar for better aesthetics */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(26, 29, 36, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.5);
 }
 
 @layer base {

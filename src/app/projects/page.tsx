@@ -2,30 +2,34 @@
 import React from 'react';
 import { projects as projectsData } from '@/data/portfolioData';
 import Link from 'next/link';
-import { ArrowLeft, Smartphone, Globe } from 'lucide-react';
+import { ArrowLeft, Smartphone, Globe, Brain } from 'lucide-react';
 import NewProjectCard from '@/components/ui/NewProjectCard';
 
 export default function AllProjectsPage() {
   const [selectedCategory, setSelectedCategory] = React.useState<string>('all');
 
-  const { mobileProjects, webProjects } = React.useMemo(() => {
+  const { mobileProjects, webProjects, aiProjects } = React.useMemo(() => {
     const mobile = projectsData.filter(project => 
       project.category?.toLowerCase().includes('mobile')
     );
     const web = projectsData.filter(project => 
-      !project.category?.toLowerCase().includes('mobile')
+      project.category?.toLowerCase().includes('web')
     );
-    return { mobileProjects: mobile, webProjects: web };
+    const ai = projectsData.filter(project => 
+      project.category?.toLowerCase().includes('ai')
+    );
+    return { mobileProjects: mobile, webProjects: web, aiProjects: ai };
   }, []);
 
   const filteredProjects = React.useMemo(() => {
     if (selectedCategory === 'all') {
-      return [...mobileProjects, ...webProjects];
+      return [...aiProjects, ...mobileProjects, ...webProjects];
     }
     if (selectedCategory === 'mobile') return mobileProjects;
     if (selectedCategory === 'web') return webProjects;
+    if (selectedCategory === 'ai') return aiProjects;
     return [];
-  }, [selectedCategory, mobileProjects, webProjects]);
+  }, [selectedCategory, mobileProjects, webProjects, aiProjects]);
 
   if (projectsData.length === 0) {
     return (
@@ -44,7 +48,7 @@ export default function AllProjectsPage() {
       <div className="container mx-auto px-4 lg:px-8">
         {/* Back to Home Link */}
         <div className="mb-10">
-          <Link href="/" className="inline-flex items-center text-[#7E8CE0] hover:text-[#535C91] transition-colors group">
+          <Link href="/" data-nav-link className="inline-flex items-center text-[#7E8CE0] hover:text-[#535C91] transition-colors group">
             <ArrowLeft size={20} className="mr-2 transition-transform group-hover:-translate-x-1" />
             Back to Home
           </Link>
@@ -56,13 +60,14 @@ export default function AllProjectsPage() {
             My Projects
           </h1>
           <p className="text-xl text-neutral-400 max-w-2xl mx-auto">
-            A collection of my work in mobile app development and web applications
+            A collection of my work in AI agents, mobile app development and web applications
           </p>
         </div>
 
         {/* Filter Section */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           <button
+            data-button
             onClick={() => setSelectedCategory('all')}
             className={`px-6 py-3 rounded-xl transition-all duration-300 ${
               selectedCategory === 'all'
@@ -73,6 +78,19 @@ export default function AllProjectsPage() {
             All Projects
           </button>
           <button
+            data-button
+            onClick={() => setSelectedCategory('ai')}
+            className={`px-6 py-3 rounded-xl transition-all duration-300 flex items-center gap-2 ${
+              selectedCategory === 'ai'
+                ? 'bg-gradient-to-r from-[#7E8CE0] to-[#535C91] text-white shadow-lg shadow-[#7E8CE0]/30'
+                : 'bg-white/10 text-neutral-300 hover:bg-white/20'
+            }`}
+          >
+            <Brain size={20} />
+            AI Agents
+          </button>
+          <button
+            data-button
             onClick={() => setSelectedCategory('mobile')}
             className={`px-6 py-3 rounded-xl transition-all duration-300 flex items-center gap-2 ${
               selectedCategory === 'mobile'
@@ -84,6 +102,7 @@ export default function AllProjectsPage() {
             Mobile Apps
           </button>
           <button
+            data-button
             onClick={() => setSelectedCategory('web')}
             className={`px-6 py-3 rounded-xl transition-all duration-300 flex items-center gap-2 ${
               selectedCategory === 'web'
@@ -99,6 +118,30 @@ export default function AllProjectsPage() {
         {/* Projects Grid */}
         {selectedCategory === 'all' ? (
           <>
+            {/* AI Projects Section */}
+            {aiProjects.length > 0 && (
+              <div className="mb-16">
+                <h2 className="text-3xl font-bold mb-8 flex items-center gap-3 text-white">
+                  <Brain size={28} className="text-[#7E8CE0]" />
+                  AI Agent Projects
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {aiProjects.map((project, index) => (
+                    <div
+                      key={project.id}
+                      className="transform transition-all duration-500"
+                      style={{
+                        opacity: 0,
+                        animation: `fadeInUp 0.5s ease-out ${index * 0.1}s forwards`
+                      }}
+                    >
+                      <NewProjectCard project={project} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Mobile Projects Section */}
             {mobileProjects.length > 0 && (
               <div className="mb-16">

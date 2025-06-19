@@ -12,7 +12,10 @@ const NewProjectCard: React.FC<NewProjectCardProps> = ({ project }) => {
 
   if (isMobileApp) {
     return (
-      <div className="group relative w-full max-w-sm mx-auto bg-gradient-to-br from-[#0F172A] to-[#1E293B] rounded-3xl shadow-2xl overflow-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#7E8CE0]/30">
+      <div 
+        data-project-card
+        className="group relative w-full max-w-sm mx-auto bg-gradient-to-br from-[#0F172A] to-[#1E293B] rounded-3xl shadow-2xl overflow-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#7E8CE0]/30"
+      >
         <div className="p-6">
           {/* Mobile Phone Frame */}
           <div className="relative w-[280px] h-[560px] mx-auto mb-6 perspective-1000">
@@ -97,7 +100,10 @@ const NewProjectCard: React.FC<NewProjectCardProps> = ({ project }) => {
 
   // Web Project Card
   return (
-    <div className="group relative w-full max-w-sm mx-auto bg-[#1A1D24] rounded-2xl shadow-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#7E8CE0]/30">
+    <div 
+      data-project-card
+      className="group relative w-full max-w-sm mx-auto bg-[#1A1D24] rounded-2xl shadow-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#7E8CE0]/30"
+    >
       <div className="relative h-[280px]">
         <Image
           src={project.imageUrl}
@@ -133,7 +139,7 @@ const NewProjectCard: React.FC<NewProjectCardProps> = ({ project }) => {
           ))}
         </div>
         <div className="mt-4 flex justify-end">
-          <Link href={`/projects/${project.id}`} className="text-sm font-semibold text-[#7E8CE0] hover:text-white transition-colors duration-300">
+          <Link href={`/projects/${project.id}`} data-nav-link className="text-sm font-semibold text-[#7E8CE0] hover:text-white transition-colors duration-300">
             View Details &rarr;
           </Link>
         </div>

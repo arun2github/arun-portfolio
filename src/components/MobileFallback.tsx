@@ -152,15 +152,20 @@ const MobileFallback = () => {
                   <motion.a
             href="/ARUN_RESUME.pdf"  // Updated path to match the actual file
             download
-            className="group relative overflow-hidden px-8 py-3 rounded-full bg-gradient-to-r from-violet-500/20 to-fuchsia-500/20 backdrop-blur-sm hover:from-violet-500/30 hover:to-fuchsia-500/30 border border-white/10"
-            whileHover={{ scale: 1.05 }}
+            data-button
+            className="group relative overflow-hidden px-8 py-4 rounded-full bg-gradient-to-r from-violet-500/20 to-fuchsia-500/20 backdrop-blur-sm hover:from-violet-500/40 hover:to-fuchsia-500/40 border border-white/20 hover:border-white/40 shadow-lg hover:shadow-2xl hover:shadow-violet-500/20"
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 20px 40px rgba(139, 92, 246, 0.3)"
+            }}
             whileTap={{ scale: 0.98 }}
           >
+            {/* Animated Background Wave */}
             <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-violet-500/10 to-fuchsia-500/10"
+              className="absolute inset-0 bg-gradient-to-r from-violet-500/20 to-fuchsia-500/20"
               animate={{
                 x: ['-100%', '100%'],
-                opacity: [0.5, 0.8, 0.5],
+                opacity: [0.3, 0.6, 0.3],
               }}
               transition={{
                 duration: 3,
@@ -168,22 +173,54 @@ const MobileFallback = () => {
                 ease: "linear"
               }}
             />
+            
+            {/* Sparkle Effects */}
+            <motion.div
+              className="absolute inset-0 opacity-0 group-hover:opacity-100"
+              initial={{ opacity: 0 }}
+              whileHover={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            >
+              {[...Array(4)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-1 h-1 bg-white rounded-full"
+                  style={{
+                    left: `${20 + Math.random() * 60}%`,
+                    top: `${20 + Math.random() * 60}%`,
+                  }}
+                  animate={{
+                    scale: [0, 1.5, 0],
+                    opacity: [0, 1, 0],
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    delay: i * 0.3,
+                  }}
+                />
+              ))}
+            </motion.div>
+
             <div className="relative flex items-center gap-2">
-              <span className="text-sm font-light text-white group-hover:text-white/90">
+              <span className="text-sm font-medium text-white group-hover:text-white/95 transition-colors">
                 Download Resume
               </span>
               <motion.svg 
-                className="w-4 h-4 text-white/70 group-hover:text-white"
+                className="w-4 h-4 text-white/80 group-hover:text-white"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
-                animate={{ y: [0, 2, 0] }}
+                animate={{ y: [0, 3, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
                 <path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17" />
               </motion.svg>
             </div>
+            
+            {/* Outer Glow */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-violet-500/30 to-fuchsia-500/30 rounded-full blur opacity-0 group-hover:opacity-50 transition duration-1000 group-hover:duration-200 -z-10"></div>
           </motion.a>
         </motion.div>
 

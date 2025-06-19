@@ -6,7 +6,7 @@ import { projects as projectsData } from '@/data/portfolioData';
 import { motion } from 'framer-motion';
 
 const Projects: React.FC = () => {
-  const [activeFilter, setActiveFilter] = React.useState<'mobile' | 'web'>('mobile');
+  const [activeFilter, setActiveFilter] = React.useState<'mobile' | 'web' | 'ai'>('ai');
 
   const filteredProjects = React.useMemo(() => {
     const filtered = projectsData.filter(
@@ -71,9 +71,10 @@ const Projects: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="flex justify-center gap-4 mb-16 md:mb-20"
         >
-          {['mobile', 'web'].map((filter) => (
+          {['ai', 'mobile', 'web'].map((filter) => (
             <button
               key={filter}
+              data-button
               onClick={() => setActiveFilter(filter as typeof activeFilter)}
               className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 ${activeFilter === filter
                 ? 'bg-gradient-to-r from-[#7E8CE0] to-[#535C91] text-white shadow-lg shadow-[#7E8CE0]/30'
@@ -114,7 +115,7 @@ const Projects: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-            <Link href="/projects" passHref>
+            <Link href="/projects" data-nav-link passHref>
               <motion.button
                 className="px-8 py-3 bg-gradient-to-r from-[#7E8CE0] to-[#535C91] text-white font-semibold rounded-lg shadow-lg hover:shadow-[#7E8CE0]/50 transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#7E8CE0] focus:ring-opacity-75"
                 whileHover={{ scale: 1.05, boxShadow: "0px 0px 15px rgba(126, 140, 224, 0.6)" }}

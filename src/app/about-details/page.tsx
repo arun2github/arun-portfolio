@@ -66,7 +66,7 @@ const AboutDetailsPage = () => {
       >
         
         <motion.div variants={itemVariants} className="mb-10 md:mb-16">
-          <Link href="/#about" scroll={false} className="inline-flex items-center text-lg text-[#A0AEC0] hover:text-[#7E8CE0] transition-colors duration-300 group mb-8 group">
+          <Link href="/#about" scroll={false} data-nav-link className="inline-flex items-center text-lg text-[#A0AEC0] hover:text-[#7E8CE0] transition-colors duration-300 group mb-8 group">
             <ArrowLeft size={24} className="mr-2.5 transition-transform duration-300 group-hover:-translate-x-1.5" />
             Return to Main Page
           </Link>

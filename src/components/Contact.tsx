@@ -271,6 +271,7 @@ const Contact = () => {
               <div>
                 <button 
                   type="submit" 
+                  data-button
                   disabled={isLoading}
                   className="w-full flex items-center justify-center px-6 py-3 bg-gradient-to-r from-[#535C91] to-[#7E8CE0] hover:from-[#7E8CE0] hover:to-[#535C91] text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-70 disabled:cursor-not-allowed group"
                 >
