@@ -141,13 +141,20 @@ const About = () => {
                     whileHover={{ opacity: 1 }}
                     transition={{ duration: 0.3 }}
                   >
-                    {[...Array(6)].map((_, i) => (
+                    {[
+                      { left: '15%', top: '20%' },
+                      { left: '85%', top: '15%' },
+                      { left: '25%', top: '80%' },
+                      { left: '75%', top: '75%' },
+                      { left: '50%', top: '30%' },
+                      { left: '60%', top: '60%' }
+                    ].map((position, i) => (
                       <motion.div
                         key={i}
                         className="absolute w-1 h-1 bg-white rounded-full"
                         style={{
-                          left: `${Math.random() * 100}%`,
-                          top: `${Math.random() * 100}%`,
+                          left: position.left,
+                          top: position.top,
                         }}
                         animate={{
                           scale: [0, 1, 0],

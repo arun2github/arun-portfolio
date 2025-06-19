@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { experiences } from '@/data/portfolioData';
-import { Briefcase, MapPin } from 'lucide-react';
+import { Briefcase, MapPin, Calendar } from 'lucide-react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
@@ -64,6 +64,74 @@ const ExperienceCard = ({ experience, index }: { experience: typeof experiences[
   );
 };
 
+// Mobile-specific Experience Card
+const MobileExperienceCard = ({ experience, index }: { experience: typeof experiences[0], index: number }) => {
+  const mobileCardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, delay: index * 0.2 }
+    }
+  };
+
+  return (
+    <motion.div 
+      className="mb-8 flex group relative" 
+      variants={mobileCardVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+    >
+      {/* Mobile Timeline Dot */}
+      <div className="flex flex-col items-center mr-4 flex-shrink-0">
+        <span 
+          className="flex items-center justify-center w-10 h-10 rounded-full bg-[#2D3748] group-hover:bg-[#535C91] transition-all duration-300 border-2 border-[#1A1D24] shadow-lg"
+          style={{backgroundColor: experience.iconBg || '#2D3748'}}
+        >
+          {experience.iconUrl ? (
+            <Image src={experience.iconUrl} alt={`${experience.companyName} logo`} width={24} height={24} className="rounded-full object-contain" />
+          ) : (
+            <Briefcase size={18} className="text-neutral-300 group-hover:text-white" />
+          )}
+        </span>
+        <div className="w-0.5 flex-grow bg-gradient-to-b from-[#535C91] via-[#7E8CE0] to-transparent mt-2 min-h-[60px]"></div>
+      </div>
+
+      {/* Mobile Card Content */}
+      <div className="bg-[#2D3748]/50 backdrop-blur-sm border border-white/10 p-4 rounded-xl shadow-xl hover:shadow-[#535C91]/40 transition-all duration-300 flex-1">
+        {/* Mobile Header */}
+        <div className="mb-3">
+          <h3 className="text-lg font-semibold text-[#A0AEC0] group-hover:text-[#7E8CE0] transition-colors duration-300 leading-tight mb-2">
+            {experience.title}
+          </h3>
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center text-neutral-300 text-sm">
+              <MapPin size={14} className="mr-1.5 text-[#7E8CE0] flex-shrink-0" />
+              <span className="truncate">{experience.companyName}</span>
+            </div>
+            <div className="flex items-center text-neutral-400 text-sm">
+              <Calendar size={14} className="mr-1.5 text-[#7E8CE0] flex-shrink-0" />
+              <span className="bg-[#1A1D24]/70 px-2 py-0.5 rounded-full text-xs">
+                {experience.date}
+              </span>
+            </div>
+          </div>
+        </div>
+        
+        {/* Mobile Experience Points */}
+        <ul className="list-disc list-inside text-neutral-200 space-y-1.5 pl-1">
+          {experience.points.map((point, i) => (
+            <li key={i} className="text-sm leading-relaxed text-neutral-300">
+              {point}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </motion.div>
+  );
+};
+
 const Experience = () => {
   if (!experiences || experiences.length === 0) {
     return (
@@ -85,12 +153,21 @@ const Experience = () => {
         >
           My Professional Journey
         </motion.h2>
-        <div className="relative">
-          {/* Central timeline line for mobile (visible only on md and below, but cards are full width) */}
-          <div className="absolute left-6 top-0 bottom-0 w-1 bg-gradient-to-b from-[#535C91]/50 via-[#7E8CE0]/50 to-transparent md:hidden"></div>
-          
+        
+        {/* Desktop Layout - Unchanged */}
+        <div className="relative hidden md:block">
           {experiences.map((exp, index) => (
             <ExperienceCard key={index} experience={exp} index={index} />
+          ))}
+        </div>
+
+        {/* Mobile Layout - New optimized design */}
+        <div className="relative md:hidden max-w-2xl mx-auto">
+          {/* Mobile Timeline Line */}
+          <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#535C91]/50 via-[#7E8CE0]/50 to-transparent"></div>
+          
+          {experiences.map((exp, index) => (
+            <MobileExperienceCard key={`mobile-${index}`} experience={exp} index={index} />
           ))}
         </div>
       </div>

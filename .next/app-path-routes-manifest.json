@@ -1,9 +1,10 @@
 {
   "/_not-found/page": "/_not-found",
-  "/favicon.ico/route": "/favicon.ico",
+  "/apple-icon.png/route": "/apple-icon.png",
+  "/icon.png/route": "/icon.png",
   "/api/send-email/route": "/api/send-email",
   "/page": "/",
-  "/projects/page": "/projects",
   "/about-details/page": "/about-details",
+  "/projects/page": "/projects",
   "/projects/[id]/page": "/projects/[id]"
 }
