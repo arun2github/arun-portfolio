@@ -1,7 +1,7 @@
 {
-  "/_not-found/page": "/_not-found",
-  "/apple-icon.png/route": "/apple-icon.png",
   "/icon.png/route": "/icon.png",
+  "/apple-icon.png/route": "/apple-icon.png",
+  "/_not-found/page": "/_not-found",
   "/api/send-email/route": "/api/send-email",
   "/page": "/",
   "/about-details/page": "/about-details",
