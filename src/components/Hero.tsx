@@ -6,7 +6,7 @@ import { Github, Instagram, Linkedin } from 'lucide-react';
 
 const Hero = () => {
   const headline = "Hello, I'm Arun";
-  const tagline = "Creative Frontend Developer | Modern & Intuitive Web Experiences";
+  const tagline = "Creative Web and App Developer | AI Agent Developer | Modern & Intuitive Web Experiences";
 
   const devCharacters = 
     "const function async await => {} [] () : Widget build StatelessWidget StatefulWidget Future<void> " +
@@ -47,7 +47,7 @@ const Hero = () => {
       <div className="relative z-20 flex flex-col items-center text-center p-4 sm:p-8 max-w-4xl mx-auto">
         <div className="mb-6 animate-fadeInUp delay-100 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold">
           {(() => {
-            const nameToStyle = "Arun";
+            const nameToStyle = " Arun";
             const nameIndex = headline.indexOf(nameToStyle);
 
             if (nameIndex === -1) { // Name not found, render normally
@@ -57,7 +57,7 @@ const Hero = () => {
                   className="inline-block char-animate"
                   style={{ animationDelay: `${index * 0.05}s` }}
                 >
-                  {char === ' ' ? '\u00A0' : char}
+                  {char === ' ' ? ' ' : char}
                 </span>
               ));
             }
@@ -71,7 +71,7 @@ const Hero = () => {
                   className="inline-block char-animate"
                   style={{ animationDelay: `${i * 0.05}s` }}
                 >
-                  {headline[i] === ' ' ? '\u00A0' : headline[i]}
+                  {headline[i] === ' ' ? ' ' : headline[i]}
                 </span>
               );
             }
@@ -99,7 +99,7 @@ const Hero = () => {
                   className="inline-block char-animate"
                   style={{ animationDelay: `${i * 0.05}s` }}
                 >
-                  {headline[i] === ' ' ? '\u00A0' : headline[i]}
+                  {headline[i] === ' ' ? ' ' : headline[i]}
                 </span>
               );
             }

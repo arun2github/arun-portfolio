@@ -1,5 +1,6 @@
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import WhatIBuild from "@/components/WhatIBuild";
 import Projects from "@/components/Projects";
 import Technologies from "@/components/Technologies";
 import Contact from "@/components/Contact";
@@ -19,6 +20,7 @@ export default function Home() {
       <div className="hidden md:block">
         <Hero />
         <About />
+        <WhatIBuild />
         <Experience />
         <Education />
         <Projects />

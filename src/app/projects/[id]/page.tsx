@@ -91,7 +91,7 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
           <div className="container mx-auto px-4 lg:px-8">
             {/* Back to Projects Link */}
             <div className="mb-10">
-              <Link href="/#projects" className="inline-flex items-center text-[#7E8CE0] hover:text-[#535C91] transition-colors group">
+              <Link href="/#projects" data-nav-link className="inline-flex items-center text-[#7E8CE0] hover:text-[#535C91] transition-colors group">
                 <ArrowLeft size={20} className="mr-2 transition-transform group-hover:-translate-x-1" />
                 Back to All Projects
               </Link>
@@ -251,7 +251,7 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
         <div className="container mx-auto px-4 lg:px-8">
           {/* Back to Projects Link */}
           <div className="mb-10">
-            <Link href="/#projects" className="inline-flex items-center text-[#7E8CE0] hover:text-[#535C91] transition-colors group">
+            <Link href="/#projects" data-nav-link className="inline-flex items-center text-[#7E8CE0] hover:text-[#535C91] transition-colors group">
               <ArrowLeft size={20} className="mr-2 transition-transform group-hover:-translate-x-1" />
               Back to All Projects
             </Link>
