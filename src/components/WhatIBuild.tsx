@@ -147,13 +147,17 @@ const WhatIBuild = () => {
                     
                     {/* Floating Particles */}
                     <div className="absolute inset-0 opacity-30">
-                      {[...Array(3)].map((_, i) => (
+                      {[
+                        { left: '25%', top: '30%' },
+                        { left: '70%', top: '25%' },
+                        { left: '45%', top: '70%' }
+                      ].map((position, i) => (
                         <motion.div
                           key={i}
                           className="absolute w-1 h-1 bg-white rounded-full"
                           style={{
-                            left: `${20 + Math.random() * 60}%`,
-                            top: `${20 + Math.random() * 60}%`,
+                            left: position.left,
+                            top: position.top,
                           }}
                           animate={{
                             y: [0, -10, 0],

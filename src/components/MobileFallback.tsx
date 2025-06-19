@@ -1,8 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { profileData, socialMediaLinks } from '@/data/portfolioData';
-import { Mail, Linkedin, Github, Instagram, Facebook, Twitter, Sparkles, Compass } from 'lucide-react';
+import { Mail, Linkedin, Github, Instagram, Facebook, Twitter, Sparkles, Compass, Smartphone } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const socialIconMap: { [key: string]: React.ElementType } = {
@@ -14,10 +14,45 @@ const socialIconMap: { [key: string]: React.ElementType } = {
   // Add more if needed, ensuring keys are lowercase
 };
 
+// Fixed positions for sparkle effects to avoid hydration mismatch
+const sparklePositions = [
+  { left: '25%', top: '30%' },
+  { left: '60%', top: '45%' },
+  { left: '40%', top: '65%' }
+];
+
+const resumeSparklePositions = [
+  { left: '30%', top: '25%' },
+  { left: '70%', top: '40%' },
+  { left: '50%', top: '70%' },
+  { left: '20%', top: '55%' }
+];
+
 const MobileFallback = () => {
+  const [showMobileView, setShowMobileView] = useState(false);
   const simpleName = profileData.name.replace("I'm ", "").replace(",", "");
   const title1 = profileData.title1 || 'Mobile Application Developer';
   const title2 = profileData.title2 || 'Web Developer';
+
+  useEffect(() => {
+    // Check if user has previously chosen to view on mobile
+    const mobileViewPreference = localStorage.getItem('mobileViewEnabled');
+    if (mobileViewPreference === 'true') {
+      setShowMobileView(true);
+    }
+  }, []);
+
+  const handleViewOnMobile = () => {
+    setShowMobileView(true);
+    localStorage.setItem('mobileViewEnabled', 'true');
+    // Emit custom event to notify parent component
+    window.dispatchEvent(new CustomEvent('mobileViewEnabled'));
+  };
+
+  // If user chooses to view on mobile, hide the fallback
+  if (showMobileView) {
+    return null;
+  }
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -144,12 +179,81 @@ const MobileFallback = () => {
           </div>
         </motion.div>
 
-        {/* Add Resume Download Button after the glassmorphic card */}
+        {/* Mobile View Button */}
         <motion.div
           variants={itemVariants}
-          className="flex justify-center mt-8 mb-10"
+          className="flex justify-center mb-6"
         >
-                  <motion.a
+          <motion.button
+            onClick={handleViewOnMobile}
+            data-button
+            className="group relative overflow-hidden px-6 py-3 rounded-full bg-gradient-to-r from-emerald-500/20 to-teal-500/20 backdrop-blur-sm hover:from-emerald-500/40 hover:to-teal-500/40 border border-white/20 hover:border-white/40 shadow-lg hover:shadow-2xl hover:shadow-emerald-500/20"
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 20px 40px rgba(16, 185, 129, 0.3)"
+            }}
+            whileTap={{ scale: 0.98 }}
+          >
+            {/* Animated Background Wave */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-teal-500/20"
+              animate={{
+                x: ['-100%', '100%'],
+                opacity: [0.3, 0.6, 0.3],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+            />
+            
+            {/* Sparkle Effects */}
+            <motion.div
+              className="absolute inset-0 opacity-0 group-hover:opacity-100"
+              initial={{ opacity: 0 }}
+              whileHover={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            >
+              {sparklePositions.map((position, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-1 h-1 bg-white rounded-full"
+                  style={{
+                    left: position.left,
+                    top: position.top,
+                  }}
+                  animate={{
+                    scale: [0, 1.5, 0],
+                    opacity: [0, 1, 0],
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    delay: i * 0.3,
+                  }}
+                />
+              ))}
+            </motion.div>
+
+            <div className="relative flex items-center gap-2">
+              <Smartphone size={18} className="text-emerald-200 group-hover:text-white transition-colors" />
+              <span className="text-sm font-medium text-emerald-200 group-hover:text-white transition-colors">
+                View on Mobile
+              </span>
+            </div>
+            
+            {/* Outer Glow */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/30 to-teal-500/30 rounded-full blur opacity-0 group-hover:opacity-50 transition duration-1000 group-hover:duration-200 -z-10"></div>
+          </motion.button>
+        </motion.div>
+
+        {/* Add Resume Download Button after the mobile view button */}
+        <motion.div
+          variants={itemVariants}
+          className="flex justify-center mt-4 mb-10"
+        >
+          <motion.a
             href="/ARUN_RESUME.pdf"  // Updated path to match the actual file
             download
             data-button
@@ -181,13 +285,13 @@ const MobileFallback = () => {
               whileHover={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
             >
-              {[...Array(4)].map((_, i) => (
+              {resumeSparklePositions.map((position, i) => (
                 <motion.div
                   key={i}
                   className="absolute w-1 h-1 bg-white rounded-full"
                   style={{
-                    left: `${20 + Math.random() * 60}%`,
-                    top: `${20 + Math.random() * 60}%`,
+                    left: position.left,
+                    top: position.top,
                   }}
                   animate={{
                     scale: [0, 1.5, 0],
