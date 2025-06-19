@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Arun Kumar - AI Agent Developer & Frontend Developer Portfolio",
-  description: "Portfolio of Arun Kumar, a skilled AI Agent Developer and Frontend Developer specializing in modern web experiences, AI automation, and intelligent applications.",
-  keywords: ["AI Agent Developer", "Frontend Developer", "Web Developer", "AI Automation", "LangChain", "React", "Next.js", "Portfolio"],
+  title: "Arun Kumar - AI Agent Developer & App & web Developer Portfolio",
+  description: "Portfolio of Arun Kumar, a skilled AI Agent Developer and App & web Developer specializing in modern web & appexperiences, AI automation, and intelligent applications.",
+  keywords: ["AI Agent Developer", "App Developer", "Web Developer", "AI Automation", "LangChain", "React", "Next.js", "Portfolio"],
   authors: [{ name: "Arun Kumar" }],
   creator: "Arun Kumar",
   publisher: "Arun Kumar",
@@ -34,9 +34,9 @@ export const metadata: Metadata = {
     apple: "/apple-icon.png",
   },
   openGraph: {
-    title: "Arun Kumar - AI Agent Developer & Frontend Developer",
-    description: "Explore the portfolio of Arun Kumar, featuring AI agents, modern web applications, and innovative development solutions.",
-    url: "https://arun-portfolio.vercel.app",
+    title: "Arun Kumar - AI Agent Developer & App & web Developer Portfolio",
+  description: "Portfolio of Arun Kumar, a skilled AI Agent Developer and App & web Developer specializing in modern web & appexperiences, AI automation, and intelligent applications.",
+    url: "https://arundevfolio.netlify.app/",
     siteName: "Arun Kumar Portfolio",
     type: "website",
     images: [
@@ -50,8 +50,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arun Kumar - AI Agent Developer & Frontend Developer",
-    description: "Explore innovative AI agents and modern web applications by Arun Kumar.",
+    title: "Arun Kumar - AI Agent Developer & App & web Developer Portfolio",
+    description: "Portfolio of Arun Kumar, a skilled AI Agent Developer and App & web Developer specializing in modern web & appexperiences, AI automation, and intelligent applications.",
     images: ["/images/portfoilio_icon.png"],
   },
 };
