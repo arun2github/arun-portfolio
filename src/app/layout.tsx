@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Arun Kumar - AI Agent Developer & App & web Developer Portfolio",
-  description: "Portfolio of Arun Kumar, a skilled AI Agent Developer and App & web Developer specializing in modern web & appexperiences, AI automation, and intelligent applications.",
+  description: "Portfolio of Arun Kumar, a skilled AI Agent Developer , App & web Developer specializing in modern web & app experiences, AI automation, and intelligent applications.",
     url: "https://arundevfolio.netlify.app/",
     siteName: "Arun Kumar Portfolio",
     type: "website",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Arun Kumar - AI Agent Developer & App & web Developer Portfolio",
-    description: "Portfolio of Arun Kumar, a skilled AI Agent Developer and App & web Developer specializing in modern web & appexperiences, AI automation, and intelligent applications.",
+    description: "Portfolio of Arun Kumar, a skilled AI Agent Developer , App & web Developer specializing in modern web & app experiences, AI automation, and intelligent applications.",
     images: ["/images/portfoilio_icon.png"],
   },
 };
