@@ -6,7 +6,7 @@ import { Github, Instagram, Linkedin } from 'lucide-react';
 
 const Hero = () => {
   const headline = "Hello, I'm Arun";
-  const tagline = "Creative Web and App Developer | AI Agent Developer | Modern & Intuitive Web Experiences";
+  const tagline = "Mobile App & Web Developer | AI Agent Specialist | Strategic Technology Partner | Delivering Scalable Solutions Across Platforms";
 
   const devCharacters = 
     "const function async await => {} [] () : Widget build StatelessWidget StatefulWidget Future<void> " +
@@ -141,4 +141,4 @@ const Hero = () => {
   );
 };
 
-export default Hero; 
+export default Hero;

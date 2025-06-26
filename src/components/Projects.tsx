@@ -6,7 +6,7 @@ import { projects as projectsData } from '@/data/portfolioData';
 import { motion } from 'framer-motion';
 
 const Projects: React.FC = () => {
-  const [activeFilter, setActiveFilter] = React.useState<'mobile' | 'web' | 'ai'>('ai');
+  const [activeFilter, setActiveFilter] = React.useState<'mobile' | 'web' | 'ai'>('mobile');
 
   const filteredProjects = React.useMemo(() => {
     const filtered = projectsData.filter(
@@ -117,11 +117,14 @@ const Projects: React.FC = () => {
           >
             <Link href="/projects" data-nav-link passHref>
               <motion.button
-                className="px-8 py-3 bg-gradient-to-r from-[#7E8CE0] to-[#535C91] text-white font-semibold rounded-lg shadow-lg hover:shadow-[#7E8CE0]/50 transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#7E8CE0] focus:ring-opacity-75"
-                whileHover={{ scale: 1.05, boxShadow: "0px 0px 15px rgba(126, 140, 224, 0.6)" }}
+                className="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-[#7E8CE0] to-[#535C91] rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#7E8CE0]/30 hover:-translate-y-1 group/btn"
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                View All Projects
+                <span>View All Projects</span>
+                <svg className="w-4 h-4 ml-2 transform transition-transform group-hover/btn:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
               </motion.button>
             </Link>
           </motion.div>

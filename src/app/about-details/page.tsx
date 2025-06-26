@@ -123,13 +123,13 @@ const AboutDetailsPage = () => {
           className="md:grid md:grid-cols-2 md:gap-10"
         >
           {profile.detailedIntro && (
-            <Section title="A Little More About Me" icon={<Zap size={30} />} delay={0.1 * 1}>
+            <Section title="Why Choose Me" icon={<Zap size={30} />} delay={0.1 * 1}>
               <p className="whitespace-pre-line first-letter:text-4xl first-letter:font-bold first-letter:text-[#A0AEC0] first-letter:mr-2 first-letter:float-left">{profile.detailedIntro}</p>
             </Section>
           )}
 
           {profile.codingJourney && (
-            <Section title="My Coding Odyssey" icon={<Rocket size={30} />} delay={0.1 * 1.5}> {/* Adjusted delay */}
+            <Section title="My Evolution & Expertise" icon={<Rocket size={30} />} delay={0.1 * 1.5}> {/* Adjusted delay */}
               <p className="whitespace-pre-line">{profile.codingJourney}</p>
             </Section>
           )}
@@ -168,7 +168,7 @@ const AboutDetailsPage = () => {
         )}
 
         {profile.achievements && profile.achievements.length > 0 && (
-          <Section title="Other Milestones" icon={<Award size={30} />} delay={0.1 * 4}>
+          <Section title="Proven Results & Impact" icon={<Award size={30} />} delay={0.1 * 4}>
             <ul className="list-none space-y-4">
               {profile.achievements.map((ach, i) => (
                 <motion.li 
@@ -193,13 +193,13 @@ const AboutDetailsPage = () => {
           // This parent div doesn't need its own animation variant if children handle theirs
         >
           {profile.motivation && (
-            <Section title="What Drives Me" icon={<Heart size={30} className="text-red-300" />} delay={0.1 * 5}>
+            <Section title="What Drives My Success" icon={<Heart size={30} className="text-red-300" />} delay={0.1 * 5}>
               <p className="whitespace-pre-line italic text-neutral-300/70">{profile.motivation}</p>
             </Section>
           )}
           
           {profile.philosophy && (
-            <Section title="My Philosophy" icon={<BookOpen size={30} className="text-green-300" />} delay={0.1 * 5.5}> {/* Adjusted delay slightly */}
+            <Section title="My Development Philosophy" icon={<BookOpen size={30} className="text-green-300" />} delay={0.1 * 5.5}> {/* Adjusted delay slightly */}
               <blockquote className="border-l-4 border-[#7E8CE0] pl-6 py-2 my-4 bg-neutral-700/30 rounded-r-md">
                 <p className="whitespace-pre-line text-xl font-medium text-neutral-100">{profile.philosophy}</p>
               </blockquote>

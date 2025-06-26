@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
 import { Parallax, ParallaxBanner, ParallaxBannerLayer } from 'react-scroll-parallax';
-import Card3D from './ui/3d-card';
 import { profileData } from '@/data/portfolioData';
 import { Layers, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -86,27 +85,54 @@ const About = () => {
                 <h2 className="text-4xl lg:text-5xl font-bold mb-2 text-neutral-100 text-shadow-lg text-center md:text-left">
                   About Me
                 </h2>
-                {profileData.helloTag && (
-                  <p className="text-xl lg:text-2xl text-neutral-200 mb-6 text-center md:text-left">
-                    {profileData.helloTag} {profileData.name}
-                  </p>
-                )}
+                <p className="text-xl lg:text-2xl text-neutral-200 mb-6 text-center md:text-left">
+                  Crafting Digital Solutions That Drive Results
+                </p>
                 <Link href="/about-details" data-nav-link className="w-full mb-8 group relative" passHref>
-                  <Card3D className="p-6 md:p-8 bg-black/20 backdrop-blur-sm hover:bg-black/30 transition-colors duration-300 rounded-lg shadow-lg cursor-pointer">
-                    <p className="text-lg leading-relaxed text-neutral-100">
-                      {profileData.about}
-                    </p>
-                    {profileData.about2 && (
-                      <p className="text-lg leading-relaxed text-neutral-100 mt-4">
-                        {profileData.about2}
-                      </p>
-                    )}
-                    <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center">
-                      <p className="text-sm text-sky-400 italic mr-2">Learn more</p>
-                      <ArrowRight size={18} className="text-sky-400" />
+                  <div className="p-6 md:p-8 bg-black/20 backdrop-blur-sm hover:bg-black/30 transition-all duration-300 rounded-lg shadow-lg cursor-pointer border border-white/10 hover:border-white/20 hover:shadow-xl">
+                    <div className="space-y-4">
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-gradient-to-r from-[#7E8CE0] to-[#535C91] rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-lg leading-relaxed text-neutral-100 font-medium">
+                          <span className="text-[#7E8CE0] font-semibold">Transforming Ideas into Reality:</span> I specialize in crafting high-performance mobile applications, web solutions, and AI agents that drive business growth and enhance user experiences. With 3.5+ years of expertise in Flutter, React, and cutting-edge AI technologies, I&apos;ve delivered solutions that have impacted thousands of users across multiple industries.
+                        </p>
+                      </div>
+                      
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-gradient-to-r from-[#7E8CE0] to-[#535C91] rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-lg leading-relaxed text-neutral-100">
+                          <span className="text-[#7E8CE0] font-semibold">Proven Track Record:</span> Successfully led the development of 50+ micro-apps for banking and healthcare industries, optimized supply chain workflows, and received the prestigious &apos;Star Award&apos; for exceptional contributions. My solutions consistently deliver measurable ROI and user satisfaction across diverse business domains.
+                        </p>
+                      </div>
+                      
+                      <div className="flex items-start space-x-3">
+                        <div className="w-2 h-2 bg-gradient-to-r from-[#7E8CE0] to-[#535C91] rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-lg leading-relaxed text-neutral-100">
+                          <span className="text-[#7E8CE0] font-semibold">Client-Focused Approach:</span> I don&apos;t just write code—I solve problems. Every project starts with understanding your business goals, user needs, and technical requirements. The result? Scalable, maintainable applications that grow with your business.
+                        </p>
+                      </div>
                     </div>
-                     <p className="text-sm text-sky-400 mt-4 italic group-hover:text-white transition-colors">Click to learn more about my journey...</p>
-                  </Card3D>
+                    
+                    <div className="mt-6 p-4 bg-gradient-to-r from-[#7E8CE0]/10 to-[#535C91]/10 rounded-lg border border-[#7E8CE0]/20">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-8 h-8 bg-gradient-to-r from-[#7E8CE0] to-[#535C91] rounded-full flex items-center justify-center">
+                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                          </div>
+                          <div>
+                            <p className="text-sm font-semibold text-[#7E8CE0]">Ready to Transform Your Vision?</p>
+                            <p className="text-xs text-neutral-300">Discover how I can help bring your ideas to life</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <p className="text-sm text-sky-400 italic">Explore My Journey</p>
+                          <ArrowRight size={18} className="text-sky-400 transform group-hover:translate-x-1 transition-transform duration-300" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </Link>
                 <motion.a
                   href="/ARUN_RESUME.pdf" 
