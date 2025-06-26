@@ -66,6 +66,8 @@ const ExperienceCard = ({ experience, index }: { experience: typeof experiences[
 
 // Mobile-specific Experience Card
 const MobileExperienceCard = ({ experience, index }: { experience: typeof experiences[0], index: number }) => {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+  
   const mobileCardVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -74,6 +76,10 @@ const MobileExperienceCard = ({ experience, index }: { experience: typeof experi
       transition: { duration: 0.6, delay: index * 0.2 }
     }
   };
+
+  // Show only first 2 points by default, or all if expanded
+  const displayedPoints = isExpanded ? experience.points : experience.points.slice(0, 2);
+  const hasMorePoints = experience.points.length > 2;
 
   return (
     <motion.div 
@@ -121,12 +127,36 @@ const MobileExperienceCard = ({ experience, index }: { experience: typeof experi
         
         {/* Mobile Experience Points */}
         <ul className="list-disc list-inside text-neutral-200 space-y-1.5 pl-1">
-          {experience.points.map((point, i) => (
+          {displayedPoints.map((point, i) => (
             <li key={i} className="text-sm leading-relaxed text-neutral-300">
               {point}
             </li>
           ))}
         </ul>
+
+        {/* View More/Less Button */}
+        {hasMorePoints && (
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="mt-3 text-sm text-[#7E8CE0] hover:text-[#535C91] transition-colors duration-300 font-medium flex items-center gap-1"
+          >
+            {isExpanded ? (
+              <>
+                <span>View Less</span>
+                <svg className="w-3 h-3 transform rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </>
+            ) : (
+              <>
+                <span>View More</span>
+                <svg className="w-3 h-3 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </>
+            )}
+          </button>
+        )}
       </div>
     </motion.div>
   );

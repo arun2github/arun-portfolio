@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Brain, Smartphone, Globe, Zap, Layers, Code2, Cpu, Workflow, Palette, Rocket, Shield } from 'lucide-react';
+import { Brain, Smartphone, Globe, Zap, Code2, Cpu, Workflow, Palette, Rocket, Shield } from 'lucide-react';
 
 const WhatIBuild = () => {
   const buildItems = [
@@ -35,7 +35,7 @@ const WhatIBuild = () => {
         { text: "iOS Development", icon: "🍎" },
         { text: "Cross-Platform", icon: Code2 }
       ],
-      stats: "10+ Apps Built",
+      stats: "5+ Apps  & 20+ micro apps built",
       badge: "📱 Mobile"
     },
     {
@@ -120,109 +120,59 @@ const WhatIBuild = () => {
                 variants={itemVariants}
                 className="group relative"
               >
-                {/* Glow Effect */}
-                <div className={`absolute -inset-1 bg-gradient-to-r ${item.gradient} rounded-2xl blur opacity-0 group-hover:opacity-20 transition duration-1000 group-hover:duration-200`}></div>
+                {/* Enhanced Glow Effect */}
+                <div className={`absolute -inset-2 bg-gradient-to-r ${item.gradient} rounded-3xl blur-xl opacity-0 group-hover:opacity-30 transition duration-1000 group-hover:duration-300`}></div>
                 
-                {/* Main Card */}
-                <div className={`relative bg-gradient-to-br ${item.bgGradient} backdrop-blur-xl border border-white/10 rounded-2xl p-8 h-full transform transition-all duration-500 group-hover:scale-105 group-hover:border-white/20 overflow-hidden`}>
+                {/* Neumorphism Card */}
+                <div className={`relative bg-[#1A1D24] rounded-3xl p-8 h-full shadow-[inset_1px_1px_4px_rgba(255,255,255,0.02),inset_-1px_-1px_4px_rgba(0,0,0,0.2),4px_4px_12px_rgba(0,0,0,0.3),-2px_-2px_6px_rgba(255,255,255,0.01)] overflow-hidden`}>
+                  
                   {/* Badge */}
-                  <div className="absolute top-4 right-4 z-10">
-                    <div className={`px-3 py-1 rounded-full bg-gradient-to-r ${item.accent} text-white text-xs font-bold shadow-lg`}>
+                  <div className="absolute top-5 right-5 z-10">
+                    <div className={`px-4 py-1.5 rounded-full bg-[#1A1D24] shadow-[inset_1px_1px_3px_rgba(255,255,255,0.02),inset_-1px_-1px_3px_rgba(0,0,0,0.2),3px_3px_6px_rgba(0,0,0,0.3),-1px_-1px_3px_rgba(255,255,255,0.01)] text-white text-xs font-bold`}>
                       {item.badge}
                     </div>
                   </div>
 
-                  {/* Floating Icon */}
-                  <motion.div
-                    className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-r ${item.gradient} mb-6 shadow-2xl relative overflow-hidden`}
-                    whileHover={{ 
-                      rotate: [0, -5, 5, -5, 0],
-                      scale: [1, 1.1, 1]
-                    }}
-                    transition={{ duration: 0.8 }}
-                  >
-                    {/* Icon Background Effect */}
-                    <div className="absolute inset-0 bg-white/10 rounded-2xl"></div>
-                    <IconComponent size={32} className="text-white relative z-10" />
-                    
-                    {/* Floating Particles */}
-                    <div className="absolute inset-0 opacity-30">
-                      {[
-                        { left: '25%', top: '30%' },
-                        { left: '70%', top: '25%' },
-                        { left: '45%', top: '70%' }
-                      ].map((position, i) => (
-                        <motion.div
-                          key={i}
-                          className="absolute w-1 h-1 bg-white rounded-full"
-                          style={{
-                            left: position.left,
-                            top: position.top,
-                          }}
-                          animate={{
-                            y: [0, -10, 0],
-                            opacity: [0.3, 1, 0.3],
-                          }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            delay: i * 0.5,
-                          }}
-                        />
-                      ))}
-                    </div>
-                  </motion.div>
+                  {/* Icon with Neumorphism */}
+                  <div className={`inline-flex items-center justify-center w-24 h-24 rounded-3xl bg-gradient-to-r ${item.gradient} mb-8 shadow-[inset_1px_1px_4px_rgba(255,255,255,0.05),inset_-1px_-1px_4px_rgba(0,0,0,0.15),4px_4px_12px_rgba(0,0,0,0.3),-2px_-2px_6px_rgba(255,255,255,0.02)] relative overflow-hidden`}>
+                    <IconComponent size={40} className="text-white relative z-10" />
+                  </div>
 
                   {/* Content */}
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300 transition-all duration-300">
+                  <h3 className="text-3xl font-extrabold mb-4 text-white">
                     {item.title}
                   </h3>
                   
-                  <p className="text-neutral-300 leading-relaxed mb-6 group-hover:text-neutral-200 transition-colors duration-300">
+                  <p className="text-white/80 leading-relaxed mb-8 text-base">
                     {item.description}
                   </p>
 
                   {/* Features */}
-                  <div className="space-y-3">
+                  <div className="space-y-4 mb-6">
                     {item.features.map((feature, featureIndex) => {
                       const FeatureIcon = typeof feature.icon === 'string' ? null : feature.icon;
                       return (
-                        <motion.div
+                        <div
                           key={featureIndex}
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ 
-                            duration: 0.4, 
-                            delay: index * 0.1 + featureIndex * 0.1 + 0.3 
-                          }}
-                          className="flex items-center text-sm text-neutral-300 group-hover:text-neutral-200 transition-colors duration-300"
+                          className="flex items-center text-sm text-white/80"
                         >
-                          <div className={`w-6 h-6 rounded-lg bg-gradient-to-r ${item.accent} flex items-center justify-center mr-3 shadow-lg`}>
+                          <div className={`w-8 h-8 rounded-xl bg-[#1A1D24] shadow-[inset_1px_1px_3px_rgba(255,255,255,0.02),inset_-1px_-1px_3px_rgba(0,0,0,0.2),3px_3px_6px_rgba(0,0,0,0.3),-1px_-1px_3px_rgba(255,255,255,0.01)] flex items-center justify-center mr-4`}>
                             {typeof feature.icon === 'string' ? (
-                              <span className="text-xs">{feature.icon}</span>
+                              <span className="text-sm">{feature.icon}</span>
                             ) : (
-                              FeatureIcon && <FeatureIcon size={12} className="text-white" />
+                              FeatureIcon && <FeatureIcon size={16} className="text-white" />
                             )}
                           </div>
-                          <span className="font-medium">{feature.text}</span>
-                        </motion.div>
+                          <span className="font-semibold text-base">{feature.text}</span>
+                        </div>
                       );
                     })}
                   </div>
 
                   {/* Stats Badge */}
-                  <div className={`mt-6 inline-flex items-center px-3 py-1.5 rounded-full bg-gradient-to-r ${item.accent} text-white text-xs font-semibold shadow-lg`}>
+                  <div className={`inline-flex items-center px-4 py-2 rounded-full bg-[#1A1D24] shadow-[inset_1px_1px_3px_rgba(255,255,255,0.02),inset_-1px_-1px_3px_rgba(0,0,0,0.2),3px_3px_6px_rgba(0,0,0,0.3),-1px_-1px_3px_rgba(255,255,255,0.01)] text-white text-sm font-bold`}>
                     {item.stats}
                   </div>
-
-                  {/* Decorative Elements */}
-                  <div className="absolute top-4 right-4 opacity-20 group-hover:opacity-40 transition-opacity duration-300">
-                    <Layers size={24} className="text-white" />
-                  </div>
-                  
-                  {/* Bottom Glow */}
-                  <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-3/4 h-px bg-gradient-to-r ${item.gradient} opacity-0 group-hover:opacity-50 transition-opacity duration-500`}></div>
                 </div>
               </motion.div>
             );
