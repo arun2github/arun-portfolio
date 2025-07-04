@@ -1,10 +1,5 @@
 {
-  "/icon.png/route": "app/icon.png/route.js",
-  "/apple-icon.png/route": "app/apple-icon.png/route.js",
   "/_not-found/page": "app/_not-found/page.js",
-  "/api/send-email/route": "app/api/send-email/route.js",
   "/about-details/page": "app/about-details/page.js",
-  "/page": "app/page.js",
-  "/projects/page": "app/projects/page.js",
-  "/projects/[id]/page": "app/projects/[id]/page.js"
+  "/page": "app/page.js"
 }

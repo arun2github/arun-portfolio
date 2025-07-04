@@ -6,7 +6,7 @@ import { Github, Instagram, Linkedin } from 'lucide-react';
 
 const Hero = () => {
   const headline = "Hello, I'm Arun";
-  const tagline = "Mobile App & Web Developer | AI Agent Specialist | Strategic Technology Partner | Delivering Scalable Solutions Across Platforms";
+  const tagline = "Mobile App & Web Developer | AI Agent Specialist | n8n Automation Expert | Strategic Technology Partner | Delivering Scalable Solutions Across Platforms";
 
   const devCharacters = 
     "const function async await => {} [] () : Widget build StatelessWidget StatefulWidget Future<void> " +
@@ -45,36 +45,42 @@ const Hero = () => {
       /> */} {/* Removed */}
 
       <div className="relative z-20 flex flex-col items-center text-center p-4 sm:p-8 max-w-4xl mx-auto">
-        <div className="mb-6 animate-fadeInUp delay-100 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold">
+        <div className="mb-6 animate-fadeInUp delay-100 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold whitespace-pre">
           {(() => {
-            const nameToStyle = " Arun";
-            const nameIndex = headline.indexOf(nameToStyle);
-
-            if (nameIndex === -1) { // Name not found, render normally
-              return headline.split("").map((char, index) => (
-                <span 
-                  key={index} 
-                  className="inline-block char-animate"
-                  style={{ animationDelay: `${index * 0.05}s` }}
-                >
-                  {char === ' ' ? ' ' : char}
-                </span>
-              ));
-            }
-
+            const beforeName = "Hello, I'm";
+            const nameToStyle = "Arun";
+            
             const elements = [];
+            let charIndex = 0;
+            
             // Part before the name
-            for (let i = 0; i < nameIndex; i++) {
+            for (let i = 0; i < beforeName.length; i++) {
               elements.push(
                 <span 
                   key={`before-${i}`} 
                   className="inline-block char-animate"
-                  style={{ animationDelay: `${i * 0.05}s` }}
+                  style={{ animationDelay: `${charIndex * 0.05}s` }}
                 >
-                  {headline[i] === ' ' ? ' ' : headline[i]}
+                  {beforeName[i] === ' ' ? ' ' : beforeName[i]}
                 </span>
               );
+              charIndex++;
             }
+
+            // Add extra space with margin
+            elements.push(
+              <span 
+                key="extra-space"
+                className="inline-block char-animate"
+                style={{ 
+                  animationDelay: `${charIndex * 0.05}s`,
+                  marginRight: '0.5rem'
+                }}
+              >
+                {' '}
+              </span>
+            );
+            charIndex++;
 
             // Styled name part
             elements.push(
@@ -83,7 +89,7 @@ const Hero = () => {
                   <span 
                     key={`name-${nameCharIndex}`} 
                     className="char-animate bg-clip-text text-transparent bg-gradient-to-r from-violet-200 via-fuchsia-300 to-indigo-300 drop-shadow-lg"
-                    style={{ animationDelay: `${(nameIndex + nameCharIndex) * 0.05}s` }}
+                    style={{ animationDelay: `${(charIndex + nameCharIndex) * 0.05}s` }}
                   >
                     {nameChar}
                   </span>
@@ -91,18 +97,6 @@ const Hero = () => {
               </span>
             );
 
-            // Part after the name
-            for (let i = nameIndex + nameToStyle.length; i < headline.length; i++) {
-              elements.push(
-                <span 
-                  key={`after-${i}`} 
-                  className="inline-block char-animate"
-                  style={{ animationDelay: `${i * 0.05}s` }}
-                >
-                  {headline[i] === ' ' ? ' ' : headline[i]}
-                </span>
-              );
-            }
             return elements;
           })()}
         </div>

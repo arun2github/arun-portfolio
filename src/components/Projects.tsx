@@ -84,9 +84,9 @@ const Projects: React.FC = () => {
                 initial={false}
                 animate={{ scale: activeFilter === filter ? 1.1 : 1 }}
                 transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                className="inline-block capitalize"
+                className="inline-block"
               >
-                {`${filter} Projects`}
+                {filter === 'ai' ? 'AI Projects' : `${filter.charAt(0).toUpperCase() + filter.slice(1)} Projects`}
               </motion.span>
             </button>
           ))}
