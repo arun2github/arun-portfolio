@@ -129,12 +129,11 @@ export const profileData: ProfileData = {
   ],
   motivation: "I'm driven by the intersection of technology and human potential. Every project is an opportunity to not just build software, but to create systems that empower people and transform businesses. My motivation comes from seeing the 'aha' moments when complex problems become elegant solutions, and when users discover new ways to work more efficiently. I believe that great technology should be both powerful and accessible—solving real problems while delighting users.",
   philosophy: "My development philosophy centers on three core principles: Business Impact First, User Experience Always, and Scalable Architecture. I don't just write code—I build systems that grow with your business. Every solution starts with understanding your unique challenges, then leverages the right technology stack to create sustainable, maintainable, and profitable digital products. Success isn't measured in lines of code, but in business outcomes and user satisfaction.",
-  passionsOutsideCode: [
-    "Exploring new genres of music and attending live concerts.",
-    "Diving into captivating books, from tech biographies to fantasy novels.",
-    "Experimenting with global cuisines and honing my culinary skills.",
-    "Hiking and connecting with nature to recharge and find inspiration."
-  ],
+      passionsOutsideCode: [
+      "Discovering sonic landscapes across genres while crafting melodies on various instruments.",
+      "Attending tech events and AI conferences to stay at the forefront of innovation.",
+      "Experimenting with global cuisines and honing my culinary skills.",
+    ],
   openTo: [
     { text: "New Project Collaborations", icon: "Briefcase" },
     { text: "Freelance Opportunities", icon: "DollarSign" },
