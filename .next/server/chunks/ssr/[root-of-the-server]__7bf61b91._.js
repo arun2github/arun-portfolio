@@ -120,17 +120,17 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Paralla
 ;
 ;
 const metadata = {
-    title: "Arun Kumar - AI Agent Developer & App & web Developer Portfolio",
-    description: "Portfolio of Arun Kumar, a skilled AI Agent Developer and App & web Developer specializing in modern web & appexperiences, AI automation, and intelligent applications.",
+    title: "Arun Kumar - Transform Your Business with AI Solutions & Custom Apps",
+    description: "Strategic technology partner helping businesses automate workflows, build intelligent applications, and scale operations with AI agents, mobile apps, and web solutions.",
     keywords: [
-        "AI Agent Developer",
-        "App Developer",
-        "Web Developer",
-        "AI Automation",
-        "LangChain",
-        "React",
-        "Next.js",
-        "Portfolio"
+        "AI Solutions",
+        "Business Automation",
+        "Custom Apps",
+        "Digital Transformation",
+        "AI Agents",
+        "Mobile Apps",
+        "Web Development",
+        "n8n Automation"
     ],
     authors: [
         {
@@ -152,8 +152,8 @@ const metadata = {
         apple: "/apple-icon.png"
     },
     openGraph: {
-        title: "Arun Kumar - AI Agent Developer & App & web Developer Portfolio",
-        description: "Portfolio of Arun Kumar, a skilled AI Agent Developer , App & web Developer specializing in modern web & app experiences, AI automation, and intelligent applications.",
+        title: "Arun Kumar - Transform Your Business with AI Solutions & Custom Apps",
+        description: "Strategic technology partner helping businesses automate workflows, build intelligent applications, and scale operations with AI agents, mobile apps, and web solutions.",
         url: "https://arundevfolio.netlify.app/",
         siteName: "Arun Kumar Portfolio",
         type: "website",
@@ -162,14 +162,14 @@ const metadata = {
                 url: "/images/portfoilio_icon.png",
                 width: 1200,
                 height: 630,
-                alt: "Arun Kumar - AI Agent Developer Portfolio"
+                alt: "Arun Kumar - Business AI Solutions & Custom Apps"
             }
         ]
     },
     twitter: {
         card: "summary_large_image",
-        title: "Arun Kumar - AI Agent Developer & App & web Developer Portfolio",
-        description: "Portfolio of Arun Kumar, a skilled AI Agent Developer , App & web Developer specializing in modern web & app experiences, AI automation, and intelligent applications.",
+        title: "Arun Kumar - Transform Your Business with AI Solutions & Custom Apps",
+        description: "Strategic technology partner helping businesses automate workflows, build intelligent applications, and scale operations with AI agents, mobile apps, and web solutions.",
         images: [
             "/images/portfoilio_icon.png"
         ]
