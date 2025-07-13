@@ -102,6 +102,21 @@ export interface SocialMediaLink {
   url: string; // Was 'sourceLink'
 }
 
+export interface ClientTestimonial {
+  id: string;
+  clientName: string;
+  clientTitle: string;
+  clientOrganization: string;
+  clientImage?: string;
+  testimonialText: string;
+  rating: number; // 1-5 stars
+  projectName: string;
+  projectCategory: string;
+  projectImpact?: string;
+  date: string;
+  featured?: boolean;
+}
+
 // --- DATA ---
 
 export const profileData: ProfileData = {
@@ -365,10 +380,10 @@ export const projects: Project[] = [
 
     imageUrl: '/images/niyan_dashboard.PNG',
     galleryImages: [
-      { url: '/images/niyan_forInfo.PNG', alt: 'AU Hub Zoom Login' },
-      { url: '/images/niyan_login.PNG', alt: 'AU Hub Zoom Feature 1' },
-      { url: '/images/niyan_myRequest.PNG', alt: 'AU Hub Zoom Feature 2' },
-      { url: '/images/niyan_newRequest.PNG', alt: 'AU Hub Zoom Feature 3' },
+      // { url: '/images/niyan_forInfo.PNG', alt: 'AU Hub Zoom Login' },
+      // { url: '/images/niyan_login.PNG', alt: 'AU Hub Zoom Feature 1' },
+      // { url: '/images/niyan_myRequest.PNG', alt: 'AU Hub Zoom Feature 2' },
+      // { url: '/images/niyan_newRequest.PNG', alt: 'AU Hub Zoom Feature 3' },
     ],
     sourceCodeLink: "#", // Assumed private or not available
     liveLink: "#",
@@ -395,11 +410,11 @@ export const projects: Project[] = [
     ],
     imageUrl: '/images/sam_assignTask.png',
     galleryImages: [
-      { url: '/images/au_hub_login.jpg', alt: 'AU Hub Zoom Login' },
-      { url: '/images/au_hub_p1.jpg', alt: 'AU Hub Zoom Feature 1' },
-      { url: '/images/au_hub_p2.jpg', alt: 'AU Hub Zoom Feature 2' },
-      { url: '/images/au_hub_p3.jpg', alt: 'AU Hub Zoom Feature 3' },
-      { url: '/images/au_hub_vedio.jpg', alt: 'AU Hub Zoom Video Playback' },
+      // { url: '/images/au_hub_login.jpg', alt: 'AU Hub Zoom Login' },
+      // { url: '/images/au_hub_p1.jpg', alt: 'AU Hub Zoom Feature 1' },
+      // { url: '/images/au_hub_p2.jpg', alt: 'AU Hub Zoom Feature 2' },
+      // { url: '/images/au_hub_p3.jpg', alt: 'AU Hub Zoom Feature 3' },
+      // { url: '/images/au_hub_vedio.jpg', alt: 'AU Hub Zoom Video Playback' },
     ],
     sourceCodeLink: "#", // Assumed private or not available
     liveLink: "#",
@@ -426,14 +441,14 @@ export const projects: Project[] = [
     ],
     imageUrl: '/images/samm_dashboard.jpg',
     galleryImages: [
-      { url: '/images/samm_login.jpg', alt: 'Sampark RM App Login' },
-      { url: '/images/samm_dashboard.jpg', alt: 'Sampark RM App Dashboard' },
-      { url: '/images/sam_dashboard_drawer.jpg', alt: 'Sampark RM App Dashboard' },
-      { url: '/images/sam_pef.png', alt: 'Sampark RM App Table View' },
-      { url: '/images/sam_captureLead.jpg', alt: 'Sampark RM App Table View' },
-      { url: '/images/sam_assignTask.png', alt: 'Sampark RM App Assign Task' },
-      { url: '/images/sam_assignTask2.jpg', alt: 'Sampark RM App Assign Task' },
-      { url: '/images/sam_assignTask2.jpg', alt: 'Sampark RM App Assign Task' },
+      // { url: '/images/samm_login.jpg', alt: 'Sampark RM App Login' },
+      // { url: '/images/samm_dashboard.jpg', alt: 'Sampark RM App Dashboard' },
+      // { url: '/images/sam_dashboard_drawer.jpg', alt: 'Sampark RM App Dashboard' },
+      // { url: '/images/sam_pef.png', alt: 'Sampark RM App Table View' },
+      // { url: '/images/sam_captureLead.jpg', alt: 'Sampark RM App Table View' },
+      // { url: '/images/sam_assignTask.png', alt: 'Sampark RM App Assign Task' },
+      // { url: '/images/sam_assignTask2.jpg', alt: 'Sampark RM App Assign Task' },
+      // { url: '/images/sam_assignTask2.jpg', alt: 'Sampark RM App Assign Task' },
     ],
     sourceCodeLink: "#",
     liveLink: "#",
@@ -459,11 +474,11 @@ export const projects: Project[] = [
     ],
     imageUrl: '/images/tura_login.PNG',
     galleryImages: [
-      { url: '/images/tura_login.PNG', alt: 'Tura Website Login' },
-      { url: '/images/tura_reg.PNG', alt: 'Tura Website Registration' },
-      { url: '/images/tura_home.PNG', alt: 'Tura Website Home' },
-      { url: '/images/tura_tura_about.PNG', alt: 'Tura Website About' },
-      { url: '/images/tura_tura_scheme.PNG', alt: 'Tura Website Scheme' },
+      // { url: '/images/tura_login.PNG', alt: 'Tura Website Login' },
+      // { url: '/images/tura_reg.PNG', alt: 'Tura Website Registration' },
+      // { url: '/images/tura_home.PNG', alt: 'Tura Website Home' },
+      // { url: '/images/tura_tura_about.PNG', alt: 'Tura Website About' },
+      // { url: '/images/tura_tura_scheme.PNG', alt: 'Tura Website Scheme' },
     ],
     sourceCodeLink: "https://turamunicipalboard.com/home", // This was likely the live link
     liveLink: "https://turamunicipalboard.com/home",
@@ -489,9 +504,9 @@ export const projects: Project[] = [
     ],
     imageUrl: '/images/dashboard.PNG',
     galleryImages: [
-      { url: '/images/loginImg.PNG', alt: 'Sampark Web Login' },
-      { url: '/images/dashboard.PNG', alt: 'Sampark Web Dashboard' },
-      { url: '/images/table.PNG', alt: 'Sampark Web Table View' },
+      // { url: '/images/loginImg.PNG', alt: 'Sampark Web Login' },
+      // { url: '/images/dashboard.PNG', alt: 'Sampark Web Dashboard' },
+      // { url: '/images/table.PNG', alt: 'Sampark Web Table View' },
     ],
     sourceCodeLink: "#",
     liveLink: "#",
@@ -518,12 +533,12 @@ export const projects: Project[] = [
     ],
     imageUrl: '/images/dhristi_dashboard.PNG',
     galleryImages: [
-      { url: '/images/dhiristi_edit.PNG', alt: 'Sampark Web Login' },
-      { url: '/images/dhiristi_editHistory.PNG', alt: 'Sampark Web Dashboard' },
-      { url: '/images/dhiristi_return.PNG', alt: 'Sampark Web Table View' },
-      { url: '/images/dhristi_createnew.PNG', alt: 'Sampark Web Table View' },
-      { url: '/images/dhristi_login.PNG', alt: 'Sampark Web Table View' },
-      { url: '/images/dhristi_return_id.PNG', alt: 'Sampark Web Table View' },
+      // { url: '/images/dhiristi_edit.PNG', alt: 'Sampark Web Login' },
+      // { url: '/images/dhiristi_editHistory.PNG', alt: 'Sampark Web Dashboard' },
+      // { url: '/images/dhiristi_return.PNG', alt: 'Sampark Web Table View' },
+      // { url: '/images/dhristi_createnew.PNG', alt: 'Sampark Web Table View' },
+      // { url: '/images/dhristi_login.PNG', alt: 'Sampark Web Table View' },
+      // { url: '/images/dhristi_return_id.PNG', alt: 'Sampark Web Table View' },
     ],
     sourceCodeLink: "#",
     liveLink: "#",
@@ -549,7 +564,9 @@ export const projects: Project[] = [
       { name: "HRMS Integration", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
     ],
     imageUrl: '/images/CrossSell.jpg',
-    galleryImages: [{ url: '/images/CrossSell.jpg', alt: 'Branch Class Change Module' }],
+    galleryImages: [
+      // { url: '/images/CrossSell.jpg', alt: 'Branch Class Change Module' }
+    ],
     sourceCodeLink: "#",
     liveLink: "#",
   },
@@ -586,9 +603,9 @@ export const projects: Project[] = [
     description: "Mosymphony-CGT is an advanced web platform designed to facilitate and streamline Cell-Gene Therapy research and collaboration. The system implements a robust user management system with role-based access control, secure authentication, and comprehensive organization management capabilities.",
     imageUrl: '/images/cgt.png',
     galleryImages: [
-      { url: '/images/cgt.png', alt: 'Cell and Gene Therapy Project' },
-      { url: '/images/cgt.png', alt: 'User Management Interface' },
-      { url: '/images/cgt.png', alt: 'Organization Management View' }
+      // { url: '/images/cgt.png', alt: 'Cell and Gene Therapy Project' },
+      // { url: '/images/cgt.png', alt: 'User Management Interface' },
+      // { url: '/images/cgt.png', alt: 'Organization Management View' }
     ],
     tags: [
       { name: "React", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
@@ -645,7 +662,8 @@ export const projects: Project[] = [
       { name: "CSS", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
     ],
     imageUrl: '/images/qem.png',
-    galleryImages: [{ url: '/images/qem.png', alt: 'Mosymphony QEM' }],
+    galleryImages: [
+      { url: '/images/qem.png', alt: 'Mosymphony QEM' }],
     sourceCodeLink: "#",
     liveLink: "#",
   },
@@ -722,6 +740,23 @@ export const socialMediaLinks: SocialMediaLink[] = [
     iconUrl: "/images/github.png",
     url: 'https://github.com/arun2github',
   },
+];
+
+export const clientTestimonials: ClientTestimonial[] = [
+  {
+    id: 'tura-municipal-board-testimonial',
+    clientName: 'Dona Momin',
+    clientTitle: 'IT Administrator',
+    clientOrganization: 'Tura Municipal Board',
+    clientImage: '/images/clients/tura-client.jpg', // Optional: Add client image
+    testimonialText: 'Arun delivered an exceptional website for the Tura Municipal Board that completely transformed our digital presence. The multi-level approval system and SBI ePay integration work flawlessly, making our administrative processes 95% more efficient. Citizens can now submit forms online and track their status in real-time. The platform handles over 50,000 citizens seamlessly, and we have seen a dramatic reduction in manual paperwork. Arun\'s technical expertise and understanding of government requirements made this project a tremendous success.',
+    rating: 5,
+    projectName: 'Tura Municipal Board Website',
+    projectCategory: 'Government Portal',
+    projectImpact: 'Serving 50,000+ citizens with 95% faster service delivery',
+    date: 'March 2024',
+    featured: true
+  }
 ];
 
 // --- FONTS (Informational, not directly used by Next.js like this) ---
