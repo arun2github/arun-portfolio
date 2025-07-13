@@ -6,11 +6,13 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import WhatIBuild from "@/components/WhatIBuild";
 import Projects from "@/components/Projects";
+import ClientTestimonials from "@/components/ClientTestimonials";
 import Technologies from "@/components/Technologies";
 import Contact from "@/components/Contact";
 import MobileFallback from "@/components/MobileFallback";
 import Experience from "@/components/Experience";
 import Education from "@/components/Education";
+import FlutterUIDemo from '@/components/FlutterUIDemo';
 
 export default function Home() {
   const [showDesktopOnMobile, setShowDesktopOnMobile] = useState(false);
@@ -66,6 +68,9 @@ export default function Home() {
         <Experience />
         <Education />
         <Projects />
+        <FlutterUIDemo /> 
+        <ClientTestimonials />
+        
         <Technologies />
         <Contact />
         {/* Parallax scrolling will be implemented in these sections later */}
