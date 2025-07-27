@@ -13,6 +13,7 @@ import MobileFallback from "@/components/MobileFallback";
 import Experience from "@/components/Experience";
 import Education from "@/components/Education";
 import FlutterUIDemo from '@/components/FlutterUIDemo';
+import ArchitectureAccordion from '@/components/architecture';
 
 export default function Home() {
   const [showDesktopOnMobile, setShowDesktopOnMobile] = useState(false);
@@ -62,19 +63,31 @@ export default function Home() {
 
       {/* Desktop Content: Show on desktop OR when user chooses to view on mobile */}
       <div className={showDesktopOnMobile ? "block" : "hidden md:block"}>
-        <Hero />
-        <About />
-        <WhatIBuild />
-        <Experience />
-        <Education />
-        <Projects />
-        <FlutterUIDemo /> 
-        <ClientTestimonials />
-        
-        <Technologies />
-        <Contact />
-        {/* Parallax scrolling will be implemented in these sections later */}
-      </div>
+
+{/* 🟦 FIRST IMPRESSION */}
+<Hero />
+<About />
+
+{/* 🟩 WHAT I CAN DO FOR YOU */}
+<WhatIBuild />
+<Technologies />
+
+{/* 🟨 WHY TRUST ME */}
+<Experience />
+<Education />
+<ArchitectureAccordion />
+
+{/* 🟥 PROOF OF WORK */}
+<Projects />
+<FlutterUIDemo />
+
+{/* 🟪 SOCIAL PROOF */}
+<ClientTestimonials />
+
+{/* 🟧 CALL TO ACTION */}
+<Contact />
+
+</div>
 
       {/* Back to Mobile View Button - Only show on mobile when viewing desktop content */}
       {showDesktopOnMobile && isMobile && (
