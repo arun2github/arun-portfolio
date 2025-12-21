@@ -165,30 +165,57 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
                       </span>
                     ))}
                   </div>
-                  {(project.liveLink || project.sourceCodeLink) && (
-                    <div className="flex gap-4">
-                      {project.liveLink && project.liveLink !== '#' && (
-                        <a
-                          href={project.liveLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center px-6 py-3 bg-gradient-to-r from-[#7E8CE0] to-[#535C91] text-white rounded-xl hover:shadow-lg hover:shadow-[#7E8CE0]/30 transition-all duration-300"
-                        >
-                          <ExternalLink size={18} className="mr-2" />
-                          View Live
-                        </a>
+                  {(project.liveLink || project.sourceCodeLink || project.id === 'vahaan-bazar-app') && (
+                    <div className="space-y-4">
+                      {/* App Store Links for Vahaan Bazar */}
+                      {project.id === 'vahaan-bazar-app' && (
+                        <div className="flex gap-3">
+                          <a
+                            href="https://play.google.com/store/apps/details?id=com.vahaanbazar.app"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center px-4 py-2 bg-gradient-to-r from-[#7E8CE0]/20 to-[#535C91]/20 border border-[#7E8CE0]/30 text-[#7E8CE0] rounded-lg hover:from-[#7E8CE0]/30 hover:to-[#535C91]/30 hover:border-[#7E8CE0]/50 transition-all duration-300 text-sm"
+                          >
+                            <ExternalLink size={14} className="mr-2" />
+                            Android
+                          </a>
+                          <a
+                            href="https://apps.apple.com/in/app/vahaanbazar/id6753955870"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center px-4 py-2 bg-gradient-to-r from-[#535C91]/20 to-[#A0AEC0]/20 border border-[#535C91]/30 text-[#535C91] rounded-lg hover:from-[#535C91]/30 hover:to-[#A0AEC0]/30 hover:border-[#535C91]/50 transition-all duration-300 text-sm"
+                          >
+                            <ExternalLink size={14} className="mr-2" />
+                            iOS
+                          </a>
+                        </div>
                       )}
-                      {project.sourceCodeLink && project.sourceCodeLink !== '#' && (
-                        <a
-                          href={project.sourceCodeLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center px-6 py-3 bg-white/10 text-white rounded-xl hover:bg-white/20 transition-all duration-300"
-                        >
-                          <Github size={18} className="mr-2" />
-                          View Code
-                        </a>
-                      )}
+                      
+                      {/* Regular Project Links */}
+                      <div className="flex gap-4">
+                        {project.liveLink && project.liveLink !== '#' && (
+                          <a
+                            href={project.liveLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center px-6 py-3 bg-gradient-to-r from-[#7E8CE0] to-[#535C91] text-white rounded-xl hover:shadow-lg hover:shadow-[#7E8CE0]/30 transition-all duration-300"
+                          >
+                            <ExternalLink size={18} className="mr-2" />
+                            {project.id === 'vahaan-bazar-app' ? 'Visit Website' : 'View Live'}
+                          </a>
+                        )}
+                        {project.sourceCodeLink && project.sourceCodeLink !== '#' && (
+                          <a
+                            href={project.sourceCodeLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center px-6 py-3 bg-white/10 text-white rounded-xl hover:bg-white/20 transition-all duration-300"
+                          >
+                            <Github size={18} className="mr-2" />
+                            View Code
+                          </a>
+                        )}
+                      </div>
                     </div>
                   )}
                 </div>

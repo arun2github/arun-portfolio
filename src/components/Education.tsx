@@ -67,7 +67,7 @@ const Education = () => {
            <div className="absolute top-8 left-0 right-0 h-0.5 bg-gradient-to-r from-[#7E8CE0] via-[#535C91] to-[#A0AEC0] hidden lg:block"></div>
            
            {/* Education Items */}
-           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-4">
+           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-8">
              {education.map((edu, index) => (
                <motion.div
                  key={index}
@@ -83,15 +83,17 @@ const Education = () => {
                   <div className="flex justify-center mb-4">
                     <div 
                       className="w-16 h-16 rounded-xl flex items-center justify-center shadow-lg border-2 border-white/10 group-hover:border-white/20 transition-all duration-300"
-                      style={{ backgroundColor: edu.iconBg || '#535C91' }}
+                      style={{ 
+                        backgroundColor: edu.title === 'M.Tech' ? 'white' : (edu.iconBg || '#535C91')
+                      }}
                     >
                       {edu.iconUrl ? (
                         <Image 
                           src={edu.iconUrl} 
                           alt={`${edu.collegeName} logo`} 
-                          width={40} 
-                          height={40} 
-                          className="rounded-lg object-contain" 
+                          width={48} 
+                          height={48} 
+                          className={`object-contain ${edu.title === 'M.Tech' ? 'rounded-lg' : 'rounded-lg'}`}
                         />
                       ) : (
                         <GraduationCap size={28} className="text-white" />
@@ -127,9 +129,13 @@ const Education = () => {
 
                     {/* Achievement Badge */}
                     <div className="pt-2">
-                      <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-gradient-to-r from-[#7E8CE0]/20 to-[#535C91]/20 border border-[#7E8CE0]/30 text-xs font-semibold text-[#7E8CE0]">
+                      <div className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold ${
+                        edu.percentage === 'Pursuing' 
+                          ? 'bg-gradient-to-r from-orange-500/20 to-yellow-500/20 border border-orange-500/30 text-orange-400' 
+                          : 'bg-gradient-to-r from-[#7E8CE0]/20 to-[#535C91]/20 border border-[#7E8CE0]/30 text-[#7E8CE0]'
+                      }`}>
                         <Star size={12} className="mr-1.5" />
-                        Completed
+                        {edu.percentage === 'Pursuing' ? 'Currently Pursuing' : 'Completed'}
                       </div>
                     </div>
                   </div>

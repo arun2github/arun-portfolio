@@ -215,13 +215,25 @@ const Clients = () => {
 
                 {/* Logo */}
                 <div className="relative w-full h-full p-4 flex items-center justify-center">
-                  <Image
-                    src={client.logoUrl}
-                    alt={`${client.name} logo`}
-                    fill
-                    style={{ objectFit: 'contain' }}
-                    className="filter brightness-90 group-hover:brightness-110 transition-all duration-500 p-4 drop-shadow-lg"
-                  />
+                  <div className={`relative w-full h-full ${
+                    client.id === 'vahaan-bazar' 
+                      ? 'bg-white rounded-xl p-2' 
+                      : client.id === 'tura-municipal-board' 
+                        ? 'bg-white/90 rounded-xl p-3'
+                        : 'bg-white/10 rounded-xl p-3 backdrop-blur-sm'
+                  }`}>
+                    <Image
+                      src={client.logoUrl}
+                      alt={`${client.name} logo`}
+                      fill
+                      style={{ objectFit: 'contain' }}
+                      className={`transition-all duration-500 drop-shadow-lg ${
+                        client.id === 'vahaan-bazar' || client.id === 'tura-municipal-board'
+                          ? 'filter brightness-100'
+                          : 'filter brightness-110 group-hover:brightness-125'
+                      } p-2`}
+                    />
+                  </div>
                 </div>
 
                 {/* Hover overlay with ripple effect */}
