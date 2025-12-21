@@ -7,6 +7,7 @@ import About from "@/components/About";
 import WhatIBuild from "@/components/WhatIBuild";
 import Projects from "@/components/Projects";
 import ClientTestimonials from "@/components/ClientTestimonials";
+import Clients from "@/components/Clients";
 import Technologies from "@/components/Technologies";
 import Contact from "@/components/Contact";
 import MobileFallback from "@/components/MobileFallback";
@@ -82,6 +83,7 @@ export default function Home() {
 <FlutterUIDemo />
 
 {/* 🟪 SOCIAL PROOF */}
+<Clients />
 <ClientTestimonials />
 
 {/* 🟧 CALL TO ACTION */}

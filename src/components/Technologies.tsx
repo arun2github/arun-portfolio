@@ -28,8 +28,8 @@ const TechCard: React.FC<{ tech: typeof technologies[0], index: number }> = ({ t
           <Image 
             src={tech.iconUrl} 
             alt={`${tech.name} icon`} 
-            layout="fill" 
-            objectFit="contain"
+            fill
+            style={{ objectFit: 'contain' }}
             className="drop-shadow-lg"
           />
         ) : (
