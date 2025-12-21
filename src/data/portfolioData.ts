@@ -117,6 +117,18 @@ export interface ClientTestimonial {
   featured?: boolean;
 }
 
+export interface Client {
+  id: string;
+  name: string;
+  logoUrl: string;
+  websiteUrl: string;
+  description?: string;
+  appLinks?: {
+    android?: string;
+    ios?: string;
+  };
+}
+
 // --- DATA ---
 
 export const profileData: ProfileData = {
@@ -272,6 +284,15 @@ export const experiences: ExperiencePoint[] = [
 ];
 
 export const education: EducationEntry[] = [
+  {
+    title: "M.Tech",
+    collegeName: "Indian Institute of Technology (IIT) Patna",
+    iconUrl: "/images/IIT_patna.png",
+    iconBg: "#1E40AF",
+    date: "2026 - 2028",
+    branch: 'Artificial Intelligence and Data Science Engineering (AI & DSE)',
+    percentage: 'Pursuing',
+  },
   {
     title: "B.Tech",
     collegeName: "Greater Noida Institute Of Technology",
@@ -756,6 +777,62 @@ export const clientTestimonials: ClientTestimonial[] = [
     projectImpact: 'Serving 50,000+ citizens with 95% faster service delivery',
     date: 'March 2024',
     featured: true
+  },
+  {
+    id: 'vahaan-bazar-testimonial',
+    clientName: 'Happy Client',
+    clientTitle: 'Project Manager',
+    clientOrganization: 'Vahaan Bazar Private Limited',
+    clientImage: '/images/VahaanBaZar.png',
+    testimonialText: 'Working with Arun on our Vahaan Bazar platform has been an outstanding experience. His expertise in Flutter development and understanding of complex business requirements helped us create a robust and scalable solution. The application performance exceeded our expectations, and his attention to detail in implementing user-friendly features made our platform stand out in the market. We are extremely satisfied with the quality of work and professionalism. Available on both Android and iOS app stores.',
+    rating: 5,
+    projectName: 'Vahaan Bazar Platform',
+    projectCategory: 'E-commerce Platform',
+    projectImpact: 'Enhanced user experience with 40% improved performance',
+    date: 'February 2024',
+    featured: true
+  },
+  {
+    id: 'strenva-testimonial',
+    clientName: 'Strenva Team',
+    clientTitle: 'Technical Lead',
+    clientOrganization: 'Strenva Technologies',
+    clientImage: '/images/strenva.png',
+    testimonialText: 'Arun\'s contribution to our Strenva platform development was exceptional. His deep knowledge of modern web technologies and ability to deliver scalable solutions within tight deadlines made him an invaluable team member. The website architecture he designed has been serving our clients reliably, and the clean, maintainable code structure continues to support our growing business needs.',
+    rating: 5,
+    projectName: 'Strenva Platform Development',
+    projectCategory: 'Web Application',
+    projectImpact: 'Scalable architecture supporting 1000+ concurrent users',
+    date: 'January 2024',
+    featured: true
+  }
+];
+
+export const clients: Client[] = [
+  {
+    id: 'strenva',
+    name: 'Strenva Technologies',
+    logoUrl: '/images/strenva.png',
+    websiteUrl: 'https://strenva.com/',
+    description: 'Technology solutions provider'
+  },
+  {
+    id: 'vahaan-bazar',
+    name: 'Vahaan Bazar Private Limited',
+    logoUrl: '/images/vb_logo.png',
+    websiteUrl: 'https://www.vahaanbazar.in/',
+    description: 'E-commerce platform for vehicles',
+    appLinks: {
+      android: 'https://play.google.com/store/apps/details?id=com.vahaanbazar.app',
+      ios: 'https://apps.apple.com/in/app/vahaanbazar/id6753955870'
+    }
+  },
+  {
+    id: 'tura-municipal-board',
+    name: 'Tura Municipal Board',
+    logoUrl: '/images/tmb_logo.jpeg',
+    websiteUrl: 'http://turamunicipalboard.com/',
+    description: 'Government portal for citizen services'
   }
 ];
 
