@@ -229,7 +229,7 @@ export const experiences: ExperiencePoint[] = [
     companyName: "As A Freelancer",
     iconUrl: "", // YOU MUST PROVIDE THIS IMAGE
     iconBg: "#383E56",
-    date: "Jan 2024 - Present",
+    date: "April 2025 - Present",
     points: [
       "Developing full-stack websites and cross-platform mobile applications for Android and iOS using modern technologies.",
       "Delivering end-to-end solutions including UI/UX design, frontend development, backend integration, and deployment.",
@@ -244,7 +244,7 @@ export const experiences: ExperiencePoint[] = [
     companyName: "AU Small Finance Bank",
     iconUrl: "/images/ausmall.jpg", // YOU MUST PROVIDE THIS IMAGE
     iconBg: "#383E56",
-    date: "Jun 2023 - Present",
+    date: "Jun 2023 - Aug 2025",
     points: [
       "Developed and maintained the AU HUB mobile application using Flutter, integrating 50+ micro-apps.",
       "Optimized and automated multiple business verticals, reducing dependencies and improving workflow efficiency.",
