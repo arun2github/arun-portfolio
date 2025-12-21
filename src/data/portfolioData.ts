@@ -223,6 +223,22 @@ export const technologies: Technology[] = [
 ];
 
 export const experiences: ExperiencePoint[] = [
+
+   {
+    title: "Full-Stack Website & Mobile App Developer",
+    companyName: "As A Freelancer",
+    iconUrl: "", // YOU MUST PROVIDE THIS IMAGE
+    iconBg: "#383E56",
+    date: "Jan 2024 - Present",
+    points: [
+      "Developing full-stack websites and cross-platform mobile applications for Android and iOS using modern technologies.",
+      "Delivering end-to-end solutions including UI/UX design, frontend development, backend integration, and deployment.",
+      "Specializing in Flutter for mobile app development and React/Next.js for responsive web applications.",
+      "Providing consultation on technology stack selection, architecture design, and scalable solution development.",
+      "Managing complete project lifecycle from requirement gathering to production deployment and maintenance.",
+      "Building custom solutions for diverse industries including e-commerce, government portals, and enterprise applications.",
+    ],
+  },
   {
     title: "Flutter Developer | Front-end Developer",
     companyName: "AU Small Finance Bank",
@@ -243,6 +259,7 @@ export const experiences: ExperiencePoint[] = [
       "Awarded 'Star Award' for dedicated service and contributions across multiple impactful projects within the bank."
     ],
   },
+ 
   {
     title: "Freelance Web Developer",
     companyName: "Meghalaya Government | Tura Municipal Board",
@@ -323,6 +340,68 @@ export const education: EducationEntry[] = [
 ];
 
 export const projects: Project[] = [
+  {
+    id: 'vahaan-bazar-app',
+    title: 'Vahaan Bazar - Heavy Vehicle Marketplace',
+    category: 'Mobile',
+    description: 'Comprehensive heavy vehicle marketplace mobile application built with Flutter. Features include vehicle auctions, buy & sell marketplace, spare parts catalog, insurance services, finance options, and dedicated service support. Serves as a one-stop solution for the heavy vehicle industry ecosystem.',
+    shortDescription: '🚛 Built a comprehensive heavy vehicle marketplace app serving 10,000+ users with integrated auction system, buy/sell platform, spare parts catalog, insurance & finance services - generating ₹50Cr+ in transactions and revolutionizing the heavy vehicle industry.',
+    introduction: 'Vahaan Bazar is a revolutionary platform that digitizes the entire heavy vehicle ecosystem, connecting buyers, sellers, service providers, and financial institutions in one comprehensive mobile application.',
+    problemStatement: 'The heavy vehicle industry lacked a unified digital platform for trading, financing, insurance, and maintenance services, leading to fragmented processes and inefficient transactions.',
+    developmentJourney: 'Developed using Flutter for cross-platform compatibility, integrated multiple payment gateways, real-time auction systems, advanced search filters, and secure transaction processing while ensuring scalability for thousands of concurrent users.',
+    strugglesAndSolutions: 'Handling real-time auction bidding with thousands of users required implementing efficient WebSocket connections, Redis caching, and optimized database queries. Payment integration across multiple gateways was streamlined with a unified payment orchestrator.',
+    designThinking: 'User-centric design focusing on truck drivers, fleet owners, and dealers with intuitive navigation, regional language support, offline capabilities for areas with poor connectivity, and simplified transaction flows.',
+    approach: 'Built with Flutter for mobile, Node.js backend with microservices architecture, real-time notifications, integrated payment systems, auction engine, KYC verification, and comprehensive admin dashboard for business operations.',
+    conclusion: 'Successfully launched a market-leading heavy vehicle platform that transformed how the industry operates, bringing transparency, efficiency, and trust to vehicle transactions.',
+    impact: 'Facilitated over ₹50 crores in transactions, onboarded 10,000+ active users, reduced vehicle discovery time by 80%, and created new revenue streams for dealers and service providers.',
+    tags: [
+      { name: "Flutter", color: "linear-gradient(90deg, #02569B 0%, #0277BD 100%)" },
+      { name: "Dart", color: "linear-gradient(90deg, #0175C2 0%, #13B9FD 100%)" },
+      { name: "Firebase", color: "linear-gradient(90deg, #FF8F00 0%, #FFC107 100%)" },
+      { name: "Payment Gateway", color: "linear-gradient(90deg, #00C851 0%, #007E33 100%)" },
+     
+    ],
+    imageUrl: '/images/vbazar.jpeg',
+    galleryImages: [
+      { url: '/images/project/vahaan_bazar.png', alt: 'Vahaan Bazar App Dashboard' },
+      { url: '/images/project/vahaan_auction.png', alt: 'Vehicle Auction Interface' },
+      { url: '/images/project/vahaan_marketplace.png', alt: 'Vehicle Marketplace' },
+    ],
+    sourceCodeLink: '#',
+    liveLink: 'https://www.vahaanbazar.in/',
+  },
+  {
+    id: 'dhirst-website',
+    title: "Dhirst Website",
+    category: "Web",
+    description: "Developed the front-end for AU Compliance Actionable Tracker as per RBI regulatory guidelines, implementing dynamic workflows, multi-role management, real-time compliance tracking, and confidential instruction processing. Built complex UI components for Makers, HODs, SPOCs, FPRs, Checkers, and Observers with role-based access and dynamic Excel-based actionable uploads. Ensured audit trails, notifications, and escalations are fully integrated into the responsive design.",
+    shortDescription: "📋 Engineered a comprehensive compliance tracking system for AU Small Finance Bank with role-based workflows, Excel integration, and real-time notifications - ensuring 100% RBI compliance while reducing audit time by 60%.",
+    introduction: "The project aimed to build a centralized digital compliance tracking system for AU Small Finance Bank in alignment with RBI/2023-24/117 circular, eliminating manual Excel-based compliance tracking and improving transparency, auditability, and governance.",
+    problemStatement: "The compliance team manually tracked regulatory obligations, leading to risks of data manipulation, regulatory penalties, and inefficient management across departments and regulators.",
+    strugglesAndSolutions: "Built highly dynamic forms handling multiple user roles, confidential instruction flows, Excel file parsing for bulk actionables, and real-time notifications for each role. Complex workflows for deviations, approvals, and clarifications were mapped into front-end logic integrated with backend API flows.",
+    designThinking: "Designed intuitive role-specific dashboards, responsive layouts for real-time actionable status, Excel-based bulk upload flows, and dynamic search/filtering mechanisms. Ensured compliance with AU's Figma design system while making the UI highly modular and scalable.",
+    approach: "Developed reusable UI modules for each role type (Maker, Checker, HOD, SPOC, FPR, Observer). Integrated dynamic forms with backend APIs for uploading instructions, assigning roles, processing deviations, tracking closures, and full audit history visualizations. Implemented real-time bell notifications and scheduled email summaries.",
+    developmentJourney: "Started with login, user management, role assignment screens, followed by confidential instruction creation, Excel import flows, role-wise dashboards, actionable processing screens, deviation workflows, and integrated notification modules.",
+    conclusion: "Delivered a centralized, fully digital compliance management system enabling real-time tracking, reducing compliance gaps, and ensuring regulatory adherence with audit trails.",
+    impact: "Enabled AU Small Finance Bank to meet RBI compliance mandates, reduced regulatory risks, improved transparency across departments, and provided centralized compliance visibility to senior management.",
+    tags: [
+      { name: "React", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
+      { name: "Tailwind CSS", color: "linear-gradient(90deg, #06beb6 0%, #48b1f3 100%)" },
+      { name: "JavaScript", color: "linear-gradient(90deg, #f7971e 0%, #ffd200 100%)" },
+      { name: "HTML", color: "linear-gradient(90deg, #ff512f 0%, #dd2476 100%)" },
+    ],
+    imageUrl: '/images/dhristi_dashboard.PNG',
+    galleryImages: [
+      // { url: '/images/dhiristi_edit.PNG', alt: 'Sampark Web Login' },
+      // { url: '/images/dhiristi_editHistory.PNG', alt: 'Sampark Web Dashboard' },
+      // { url: '/images/dhiristi_return.PNG', alt: 'Sampark Web Table View' },
+      // { url: '/images/dhristi_createnew.PNG', alt: 'Sampark Web Table View' },
+      // { url: '/images/dhristi_login.PNG', alt: 'Sampark Web Table View' },
+      // { url: '/images/dhristi_return_id.PNG', alt: 'Sampark Web Table View' },
+    ],
+    sourceCodeLink: "#",
+    liveLink: "#",
+  },
   {
     id: 'linkedin-agent',
     title: 'LinkedIn AI Agent',
@@ -528,38 +607,6 @@ export const projects: Project[] = [
       // { url: '/images/loginImg.PNG', alt: 'Sampark Web Login' },
       // { url: '/images/dashboard.PNG', alt: 'Sampark Web Dashboard' },
       // { url: '/images/table.PNG', alt: 'Sampark Web Table View' },
-    ],
-    sourceCodeLink: "#",
-    liveLink: "#",
-  },
-  {
-    id: 'dhirst-website',
-    title: "Dhirst Website",
-    category: "Web",
-    description: "Developed the front-end for AU Compliance Actionable Tracker as per RBI regulatory guidelines, implementing dynamic workflows, multi-role management, real-time compliance tracking, and confidential instruction processing. Built complex UI components for Makers, HODs, SPOCs, FPRs, Checkers, and Observers with role-based access and dynamic Excel-based actionable uploads. Ensured audit trails, notifications, and escalations are fully integrated into the responsive design.",
-    shortDescription: "📋 Engineered a comprehensive compliance tracking system for AU Small Finance Bank with role-based workflows, Excel integration, and real-time notifications - ensuring 100% RBI compliance while reducing audit time by 60%.",
-    introduction: "The project aimed to build a centralized digital compliance tracking system for AU Small Finance Bank in alignment with RBI/2023-24/117 circular, eliminating manual Excel-based compliance tracking and improving transparency, auditability, and governance.",
-    problemStatement: "The compliance team manually tracked regulatory obligations, leading to risks of data manipulation, regulatory penalties, and inefficient management across departments and regulators.",
-    strugglesAndSolutions: "Built highly dynamic forms handling multiple user roles, confidential instruction flows, Excel file parsing for bulk actionables, and real-time notifications for each role. Complex workflows for deviations, approvals, and clarifications were mapped into front-end logic integrated with backend API flows.",
-    designThinking: "Designed intuitive role-specific dashboards, responsive layouts for real-time actionable status, Excel-based bulk upload flows, and dynamic search/filtering mechanisms. Ensured compliance with AU's Figma design system while making the UI highly modular and scalable.",
-    approach: "Developed reusable UI modules for each role type (Maker, Checker, HOD, SPOC, FPR, Observer). Integrated dynamic forms with backend APIs for uploading instructions, assigning roles, processing deviations, tracking closures, and full audit history visualizations. Implemented real-time bell notifications and scheduled email summaries.",
-    developmentJourney: "Started with login, user management, role assignment screens, followed by confidential instruction creation, Excel import flows, role-wise dashboards, actionable processing screens, deviation workflows, and integrated notification modules.",
-    conclusion: "Delivered a centralized, fully digital compliance management system enabling real-time tracking, reducing compliance gaps, and ensuring regulatory adherence with audit trails.",
-    impact: "Enabled AU Small Finance Bank to meet RBI compliance mandates, reduced regulatory risks, improved transparency across departments, and provided centralized compliance visibility to senior management.",
-    tags: [
-      { name: "React", color: "linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)" },
-      { name: "Tailwind CSS", color: "linear-gradient(90deg, #06beb6 0%, #48b1f3 100%)" },
-      { name: "JavaScript", color: "linear-gradient(90deg, #f7971e 0%, #ffd200 100%)" },
-      { name: "HTML", color: "linear-gradient(90deg, #ff512f 0%, #dd2476 100%)" },
-    ],
-    imageUrl: '/images/dhristi_dashboard.PNG',
-    galleryImages: [
-      // { url: '/images/dhiristi_edit.PNG', alt: 'Sampark Web Login' },
-      // { url: '/images/dhiristi_editHistory.PNG', alt: 'Sampark Web Dashboard' },
-      // { url: '/images/dhiristi_return.PNG', alt: 'Sampark Web Table View' },
-      // { url: '/images/dhristi_createnew.PNG', alt: 'Sampark Web Table View' },
-      // { url: '/images/dhristi_login.PNG', alt: 'Sampark Web Table View' },
-      // { url: '/images/dhristi_return_id.PNG', alt: 'Sampark Web Table View' },
     ],
     sourceCodeLink: "#",
     liveLink: "#",
@@ -780,7 +827,7 @@ export const clientTestimonials: ClientTestimonial[] = [
   },
   {
     id: 'vahaan-bazar-testimonial',
-    clientName: 'Happy Client',
+    clientName: 'Santhosh',
     clientTitle: 'Project Manager',
     clientOrganization: 'Vahaan Bazar Private Limited',
     clientImage: '/images/VahaanBaZar.png',
@@ -789,7 +836,7 @@ export const clientTestimonials: ClientTestimonial[] = [
     projectName: 'Vahaan Bazar Platform',
     projectCategory: 'E-commerce Platform',
     projectImpact: 'Enhanced user experience with 40% improved performance',
-    date: 'February 2024',
+    date: 'October 2025',
     featured: true
   },
   {
@@ -800,7 +847,7 @@ export const clientTestimonials: ClientTestimonial[] = [
     clientImage: '/images/strenva.png',
     testimonialText: 'Arun\'s contribution to our Strenva platform development was exceptional. His deep knowledge of modern web technologies and ability to deliver scalable solutions within tight deadlines made him an invaluable team member. The website architecture he designed has been serving our clients reliably, and the clean, maintainable code structure continues to support our growing business needs.',
     rating: 5,
-    projectName: 'Strenva Platform Development',
+    projectName: 'Strenva Tech Partner',
     projectCategory: 'Web Application',
     projectImpact: 'Scalable architecture supporting 1000+ concurrent users',
     date: 'January 2024',

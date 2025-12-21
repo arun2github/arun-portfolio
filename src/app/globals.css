@@ -44,16 +44,7 @@
 }
 
 body {
-  cursor: none; /* Hide the default system cursor */
-  --cursor-moving: 0;
-}
-
-/* Optional: Hide cursor for specific interactive elements if the custom cursor handles them */
-a,
-button,
-input,
-textarea {
-  cursor: none; /* Ensure interactive elements also hide default cursor */
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Keyframes for character stagger animation */
@@ -179,7 +170,7 @@ textarea {
 
 /* Enhanced hover effects */
 [data-project-card]:hover {
-  --cursor-intensity: 2;
+  /* Enhanced project card styling */
 }
 
 [data-project-card]:hover::before {
@@ -198,7 +189,7 @@ textarea {
 
 /* Interactive element enhancements */
 a:hover, button:hover {
-  --cursor-intensity: 1.5;
+  /* Enhanced interactive styling */
 }
 
 /* Smooth transitions for all elements */
@@ -222,15 +213,6 @@ a:hover, button:hover {
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(59, 130, 246, 0.5);
-}
-
-/* Cursor movement state effects */
-body[style*="--cursor-moving: 1"] {
-  --cursor-trail-opacity: 1;
-}
-
-body[style*="--cursor-moving: 0"] {
-  --cursor-trail-opacity: 0;
 }
 
 /* Text selection styling */
@@ -320,19 +302,6 @@ body[style*="--cursor-moving: 0"] {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-body {
-  cursor: none; /* Hide the default system cursor */
-  --cursor-moving: 0;
-}
-
-/* Optional: Hide cursor for specific interactive elements if the custom cursor handles them */
-a,
-button,
-input,
-textarea {
-  cursor: none; /* Ensure interactive elements also hide default cursor */
-}
-
 /* Advanced cursor animations */
 @keyframes hologram-flicker {
   0%, 100% { opacity: 1; }
@@ -395,11 +364,6 @@ textarea {
     transform: scale(2);
     opacity: 0;
   }
-}
-
-/* Enhanced hover effects */
-[data-project-card]:hover {
-  --cursor-intensity: 2;
 }
 
 /* Custom scrollbar for better aesthetics */
