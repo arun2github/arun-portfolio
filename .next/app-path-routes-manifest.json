@@ -1,10 +1,11 @@
 {
+  "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
-  "/icon.png/route": "/icon.png",
+  "/about-details/page": "/about-details",
   "/api/send-email/route": "/api/send-email",
   "/apple-icon.png/route": "/apple-icon.png",
-  "/about-details/page": "/about-details",
+  "/icon.png/route": "/icon.png",
   "/page": "/",
-  "/projects/page": "/projects",
-  "/projects/[id]/page": "/projects/[id]"
+  "/projects/[id]/page": "/projects/[id]",
+  "/projects/page": "/projects"
 }
