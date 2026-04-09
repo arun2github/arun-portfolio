@@ -1,201 +1,175 @@
 'use client';
 
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Brain, Smartphone, Globe, Zap, Code2, Cpu, Workflow, Palette, Rocket, Shield } from 'lucide-react';
+import { Smartphone, Globe, Brain } from 'lucide-react';
+import { useScrollDownInView } from '@/lib/useScrollDownInView';
+
+const services = [
+  {
+    icon: Smartphone,
+    number: '01',
+    title: 'Mobile Apps',
+    punch: 'Flutter apps that scale to 50K+ daily users.',
+    proof: 'AU HUB · Sampark · Vahaan Bazar',
+    tags: ['Flutter', 'Dart', 'Firebase', 'REST APIs'],
+    accent: '#cbb7fb',
+  },
+  {
+    icon: Globe,
+    number: '02',
+    title: 'Web & Dashboards',
+    punch: 'Production portals running at enterprise scale.',
+    proof: 'Drishti · Niyantaran · Schrocken',
+    tags: ['React', 'Next.js', 'Node.js', 'PostgreSQL'],
+    accent: '#cbb7fb',
+  },
+  {
+    icon: Brain,
+    number: '03',
+    title: 'AI & Automation',
+    punch: 'Pipelines that eliminate hours of manual work.',
+    proof: 'LangChain Agents · n8n Workflows',
+    tags: ['LangChain', 'n8n', 'OpenAI', 'Python'],
+    accent: '#cbb7fb',
+  },
+];
 
 const WhatIBuild = () => {
-  const buildItems = [
-    {
-      icon: Brain,
-      title: "AI Agents",
-      description: "Intelligent automation solutions that understand, learn, and execute complex tasks autonomously",
-      gradient: "from-violet-600 via-purple-600 to-fuchsia-600",
-      bgGradient: "from-violet-500/5 via-purple-500/10 to-fuchsia-500/5",
-      glowColor: "violet-500/40",
-      accent: "from-violet-400 to-fuchsia-400",
-      features: [
-        { text: "NLP Processing", icon: Cpu },
-        { text: "Task Automation", icon: Workflow },
-        { text: "Smart Workflows", icon: Brain }
-      ],
-      stats: "60% Automation Rate",
-      badge: "🤖 AI"
-    },
-    {
-      icon: Smartphone,
-      title: "Mobile Applications",
-      description: "Cross-platform native apps for Android & iOS with exceptional user experiences",
-      gradient: "from-blue-600 via-indigo-600 to-purple-600",
-      bgGradient: "from-blue-500/5 via-indigo-500/10 to-purple-500/5",
-      glowColor: "blue-500/40",
-      accent: "from-blue-400 to-purple-400",
-      features: [
-        { text: "Android Development", icon: "🤖" },
-        { text: "iOS Development", icon: "🍎" },
-        { text: "Cross-Platform", icon: Code2 }
-      ],
-      stats: "5+ Apps  & 20+ micro apps built",
-      badge: "📱 Mobile"
-    },
-    {
-      icon: Globe,
-      title: "Web Applications",
-      description: "Modern, scalable web solutions with cutting-edge technologies and stunning design",
-      gradient: "from-emerald-600 via-teal-600 to-cyan-600",
-      bgGradient: "from-emerald-500/5 via-teal-500/10 to-cyan-500/5",
-      glowColor: "emerald-500/40",
-      accent: "from-emerald-400 to-cyan-400",
-      features: [
-        { text: "React & Next.js", icon: Rocket },
-        { text: "Responsive Design", icon: Palette },
-        { text: "Performance Optimized", icon: Shield }
-      ],
-      stats: "99.9% Uptime",
-      badge: "🌐 Web"
-    }
-  ];
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [activeCards, setActiveCards] = useState<boolean[]>(services.map(() => false));
+  const [animatedCards, setAnimatedCards] = useState<boolean[]>(services.map(() => false));
+  const [headerRef, headerInView] = useScrollDownInView<HTMLDivElement>();
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1
-      }
-    }
-  };
+  useEffect(() => {
+    let lastY = typeof window !== 'undefined' ? window.scrollY : 0;
+    let scrollDir = 'down';
+    const onScroll = () => {
+      scrollDir = window.scrollY > lastY ? 'down' : 'up';
+      lastY = window.scrollY;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 50, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
+    const observers = cardRefs.current.map((el, i) => {
+      if (!el) return null;
+      const obs = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setActiveCards((prev) => {
+              const next = [...prev]; next[i] = true; return next;
+            });
+            if (scrollDir === 'down') {
+              setAnimatedCards((prev) => {
+                const next = [...prev]; next[i] = true; return next;
+              });
+            }
+          }
+        },
+        { threshold: 0.35 }
+      );
+      obs.observe(el);
+      return obs;
+    });
+    return () => {
+      observers.forEach((o) => o?.disconnect());
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, []);
 
   return (
-    <section className="py-20 md:py-32 bg-gradient-to-br from-[#1A1D24] via-[#212530] to-[#1A1D24] relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-3/4 left-3/4 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
-      </div>
+    <section className="py-20 md:py-32 bg-[#0D0F14]">
+      <div className="container mx-auto px-4">
 
-      <div className="container mx-auto px-4 relative z-10">
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.7, ease: "circOut" }}
-          className="text-center mb-16"
+          ref={headerRef}
+          initial={{ opacity: 0, y: 20 }}
+          animate={headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6 }}
+          className="mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#7E8CE0] via-[#535C91] to-[#A0AEC0]">
+          <p className="text-xs font-bold tracking-[0.18em] uppercase mb-4" style={{color:'#cbb7fb'}}>
+            Services
+          </p>
+          <h2 className="text-5xl md:text-7xl font-bold text-white" style={{lineHeight:0.96, letterSpacing:'-0.02em'}}>
             What I Build
           </h2>
-          <p className="text-xl text-neutral-400 max-w-2xl mx-auto">
-            Crafting innovative solutions across multiple domains with cutting-edge technology
-          </p>
         </motion.div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10"
-        >
-          {buildItems.map((item, index) => {
-            const IconComponent = item.icon;
+        {/* Cards — connected grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#1E2330] rounded-2xl overflow-hidden">
+          {services.map((service, i) => {
+            const Icon = service.icon;
+            const isActive = activeCards[i];
             return (
               <motion.div
-                key={index}
-                variants={itemVariants}
-                className="group relative"
+                key={i}
+                ref={(el) => { cardRefs.current[i] = el; }}
+                initial={{ opacity: 0, y: 40 }}
+                animate={animatedCards[i] ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+                transition={{ duration: 0.5, delay: i * 0.12 }}
+                className="group relative bg-[#0D0F14] p-10 hover:bg-[#13161D] transition-all duration-500 overflow-hidden"
+                style={isActive ? { borderBottom: '1.5px solid rgba(203,183,251,0.30)' } : {}}
               >
-                {/* Enhanced Glow Effect */}
-                <div className={`absolute -inset-2 bg-gradient-to-r ${item.gradient} rounded-3xl blur-xl opacity-0 group-hover:opacity-30 transition duration-1000 group-hover:duration-300`}></div>
-                
-                {/* Neumorphism Card */}
-                <div className={`relative bg-[#1A1D24] rounded-3xl p-8 h-full shadow-[inset_1px_1px_4px_rgba(255,255,255,0.02),inset_-1px_-1px_4px_rgba(0,0,0,0.2),4px_4px_12px_rgba(0,0,0,0.3),-2px_-2px_6px_rgba(255,255,255,0.01)] overflow-hidden`}>
-                  
-                  {/* Badge */}
-                  <div className="absolute top-5 right-5 z-10">
-                    <div className={`px-4 py-1.5 rounded-full bg-[#1A1D24] shadow-[inset_1px_1px_3px_rgba(255,255,255,0.02),inset_-1px_-1px_3px_rgba(0,0,0,0.2),3px_3px_6px_rgba(0,0,0,0.3),-1px_-1px_3px_rgba(255,255,255,0.01)] text-white text-xs font-bold`}>
-                      {item.badge}
-                    </div>
-                  </div>
+                {/* Watermark number */}
+                <span className="absolute -top-2 -right-1 text-[120px] font-black leading-none select-none pointer-events-none transition-colors duration-500" style={{color:'rgba(203,183,251,0.04)', lineHeight:1}}>
+                  {service.number}
+                </span>
 
-                  {/* Icon with Neumorphism */}
-                  <div className={`inline-flex items-center justify-center w-24 h-24 rounded-3xl bg-gradient-to-r ${item.gradient} mb-8 shadow-[inset_1px_1px_4px_rgba(255,255,255,0.05),inset_-1px_-1px_4px_rgba(0,0,0,0.15),4px_4px_12px_rgba(0,0,0,0.3),-2px_-2px_6px_rgba(255,255,255,0.02)] relative overflow-hidden`}>
-                    <IconComponent size={40} className="text-white relative z-10" />
-                  </div>
-
-                  {/* Content */}
-                  <h3 className="text-3xl font-extrabold mb-4 text-white">
-                    {item.title}
-                  </h3>
-                  
-                  <p className="text-white/80 leading-relaxed mb-8 text-base">
-                    {item.description}
-                  </p>
-
-                  {/* Features */}
-                  <div className="space-y-4 mb-6">
-                    {item.features.map((feature, featureIndex) => {
-                      const FeatureIcon = typeof feature.icon === 'string' ? null : feature.icon;
-                      return (
-                        <div
-                          key={featureIndex}
-                          className="flex items-center text-sm text-white/80"
-                        >
-                          <div className={`w-8 h-8 rounded-xl bg-[#1A1D24] shadow-[inset_1px_1px_3px_rgba(255,255,255,0.02),inset_-1px_-1px_3px_rgba(0,0,0,0.2),3px_3px_6px_rgba(0,0,0,0.3),-1px_-1px_3px_rgba(255,255,255,0.01)] flex items-center justify-center mr-4`}>
-                            {typeof feature.icon === 'string' ? (
-                              <span className="text-sm">{feature.icon}</span>
-                            ) : (
-                              FeatureIcon && <FeatureIcon size={16} className="text-white" />
-                            )}
-                          </div>
-                          <span className="font-semibold text-base">{feature.text}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
-
-                  {/* Stats Badge */}
-                  <div className={`inline-flex items-center px-4 py-2 rounded-full bg-[#1A1D24] shadow-[inset_1px_1px_3px_rgba(255,255,255,0.02),inset_-1px_-1px_3px_rgba(0,0,0,0.2),3px_3px_6px_rgba(0,0,0,0.3),-1px_-1px_3px_rgba(255,255,255,0.01)] text-white text-sm font-bold`}>
-                    {item.stats}
-                  </div>
+                {/* Icon */}
+                <div
+                  className="relative z-10 w-20 h-20 rounded-2xl flex items-center justify-center mb-8 transition-all duration-500"
+                  style={{
+                    background: isActive ? 'rgba(203,183,251,0.14)' : 'rgba(203,183,251,0.08)',
+                    border: isActive ? '1px solid rgba(203,183,251,0.40)' : '1px solid rgba(203,183,251,0.20)',
+                    boxShadow: isActive ? '0 0 18px rgba(203,183,251,0.12)' : 'none',
+                    transform: isActive ? 'scale(1.06)' : 'scale(1)',
+                  }}
+                >
+                  <Icon size={40} style={{ color: '#cbb7fb' }} />
                 </div>
+
+                {/* Title */}
+                <h3 className="relative z-10 text-3xl font-bold text-white mb-3" style={{lineHeight:1.14, letterSpacing:'-0.01em'}}>
+                  {service.title}
+                </h3>
+
+                {/* Punch line */}
+                <p className="relative z-10 text-white/45 text-base leading-relaxed mb-5">
+                  {service.punch}
+                </p>
+
+                {/* Proof */}
+                <p className="relative z-10 text-sm font-semibold mb-7" style={{ color: service.accent }}>
+                  {service.proof}
+                </p>
+
+                {/* Tags */}
+                <div className="relative z-10 flex flex-wrap gap-2">
+                  {service.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1 text-xs font-bold text-white/40 rounded-[8px]"
+                      style={{border:'1px solid rgba(255,255,255,0.08)', background:'transparent'}}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Bottom accent line on hover */}
+                <div
+                  className="absolute bottom-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{ background: 'rgba(203,183,251,0.30)' }}
+                />
               </motion.div>
             );
           })}
-        </motion.div>
+        </div>
 
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-16"
-        >
-          <div className="flex items-center justify-center gap-2 text-neutral-400">
-            <Zap size={18} className="text-yellow-400" />
-            <span className="text-lg">Ready to bring your ideas to life</span>
-            <Zap size={18} className="text-yellow-400" />
-          </div>
-        </motion.div>
       </div>
     </section>
   );
 };
 
-export default WhatIBuild; 
+export default WhatIBuild;

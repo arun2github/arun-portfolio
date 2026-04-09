@@ -12,13 +12,13 @@ const Projects: React.FC = () => {
     const filtered = projectsData.filter(
       (project) => project.category && project.category.toLowerCase() === activeFilter
     );
-    return filtered.slice(0, 3);
+    return filtered.slice(0, 4);
   }, [activeFilter]);
 
   if (!projectsData || projectsData.length === 0) {
     return (
       <section id="projects" className="py-16 md:py-24 bg-[#1A1D24] text-center">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-neutral-100">My Creative Portfolio</h2>
+        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-neutral-100">Client Success Stories</h2>
         <p className="text-neutral-300">No projects to display at the moment. Please check back later!</p>
       </section>
     );
@@ -54,16 +54,26 @@ const Projects: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="py-20 md:py-32 bg-gradient-to-br from-[#1A1D24] via-[#212530] to-[#1A1D24]">
+    <section id="projects" className="py-20 md:py-32 bg-[#0D0F14]">
       <div className="container mx-auto px-4">
         <motion.h2 
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "circOut" }}
-          className="text-5xl md:text-6xl font-extrabold mb-8 text-center text-transparent bg-clip-text bg-gradient-to-r from-[#7E8CE0] via-[#535C91] to-[#A0AEC0]"
+          className="text-5xl md:text-6xl font-bold mb-4 text-center text-white"
+          style={{lineHeight:0.96, letterSpacing:'-0.02em'}}
         >
-          My Creative Portfolio
+          Work That Ships
         </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="text-white/45 text-lg text-center mb-10"
+        >
+          Real projects. Real clients. Measurable outcomes.
+        </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -76,9 +86,12 @@ const Projects: React.FC = () => {
               key={filter}
               data-button
               onClick={() => setActiveFilter(filter as typeof activeFilter)}
-              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 ${activeFilter === filter
-                ? 'bg-gradient-to-r from-[#7E8CE0] to-[#535C91] text-white shadow-lg shadow-[#7E8CE0]/30'
-                : 'bg-white/10 text-white/70 hover:bg-white/20 hover:text-white'}`}
+              className={`px-6 py-2.5 rounded-[8px] text-sm font-bold transition-all duration-200 ${activeFilter === filter
+                ? ''
+                : ''}`}
+              style={activeFilter === filter
+                ? {background:'#e9e5dd', color:'#1b1938'}
+                : {background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.08)', color:'rgba(255,255,255,0.50)'}}
             >
               <motion.span
                 initial={false}
@@ -92,17 +105,18 @@ const Projects: React.FC = () => {
           ))}
         </motion.div>
         
-        <motion.div 
-          // *** THE FIX: Add a key that changes when the filter changes ***
-          key={activeFilter} 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12"
+        <motion.div
+          key={activeFilter}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
           variants={containerVariants}
           initial="hidden"
-          animate="visible" // Use 'animate' instead of 'whileInView' for more direct control
-          exit="hidden" // Optional: for the whole container to fade out
+          animate="visible"
         >
             {filteredProjects.map((project, index) => (
-              <motion.div key={project.id || index} variants={itemVariants}>
+              <motion.div
+                key={project.id || index}
+                variants={itemVariants}
+              >
                 <NewProjectCard project={project} />
               </motion.div>
             ))}
@@ -117,7 +131,8 @@ const Projects: React.FC = () => {
           >
             <Link href="/projects" data-nav-link passHref>
               <motion.button
-                className="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-[#7E8CE0] to-[#535C91] rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#7E8CE0]/30 hover:-translate-y-1 group/btn"
+                className="inline-flex items-center justify-center px-6 py-3 text-sm font-bold rounded-[8px] transition-all duration-200"
+              style={{background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.08)', color:'rgba(255,255,255,0.60)'}}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

@@ -1,230 +1,222 @@
 'use client';
 import React from 'react';
-import { Parallax, ParallaxBanner, ParallaxBannerLayer } from 'react-scroll-parallax';
-import { profileData } from '@/data/portfolioData';
-import { Layers, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
+import { Download, ArrowRight, Briefcase, GraduationCap, Cpu, Heart } from 'lucide-react';
+import { useScrollDownInView } from '@/lib/useScrollDownInView';
+
+const timeline = [
+  {
+    icon: GraduationCap,
+    year: '2015 – 2019',
+    label: 'B.Tech — Computer Science',
+    sub: 'GNIOT, Greater Noida',
+  },
+  {
+    icon: Cpu,
+    year: '2019 – 2021',
+    label: 'Freelancer',
+    sub: 'Web & App Projects · Independent',
+  },
+  {
+    icon: Briefcase,
+    year: 'Sep 2021 – Apr 2023',
+    label: 'Associate Dev → React Developer',
+    sub: 'Celebal Technology · Schrocken Inc.',
+  },
+  {
+    icon: Briefcase,
+    year: 'Jun 2023 – Aug 2025',
+    label: 'Flutter Developer — AU Small Finance Bank',
+    sub: 'AU HUB · Sampark · Drishti · Niyantaran',
+  },
+  {
+    icon: Cpu,
+    year: 'Apr 2025 – Present',
+    label: 'Independent Consultant',
+    sub: 'Flutter & AI · 15+ clients · Global',
+  },
+  {
+    icon: GraduationCap,
+    year: 'Pursuing',
+    label: 'M.Tech — AI & Data Science',
+    sub: 'IIT Patna',
+  },
+];
+
+const values = [
+  {
+    title: 'Client first, code second',
+    body: 'Every project starts with a business problem, not a tech stack. I figure out what success looks like for you before writing a single line.',
+  },
+  {
+    title: 'Async by default',
+    body: 'Weekly Loom updates, shared task boards, Figma previews before builds. You always know where things stand.',
+  },
+  {
+    title: 'Own it end-to-end',
+    body: 'From architecture to App Store submission. No handoffs, no "that\'s not my part". I carry it to the finish line.',
+  },
+];
 
 const About = () => {
+  const [labelRef, labelInView] = useScrollDownInView<HTMLDivElement>();
+  const [topRef, topInView] = useScrollDownInView<HTMLDivElement>();
+  const [bottomRef, bottomInView] = useScrollDownInView<HTMLDivElement>();
+
   return (
-    <>
-      <section id="about" className="min-h-screen relative text-white overflow-hidden flex items-center justify-center py-16 md:py-20 bg-gradient-to-br from-[#1A1D24] via-[#212530] to-[#1A1D24]">
-        
-        {/* Parallax Background Image - Lowest Layer */}
-        <ParallaxBanner 
-          style={{ 
-            position: 'absolute', 
-            inset: 0, 
-            zIndex: 0, 
-            height: '120%', 
-            top: '0%',
-            willChange: 'transform'
-          }} 
-          className="opacity-20 md:opacity-25"
-        >
-          <ParallaxBannerLayer 
-            image="/images/prImg.jpg" 
-            speed={-8} 
-            expanded={true}
-            style={{
-              objectFit: 'cover',
-              objectPosition: 'center center',
-              willChange: 'transform'
-            }}
-          />
-        </ParallaxBanner>
+    <section id="about" className="relative py-24 md:py-32 bg-[#0D0F14] overflow-hidden">
 
-        {/* Decorative Background Icon - Middle Layer */}
+      <div className="pointer-events-none absolute -top-40 right-0 w-[500px] h-[500px] rounded-full blur-3xl" style={{background:'rgba(203,183,251,0.04)'}} />
+
+      <div className="relative z-10 container mx-auto px-6 max-w-6xl">
+
+        {/* Section label */}
         <motion.div
-          className="absolute inset-0 z-[1] flex items-center justify-center pointer-events-none opacity-[0.03] md:opacity-[0.04]"
-          initial={{ scale: 0.9, rotate: -5 }}
-          animate={{ scale: [1, 1.02, 1], rotate: [0, 2, 0] }}
-          transition={{
-            duration: 50,
-            repeat: Infinity,
-            repeatType: "mirror",
-            ease: "easeInOut"
-          }}
+          ref={labelRef}
+          className="flex items-center gap-3 mb-16"
+          initial={{ opacity: 0, x: -20 }}
+          animate={labelInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+          transition={{ duration: 0.5 }}
         >
-          <Layers size="clamp(400px, 70vw, 900px)" className="text-neutral-800" />
+          <span className="h-px w-10" style={{background:'#cbb7fb'}} />
+          <span className="text-xs font-bold tracking-[0.18em] uppercase" style={{color:'#cbb7fb'}}>About</span>
         </motion.div>
-        
-        {/* Main Content Container - Top Layer */}
-        <div className="relative z-10 container mx-auto px-4 w-full">
-          <div className="flex flex-col lg:flex-row lg:space-x-12 items-center lg:items-stretch">
-            
-                          {/* Left Column: User Image */}
-              <div className="lg:w-5/12 flex flex-col justify-center items-center p-4 md:p-6 w-full mb-10 lg:mb-0">
-                <Parallax translateY={[-10, 10]} className="w-full max-w-sm lg:max-w-md" style={{ willChange: 'transform' }}>
-                <motion.div 
-                  className="bg-[#2D3748]/60 backdrop-blur-lg p-3 rounded-xl shadow-2xl border border-neutral-700/60 overflow-hidden"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.7, ease: "easeOut" }}
-                >
-                  <Image 
-                    src="/images/prImg.jpg" 
-                    alt={profileData.name || "Profile Picture"} 
-                    width={500}
-                    height={500}
-                    className="w-full h-auto object-cover rounded-lg"
-                  />
-                </motion.div>
-              </Parallax>
+
+        {/* ── TOP: Photo + Story ─────────────────────── */}
+        <div ref={topRef} className="grid lg:grid-cols-5 gap-12 lg:gap-16 mb-20 items-start">
+
+          {/* Photo */}
+          <motion.div
+            className="lg:col-span-2"
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={topInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.96 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="relative rounded-2xl overflow-hidden border border-[#1E2330]">
+              <Image
+                src="/images/prImg.jpg"
+                alt="Arun Kumar at work"
+                width={500} height={700}
+                className="w-full h-auto object-cover object-top"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0D0F14]/80 via-transparent to-transparent" />
+              <div className="absolute bottom-0 inset-x-0 px-5 py-5">
+                <p className="text-white font-bold text-base">Arun Kumar</p>
+                <p className="text-[#8892B0] text-xs mt-0.5">Full-Stack Dev & AI Engineer · Bengaluru</p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Story */}
+          <motion.div
+            className="lg:col-span-3 flex flex-col gap-6"
+            initial={{ opacity: 0, y: 24 }}
+            animate={topInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white leading-[0.96] mb-6" style={{letterSpacing:'-0.02em'}}>
+              When you hire me, you get someone who&apos;s
+              <span style={{color:'#cbb7fb'}}> done this before — at scale</span>
+            </h2>
+
+            <div className="space-y-4 text-white/50 text-base leading-relaxed">
+              <p>
+                I have <span className="text-white font-medium">5+ years</span> of professional experience — from building AI chatbots at Celebal to supply-chain apps at <span className="text-white font-medium">Collabrix Inc.</span>, to two years deep inside <span className="text-white font-medium">AU Small Finance Bank</span>. At AU I owned the full product cycle on four major internal platforms: <span className="text-white font-medium">AU HUB</span> (50K+ daily active users, 50+ micro-apps), <span className="text-white font-medium">Sampark</span> (task &amp; lead management for RMs with Exotel calling integration), <span className="text-white font-medium">Drishti</span> (3D compliance dashboard for HODs &amp; SPOCs), and <span className="text-white font-medium">Niyantaran</span>. All production, all regulated, all zero-downtime. That&apos;s where I earned the <span className="text-amber-400 font-medium">Star Award</span>.
+              </p>
+              <p>
+                Beyond product work, I&apos;ve designed and built <span className="text-white font-medium">10+ business portfolios</span> for clients across industries — landing pages, multi-section sites with booking flows, contact forms, and brand storytelling — each crafted to convert visitors into leads.
+              </p>
+              <p>
+                I don&apos;t need hand-holding. I ask the right questions upfront, flag risks early, and deliver something that works in production — not just in a demo. Whether it&apos;s a <span className="text-white font-medium">startup&apos;s first app</span>, a <span className="text-white font-medium">business portfolio</span>, or a <span className="text-white font-medium">complex enterprise integration</span>, I bring the same discipline. Currently deepening that with an <span className="text-white font-medium">M.Tech in AI & Data Science at IIT Patna</span>.
+              </p>
+              <p>
+                Off the clock: music production, cooking experiments, and losing sleep over chess puzzles.{' '}
+                <Heart size={13} className="inline text-rose-400 mb-0.5" />
+              </p>
             </div>
 
-            {/* Right Column: Text Content Card */}
-            <div 
-              className="lg:w-7/12 flex flex-col justify-center p-6 md:p-8 rounded-2xl w-full bg-[#535C91]/90 backdrop-blur-sm shadow-xl"
-                              // Removed inline style for background color, using Tailwind classes with opacity
+            <div className="flex flex-wrap gap-4 pt-2">
+              <Link href="/about-details" data-nav-link
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-[8px] font-bold text-sm transition-colors duration-200"
+                style={{background:'#e9e5dd', color:'#1b1938'}}
               >
-                <Parallax translateY={[5, -5]} className="w-full flex flex-col items-center md:items-start" style={{ willChange: 'transform' }}>
-                <h2 className="text-4xl lg:text-5xl font-bold mb-2 text-neutral-100 text-shadow-lg text-center md:text-left">
-                  About Me
-                </h2>
-                <p className="text-xl lg:text-2xl text-neutral-200 mb-6 text-center md:text-left">
-                  Crafting Digital Solutions That Drive Results
-                </p>
-                <Link href="/about-details" data-nav-link className="w-full mb-8 group relative" passHref>
-                  <div className="p-6 md:p-8 bg-black/20 backdrop-blur-sm hover:bg-black/30 transition-all duration-300 rounded-lg shadow-lg cursor-pointer border border-white/10 hover:border-white/20 hover:shadow-xl">
-                    <div className="space-y-4">
-                      <div className="flex items-start space-x-3">
-                        <div className="w-2 h-2 bg-gradient-to-r from-[#7E8CE0] to-[#535C91] rounded-full mt-2 flex-shrink-0"></div>
-                        <p className="text-lg leading-relaxed text-neutral-100 font-medium">
-                          <span className="text-[#7E8CE0] font-semibold">Transforming Ideas into Reality:</span> I specialize in crafting high-performance mobile applications, web solutions, and AI agents that drive business growth and enhance user experiences. With 3.5+ years of expertise in Flutter, React, and cutting-edge AI technologies, I&apos;ve delivered solutions that have impacted thousands of users across multiple industries.
-                        </p>
-                      </div>
-                      
-                      <div className="flex items-start space-x-3">
-                        <div className="w-2 h-2 bg-gradient-to-r from-[#7E8CE0] to-[#535C91] rounded-full mt-2 flex-shrink-0"></div>
-                        <p className="text-lg leading-relaxed text-neutral-100">
-                          <span className="text-[#7E8CE0] font-semibold">Proven Track Record:</span> Successfully led the development of 50+ micro-apps for banking and healthcare industries, optimized supply chain workflows, and received the prestigious &apos;Star Award&apos; for exceptional contributions. My solutions consistently deliver measurable ROI and user satisfaction across diverse business domains.
-                        </p>
-                      </div>
-                      
-                      <div className="flex items-start space-x-3">
-                        <div className="w-2 h-2 bg-gradient-to-r from-[#7E8CE0] to-[#535C91] rounded-full mt-2 flex-shrink-0"></div>
-                        <p className="text-lg leading-relaxed text-neutral-100">
-                          <span className="text-[#7E8CE0] font-semibold">Client-Focused Approach:</span> I don&apos;t just write code—I solve problems. Every project starts with understanding your business goals, user needs, and technical requirements. The result? Scalable, maintainable applications that grow with your business.
-                        </p>
-                      </div>
-                    </div>
-                    
-                    <div className="mt-6 p-4 bg-gradient-to-r from-[#7E8CE0]/10 to-[#535C91]/10 rounded-lg border border-[#7E8CE0]/20">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-3">
-                          <div className="w-8 h-8 bg-gradient-to-r from-[#7E8CE0] to-[#535C91] rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                            </svg>
-                          </div>
-                          <div>
-                            <p className="text-sm font-semibold text-[#7E8CE0]">Ready to Transform Your Vision?</p>
-                            <p className="text-xs text-neutral-300">Discover how I can help bring your ideas to life</p>
-                          </div>
-                        </div>
-                        <div className="flex items-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <p className="text-sm text-sky-400 italic">Explore My Journey</p>
-                          <ArrowRight size={18} className="text-sky-400 transform group-hover:translate-x-1 transition-transform duration-300" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-                <motion.a
-                  href="/ARUN_RESUME.pdf" 
-                  download="Arun_Resume.pdf" 
-                  data-button
-                  className="group relative inline-flex items-center px-8 py-4 bg-gradient-to-r from-[#7E8CE0] to-[#535C91] text-white font-semibold rounded-xl text-lg 
-                             shadow-lg transform transition-all duration-500 overflow-hidden
-                             hover:shadow-2xl hover:shadow-[#7E8CE0]/30 focus:outline-none focus:ring-2 focus:ring-[#7E8CE0] focus:ring-opacity-50
-                             mt-4 md:mt-0 self-center md:self-start"
-                  whileHover={{ 
-                    scale: 1.05,
-                    boxShadow: "0 20px 40px rgba(126, 140, 224, 0.4)"
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                >
-                  {/* Animated Background */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-[#535C91] to-[#7E8CE0]"
-                    initial={{ x: '-100%' }}
-                    whileHover={{ x: '0%' }}
-                    transition={{ duration: 0.6, ease: "easeInOut" }}
-                  />
-                  
-                  {/* Sparkle Effect */}
-                  <motion.div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {[
-                      { left: '15%', top: '20%' },
-                      { left: '85%', top: '15%' },
-                      { left: '25%', top: '80%' },
-                      { left: '75%', top: '75%' },
-                      { left: '50%', top: '30%' },
-                      { left: '60%', top: '60%' }
-                    ].map((position, i) => (
-                      <motion.div
-                        key={i}
-                        className="absolute w-1 h-1 bg-white rounded-full"
-                        style={{
-                          left: position.left,
-                          top: position.top,
-                        }}
-                        animate={{
-                          scale: [0, 1, 0],
-                          opacity: [0, 1, 0],
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          delay: i * 0.2,
-                        }}
-                      />
-                    ))}
-                  </motion.div>
-
-                  {/* Content */}
-                  <span className="relative z-10 flex items-center gap-2">
-                    Download Resume
-                    <motion.svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      animate={{ y: [0, 2, 0] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                      />
-                    </motion.svg>
-                  </span>
-
-                  {/* Glow Effect */}
-                  <div className="absolute -inset-1 bg-gradient-to-r from-[#7E8CE0] to-[#535C91] rounded-xl blur opacity-0 group-hover:opacity-30 transition duration-1000 group-hover:duration-200 -z-10"></div>
-                </motion.a>
-              </Parallax>
+                Full Story <ArrowRight size={14} />
+              </Link>
+              <a href="/Arun_Resume.pdf" target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-[8px] font-semibold text-sm transition-colors duration-200 hover:text-white"
+                style={{border:'1px solid rgba(255,255,255,0.10)', color:'rgba(203,183,251,0.8)', background:'transparent'}}
+              >
+                <Download size={14} /> Resume
+              </a>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </section>
-    </>
+
+        {/* ── BOTTOM: Timeline + Values ──────────────── */}
+        <div ref={bottomRef} className="grid lg:grid-cols-3 gap-10">
+
+          {/* Timeline */}
+          <motion.div
+            className="lg:col-span-2"
+            initial={{ opacity: 0, y: 24 }}
+            animate={bottomInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+            transition={{ duration: 0.55 }}
+          >
+            <p className="text-white/40 text-xs font-bold tracking-[0.18em] uppercase mb-6">Journey</p>
+            <div className="relative flex flex-col gap-0">
+              {/* Vertical line */}
+              <div className="absolute left-[17px] top-4 bottom-4 w-px bg-[#1E2330]" />
+              {timeline.map((item, i) => (
+                <motion.div
+                  key={item.label}
+                  className="flex gap-5 pb-5 last:pb-0"
+                  initial={{ opacity: 0, x: -16 }}
+                  animate={bottomInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -16 }}
+                  transition={{ duration: 0.4, delay: i * 0.08 }}
+                >
+                  {/* Dot */}
+                  <div className="relative z-10 flex-shrink-0 w-9 h-9 rounded-[8px] flex items-center justify-center" style={{background:'rgba(203,183,251,0.06)', border:'1px solid rgba(203,183,251,0.15)'}}>
+                    <item.icon size={15} style={{color:'#cbb7fb'}} />
+                  </div>
+                  <div className="pt-1">
+                    <p className="text-white/35 text-[11px] font-bold tracking-wide mb-0.5">{item.year}</p>
+                    <p className="text-white font-bold text-sm">{item.label}</p>
+                    <p className="text-white/40 text-xs mt-0.5">{item.sub}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Working values */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={bottomInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+            transition={{ duration: 0.55, delay: 0.1 }}
+          >
+            <p className="text-white/40 text-xs font-bold tracking-[0.18em] uppercase mb-6">How I work</p>
+            <div className="flex flex-col gap-4">
+              {values.map((v, i) => (
+                <motion.div key={v.title}
+                  className="p-5 rounded-2xl transition-colors duration-300"
+                  style={{background:'rgba(255,255,255,0.02)', border:'1px solid rgba(255,255,255,0.06)'}}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={bottomInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+                  transition={{ duration: 0.4, delay: i * 0.08 }}
+                >
+                  <p className="text-white font-bold text-sm mb-1.5">{v.title}</p>
+                  <p className="text-white/45 text-sm leading-relaxed">{v.body}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+        </div>
+      </div>
+    </section>
   );
 };
 
-export default About; 
+export default About;

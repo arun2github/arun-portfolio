@@ -10,73 +10,32 @@ export default function AllProjectsPage() {
   const [isLoading, setIsLoading] = React.useState(true);
 
   const { mobileProjects, webProjects, aiProjects } = React.useMemo(() => {
-    console.log('Filtering projects...');
-    console.log('Raw projectsData:', projectsData);
-    
-    const mobile = projectsData.filter(project => {
-      const isMobile = project.category?.toLowerCase().includes('mobile');
-      console.log(`Project ${project.title}: category="${project.category}", isMobile=${isMobile}`);
-      return isMobile;
-    });
-    
-    const web = projectsData.filter(project => {
-      const isWeb = project.category?.toLowerCase().includes('web');
-      console.log(`Project ${project.title}: category="${project.category}", isWeb=${isWeb}`);
-      return isWeb;
-    });
-    
-    const ai = projectsData.filter(project => {
-      const isAI = project.category?.toLowerCase().includes('ai');
-      console.log(`Project ${project.title}: category="${project.category}", isAI=${isAI}`);
-      return isAI;
-    });
-    
-    console.log('Filtered results:', { mobile: mobile.length, web: web.length, ai: ai.length });
+    const mobile = projectsData.filter(project =>
+      project.category?.toLowerCase().includes('mobile')
+    );
+    const web = projectsData.filter(project =>
+      project.category?.toLowerCase().includes('web')
+    );
+    const ai = projectsData.filter(project =>
+      project.category?.toLowerCase().includes('ai')
+    );
     return { mobileProjects: mobile, webProjects: web, aiProjects: ai };
   }, []);
 
   const filteredProjects = React.useMemo(() => {
-    console.log('Calculating filtered projects for category:', selectedCategory);
-    let result: typeof projectsData = [];
-    
-    if (selectedCategory === 'all') {
-      result = [...aiProjects, ...mobileProjects, ...webProjects];
-    } else if (selectedCategory === 'mobile') {
-      result = mobileProjects;
-    } else if (selectedCategory === 'web') {
-      result = webProjects;
-    } else if (selectedCategory === 'ai') {
-      result = aiProjects;
-    }
-    
-    console.log('Filtered projects result:', result.length, 'projects');
-    return result;
+    if (selectedCategory === 'all') return [...aiProjects, ...mobileProjects, ...webProjects];
+    if (selectedCategory === 'mobile') return mobileProjects;
+    if (selectedCategory === 'web') return webProjects;
+    if (selectedCategory === 'ai') return aiProjects;
+    return [];
   }, [selectedCategory, mobileProjects, webProjects, aiProjects]);
 
-  // Debug logging
   React.useEffect(() => {
-    console.log('=== DEBUG INFO ===');
-    console.log('Projects Data Length:', projectsData?.length || 0);
-    console.log('Projects Data:', projectsData);
-    console.log('Mobile Projects:', mobileProjects);
-    console.log('Web Projects:', webProjects);
-    console.log('AI Projects:', aiProjects);
-    console.log('Selected Category:', selectedCategory);
-    console.log('Filtered Projects:', filteredProjects);
-    console.log('Is Loading:', isLoading);
-    console.log('==================');
-    
-    // Set loading to false after a short delay to ensure hydration
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 100);
-    
+    const timer = setTimeout(() => setIsLoading(false), 100);
     return () => clearTimeout(timer);
-  }, [mobileProjects, webProjects, aiProjects, selectedCategory, filteredProjects, isLoading]);
+  }, []);
 
-  // Ensure 'all' is selected by default on mount
   React.useEffect(() => {
-    console.log('Setting default category to "all"');
     setSelectedCategory('all');
   }, []);
 
@@ -121,14 +80,6 @@ export default function AllProjectsPage() {
           </h1>
           <p className="text-xl text-neutral-400 max-w-2xl mx-auto">
             A collection of my work in AI agents, mobile app development and web applications
-          </p>
-          {/* Debug info */}
-          <p className="text-sm text-neutral-500 mt-2">
-            Debug: Total Projects: {projectsData.length} | 
-            Mobile: {mobileProjects.length} | 
-            Web: {webProjects.length} | 
-            AI: {aiProjects.length} | 
-            Selected: {selectedCategory}
           </p>
         </div>
 

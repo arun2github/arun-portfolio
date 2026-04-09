@@ -5,6 +5,7 @@ import { education } from '@/data/portfolioData';
 import { GraduationCap, CalendarDays, BookOpen, MapPin, Star } from 'lucide-react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useScrollDownInView } from '@/lib/useScrollDownInView';
 
 const Education = () => {
   if (!education || education.length === 0) {
@@ -15,6 +16,10 @@ const Education = () => {
       </section>
     );
   }
+
+  const [titleRef, titleInView] = useScrollDownInView<HTMLHeadingElement>();
+  const [gridRef, gridInView] = useScrollDownInView<HTMLDivElement>();
+  const [ctaRef, ctaInView] = useScrollDownInView<HTMLDivElement>();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -37,7 +42,7 @@ const Education = () => {
   };
 
   return (
-    <section id="education" className="py-20 md:py-32 bg-gradient-to-br from-[#1A1D24] via-[#212530] to-[#1A1D24] relative overflow-hidden">
+    <section id="education" className="py-20 md:py-32 bg-[#0D0F14] relative overflow-hidden">
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"></div>
@@ -46,21 +51,22 @@ const Education = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.h2 
+          ref={titleRef}
           initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          animate={titleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -30 }}
           transition={{ duration: 0.7, ease: "circOut" }}
-          className="text-5xl md:text-6xl font-extrabold mb-16 text-center text-transparent bg-clip-text bg-gradient-to-r from-[#7E8CE0] via-[#535C91] to-[#A0AEC0]"
+          className="text-5xl md:text-6xl font-bold mb-16 text-center text-white"
+          style={{lineHeight:0.96, letterSpacing:'-0.02em'}}
         >
           Academic Journey
         </motion.h2>
 
                  {/* Single Row Education Timeline */}
          <motion.div
+           ref={gridRef}
            variants={containerVariants}
            initial="hidden"
-           whileInView="visible"
-           viewport={{ once: true, amount: 0.1 }}
+           animate={gridInView ? 'visible' : 'hidden'}
            className="relative"
          >
            {/* Timeline Line */}
@@ -78,7 +84,7 @@ const Education = () => {
                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-gradient-to-r from-[#7E8CE0] to-[#535C91] rounded-full border-4 border-[#1A1D24] z-10 hidden lg:block group-hover:scale-125 transition-transform duration-300"></div>
                  
                  {/* Education Card */}
-                 <div className="bg-gradient-to-br from-[#2D3748]/50 to-[#1A1D24]/50 backdrop-blur-sm border border-white/10 rounded-2xl p-6 transform transition-all duration-500 hover:scale-105 hover:border-white/20 hover:shadow-2xl hover:shadow-[#7E8CE0]/20">
+                 <div className="bg-[#0f1020]/80 rounded-2xl p-6 transition-all duration-500" style={{border:'1px solid rgba(255,255,255,0.06)'}}>
                   {/* Institution Logo */}
                   <div className="flex justify-center mb-4">
                     <div 
@@ -104,7 +110,7 @@ const Education = () => {
                   {/* Content */}
                   <div className="text-center space-y-3">
                     {/* Degree */}
-                    <h3 className="text-xl font-bold text-white group-hover:text-[#7E8CE0] transition-colors duration-300">
+                    <h3 className="text-xl font-bold text-white transition-colors duration-300" style={{lineHeight:1.14}}>
                       {edu.title}
                     </h3>
                     
@@ -116,24 +122,20 @@ const Education = () => {
                     {/* Branch */}
                     {edu.branch && (
                       <div className="flex items-center justify-center text-sm text-neutral-400">
-                        <BookOpen size={14} className="mr-2 text-[#7E8CE0]" />
+                      <BookOpen size={14} className="mr-2" style={{color:'#cbb7fb'}} />
                         {edu.branch}
                       </div>
                     )}
                     
                     {/* Date */}
                     <div className="flex items-center justify-center text-sm text-neutral-400">
-                      <CalendarDays size={14} className="mr-2 text-[#7E8CE0]" />
+                      <CalendarDays size={14} className="mr-2" style={{color:'#cbb7fb'}} />
                       {edu.date}
                     </div>
 
                     {/* Achievement Badge */}
                     <div className="pt-2">
-                      <div className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold ${
-                        edu.percentage === 'Pursuing' 
-                          ? 'bg-gradient-to-r from-orange-500/20 to-yellow-500/20 border border-orange-500/30 text-orange-400' 
-                          : 'bg-gradient-to-r from-[#7E8CE0]/20 to-[#535C91]/20 border border-[#7E8CE0]/30 text-[#7E8CE0]'
-                      }`}>
+                      <div className="inline-flex items-center px-3 py-1.5 rounded-[8px] text-xs font-bold" style={edu.percentage === 'Pursuing' ? {background:'rgba(203,183,251,0.08)', border:'1px solid rgba(203,183,251,0.20)', color:'#cbb7fb'} : {background:'rgba(203,183,251,0.06)', border:'1px solid rgba(203,183,251,0.15)', color:'#cbb7fb'}}>
                         <Star size={12} className="mr-1.5" />
                         {edu.percentage === 'Pursuing' ? 'Currently Pursuing' : 'Completed'}
                       </div>
@@ -142,7 +144,7 @@ const Education = () => {
 
                   {/* Decorative Elements */}
                   <div className="absolute top-2 right-2 opacity-20 group-hover:opacity-40 transition-opacity duration-300">
-                    <GraduationCap size={16} className="text-[#7E8CE0]" />
+                    <GraduationCap size={16} style={{color:'rgba(203,183,251,0.40)'}} />
                   </div>
                 </div>
               </motion.div>
@@ -152,14 +154,14 @@ const Education = () => {
 
         {/* Bottom Decoration */}
         <motion.div
+          ref={ctaRef}
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          animate={ctaInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center mt-12"
         >
-          <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-[#7E8CE0]/10 to-[#535C91]/10 border border-[#7E8CE0]/20 text-neutral-300">
-            <MapPin size={16} className="mr-2 text-[#7E8CE0]" />
+          <div className="inline-flex items-center px-6 py-3 rounded-[8px]" style={{background:'rgba(203,183,251,0.06)', border:'1px solid rgba(203,183,251,0.15)', color:'rgba(255,255,255,0.60)'}}>
+            <MapPin size={16} className="mr-2" style={{color:'#cbb7fb'}} />
             <span className="text-sm font-medium">Educational Foundation Built</span>
           </div>
         </motion.div>

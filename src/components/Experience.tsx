@@ -5,8 +5,11 @@ import { experiences } from '@/data/portfolioData';
 import { Briefcase, MapPin, Calendar } from 'lucide-react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useScrollDownInView } from '@/lib/useScrollDownInView';
 
 const ExperienceCard = ({ experience, index }: { experience: typeof experiences[0], index: number }) => {
+  const [cardRef, cardInView] = useScrollDownInView<HTMLDivElement>();
+
   const cardVariants = {
     hidden: { opacity: 0, x: index % 2 === 0 ? -100 : 100 },
     visible: {
@@ -18,11 +21,11 @@ const ExperienceCard = ({ experience, index }: { experience: typeof experiences[
 
   return (
     <motion.div 
+      ref={cardRef}
       className="mb-12 flex group" 
       variants={cardVariants}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
+      animate={cardInView ? 'visible' : 'hidden'}
     >
       {/* Timeline Line & Dot - adjusted for alternating effect */}
       <div className={`hidden md:flex flex-col items-center mr-6 ${index % 2 === 0 ? 'order-1' : 'order-3 ml-6'}`}>
@@ -36,23 +39,29 @@ const ExperienceCard = ({ experience, index }: { experience: typeof experiences[
             <Briefcase size={24} className="text-neutral-300 group-hover:text-white" />
           )}
         </span>
-        <div className="w-1 flex-grow bg-gradient-to-b from-[#535C91] via-[#7E8CE0] to-transparent mt-2"></div>
+          <div className="w-1 flex-grow mt-2" style={{background:'linear-gradient(to bottom, rgba(203,183,251,0.40), transparent)'}}></div>
       </div>
 
       {/* Card Content */}
-      <div className={`bg-[#2D3748]/50 p-6 rounded-lg shadow-xl hover:shadow-[#535C91]/40 transition-all duration-300 w-full md:w-auto flex-1 ${index % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}>
+      <div className={`p-6 rounded-2xl shadow-xl transition-all duration-300 w-full md:w-auto flex-1 ${index % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}
+        style={{background:'rgba(255,255,255,0.02)', border:'1px solid rgba(255,255,255,0.06)'}}>
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-2">
-          <h3 className="text-2xl font-semibold text-[#A0AEC0] group-hover:text-[#7E8CE0] transition-colors duration-300">
+          <h3 className="text-2xl font-bold text-white transition-colors duration-300">
             {experience.title}
           </h3>
-          <span className="text-sm text-neutral-400 mt-1 sm:mt-0 bg-[#1A1D24]/70 px-3 py-1 rounded-full">
+          <span className="text-sm text-white/40 mt-1 sm:mt-0 px-3 py-1 rounded-[8px]" style={{background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.06)'}}>
             {experience.date}
           </span>
         </div>
-        <div className="flex items-center text-neutral-300 mb-4">
-          <MapPin size={16} className="mr-2 text-[#7E8CE0]" />
-          <span>{experience.companyName}</span>
+        <div className="flex items-center text-neutral-300 mb-3">
+          <MapPin size={16} className="mr-2" style={{color:'#cbb7fb'}} />
+          <span className="text-white/60">{experience.companyName}</span>
         </div>
+        {experience.impactHeadline && (
+          <p className="font-semibold text-sm mb-4 pl-1 border-l-2 leading-snug" style={{color:'#cbb7fb', borderColor:'rgba(203,183,251,0.40)'}}>
+            {experience.impactHeadline}
+          </p>
+        )}
         
         <ul className="list-disc list-inside text-neutral-200 space-y-2 pl-1">
           {experience.points.map((point, i) => (
@@ -64,9 +73,9 @@ const ExperienceCard = ({ experience, index }: { experience: typeof experiences[
   );
 };
 
-// Mobile-specific Experience Card
 const MobileExperienceCard = ({ experience, index }: { experience: typeof experiences[0], index: number }) => {
   const [isExpanded, setIsExpanded] = React.useState(false);
+  const [cardRef, cardInView] = useScrollDownInView<HTMLDivElement>();
   
   const mobileCardVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -83,11 +92,11 @@ const MobileExperienceCard = ({ experience, index }: { experience: typeof experi
 
   return (
     <motion.div 
+      ref={cardRef}
       className="mb-8 flex group relative" 
       variants={mobileCardVariants}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
+      animate={cardInView ? 'visible' : 'hidden'}
     >
       {/* Mobile Timeline Dot */}
       <div className="flex flex-col items-center mr-4 flex-shrink-0">
@@ -101,29 +110,34 @@ const MobileExperienceCard = ({ experience, index }: { experience: typeof experi
             <Briefcase size={18} className="text-neutral-300 group-hover:text-white" />
           )}
         </span>
-        <div className="w-0.5 flex-grow bg-gradient-to-b from-[#535C91] via-[#7E8CE0] to-transparent mt-2 min-h-[60px]"></div>
+        <div className="w-0.5 flex-grow mt-2 min-h-[60px]" style={{background:'linear-gradient(to bottom, rgba(203,183,251,0.40), transparent)'}}></div>
       </div>
 
       {/* Mobile Card Content */}
-      <div className="bg-[#2D3748]/50 backdrop-blur-sm border border-white/10 p-4 rounded-xl shadow-xl hover:shadow-[#535C91]/40 transition-all duration-300 flex-1">
+      <div className="rounded-2xl p-4 transition-all duration-300 flex-1" style={{background:'rgba(255,255,255,0.02)', border:'1px solid rgba(255,255,255,0.06)'}}>
         {/* Mobile Header */}
         <div className="mb-3">
-          <h3 className="text-lg font-semibold text-[#A0AEC0] group-hover:text-[#7E8CE0] transition-colors duration-300 leading-tight mb-2">
+          <h3 className="text-lg font-bold text-white transition-colors duration-300 leading-tight mb-2">
             {experience.title}
           </h3>
           <div className="flex flex-col gap-2">
             <div className="flex items-center text-neutral-300 text-sm">
-              <MapPin size={14} className="mr-1.5 text-[#7E8CE0] flex-shrink-0" />
+              <MapPin size={14} className="mr-1.5 flex-shrink-0" style={{color:'#cbb7fb'}} />
               <span className="truncate">{experience.companyName}</span>
             </div>
             <div className="flex items-center text-neutral-400 text-sm">
-              <Calendar size={14} className="mr-1.5 text-[#7E8CE0] flex-shrink-0" />
-              <span className="bg-[#1A1D24]/70 px-2 py-0.5 rounded-full text-xs">
+              <Calendar size={14} className="mr-1.5 flex-shrink-0" style={{color:'#cbb7fb'}} />
+              <span className="px-2 py-0.5 rounded-[8px] text-xs text-white/40" style={{background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.06)'}}>
                 {experience.date}
               </span>
             </div>
           </div>
         </div>
+        {experience.impactHeadline && (
+          <p className="font-semibold text-xs mb-3 pl-2 border-l-2 leading-snug" style={{color:'#cbb7fb', borderColor:'rgba(203,183,251,0.40)'}}>
+            {experience.impactHeadline}
+          </p>
+        )}
         
         {/* Mobile Experience Points */}
         <ul className="list-disc list-inside text-neutral-200 space-y-1.5 pl-1">
@@ -138,8 +152,7 @@ const MobileExperienceCard = ({ experience, index }: { experience: typeof experi
         {hasMorePoints && (
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="mt-3 text-sm text-[#7E8CE0] hover:text-[#535C91] transition-colors duration-300 font-medium flex items-center gap-1"
-          >
+            className="mt-3 text-sm hover:opacity-80 transition-opacity duration-300 font-bold flex items-center gap-1" style={{color:'#cbb7fb'}}>
             {isExpanded ? (
               <>
                 <span>View Less</span>
@@ -165,7 +178,7 @@ const MobileExperienceCard = ({ experience, index }: { experience: typeof experi
 const Experience = () => {
   if (!experiences || experiences.length === 0) {
     return (
-      <section id="experience" className="py-16 md:py-24 bg-gradient-to-br from-[#1A1D24] via-[#212530] to-[#1A1D24] text-center">
+      <section id="experience" className="py-16 md:py-24 bg-[#0D0F14] text-center">
         <h2 className="text-4xl md:text-5xl font-bold mb-4 text-neutral-100">My Journey</h2>
         <p className="text-neutral-300">Experience details are not available at the moment.</p>
       </section>
@@ -173,13 +186,14 @@ const Experience = () => {
   }
 
   return (
-    <section id="experience" className="py-20 md:py-32 bg-gradient-to-br from-[#1A1D24] via-[#212530] to-[#1A1D24]">
+    <section id="experience" className="py-20 md:py-32 bg-[#0D0F14]">
       <div className="container mx-auto px-4">
         <motion.h2 
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }} // Corrected: should be 'animate' not 'whileInView' for initial title animation
           transition={{ duration: 0.7, ease: "circOut" }}
-          className="text-5xl md:text-6xl font-extrabold mb-16 md:mb-20 text-center text-transparent bg-clip-text bg-gradient-to-r from-[#7E8CE0] via-[#535C91] to-[#A0AEC0]"
+          className="text-5xl md:text-6xl font-bold mb-16 md:mb-20 text-center text-white"
+          style={{lineHeight:0.96, letterSpacing:'-0.02em'}}
         >
           My Professional Journey
         </motion.h2>
@@ -194,7 +208,7 @@ const Experience = () => {
         {/* Mobile Layout - New optimized design */}
         <div className="relative md:hidden max-w-2xl mx-auto">
           {/* Mobile Timeline Line */}
-          <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#535C91]/50 via-[#7E8CE0]/50 to-transparent"></div>
+          <div className="absolute left-5 top-0 bottom-0 w-0.5" style={{background:'linear-gradient(to bottom, rgba(203,183,251,0.30), transparent)'}}></div>
           
           {experiences.map((exp, index) => (
             <MobileExperienceCard key={`mobile-${index}`} experience={exp} index={index} />

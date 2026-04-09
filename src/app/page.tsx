@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Smartphone } from 'lucide-react';
 import Hero from "@/components/Hero";
+import MetricsBar from "@/components/MetricsBar";
 import About from "@/components/About";
 import WhatIBuild from "@/components/WhatIBuild";
 import Projects from "@/components/Projects";
@@ -10,11 +11,10 @@ import ClientTestimonials from "@/components/ClientTestimonials";
 import Clients from "@/components/Clients";
 import Technologies from "@/components/Technologies";
 import Contact from "@/components/Contact";
+import Process from "@/components/Process";
 import MobileFallback from "@/components/MobileFallback";
 import Experience from "@/components/Experience";
 import Education from "@/components/Education";
-import FlutterUIDemo from '@/components/FlutterUIDemo';
-import ArchitectureAccordion from '@/components/architecture';
 
 export default function Home() {
   const [showDesktopOnMobile, setShowDesktopOnMobile] = useState(false);
@@ -54,7 +54,7 @@ export default function Home() {
   };
 
   return (
-    <main>
+    <main className="pt-16">{/* 64px offset for fixed navbar */}
       {/* Mobile Fallback: Show only if user hasn't chosen to view desktop on mobile */}
       {!showDesktopOnMobile && (
         <div className="md:hidden">
@@ -67,6 +67,7 @@ export default function Home() {
 
 {/* 🟦 FIRST IMPRESSION */}
 <Hero />
+<MetricsBar />
 <About />
 
 {/* 🟩 WHAT I CAN DO FOR YOU */}
@@ -76,17 +77,16 @@ export default function Home() {
 {/* 🟨 WHY TRUST ME */}
 <Experience />
 <Education />
-<ArchitectureAccordion />
 
 {/* 🟥 PROOF OF WORK */}
 <Projects />
-<FlutterUIDemo />
 
 {/* 🟪 SOCIAL PROOF */}
 <Clients />
 <ClientTestimonials />
 
 {/* 🟧 CALL TO ACTION */}
+<Process />
 <Contact />
 
 </div>

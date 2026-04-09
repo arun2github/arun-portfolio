@@ -21,7 +21,7 @@ const NewProjectCard: React.FC<NewProjectCardProps> = ({ project }) => {
     return (
       <div 
         data-project-card
-        className="group relative w-full h-[600px] max-w-sm mx-auto rounded-3xl overflow-hidden transform transition-all duration-500"
+        className="group relative w-full h-[600px] rounded-3xl overflow-hidden transform transition-all duration-500"
         style={neumorphismStyles}
       >
         <div className="p-4 h-full flex flex-col">
@@ -36,8 +36,8 @@ const NewProjectCard: React.FC<NewProjectCardProps> = ({ project }) => {
                 <Image
                   src={project.imageUrl}
                   alt={project.title}
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  style={{ objectFit: 'cover' }}
                   className="transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
@@ -118,15 +118,15 @@ const NewProjectCard: React.FC<NewProjectCardProps> = ({ project }) => {
   return (
     <div 
       data-project-card
-      className="group relative w-full h-[600px] max-w-sm mx-auto rounded-3xl overflow-hidden transform transition-all duration-500"
+      className="group relative w-full h-[600px] rounded-3xl overflow-hidden transform transition-all duration-500"
       style={neumorphismStyles}
     >
       <div className="relative h-[280px] flex-shrink-0">
         <Image
           src={project.imageUrl}
           alt={project.title}
-          layout="fill"
-          objectFit="cover"
+          fill
+          style={{ objectFit: 'cover' }}
           className="transition-transform duration-500 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>

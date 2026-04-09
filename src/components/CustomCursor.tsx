@@ -1,298 +1,193 @@
 'use client';
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
-interface CursorPosition {
-  x: number;
-  y: number;
-}
+type HoverTarget = 'default' | 'link' | 'button' | 'project' | 'text';
 
-interface CursorState {
-  position: CursorPosition;
-  isVisible: boolean;
-  isClicking: boolean;
-  hoverTarget: 'default' | 'link' | 'button' | 'project' | 'text';
-}
-
+// All mutable cursor state lives in refs — zero React re-renders in hot paths
 const CustomCursor: React.FC = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
-  const cursorDotRef = useRef<HTMLDivElement>(null);
+  const dotRef = useRef<HTMLDivElement>(null);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
-  
-  const [cursorState, setCursorState] = useState<CursorState>({
-    position: { x: 0, y: 0 },
-    isVisible: false,
-    isClicking: false,
-    hoverTarget: 'default'
-  });
 
-  // Smooth position tracking with lerp
-  const targetPosition = useRef<CursorPosition>({ x: 0, y: 0 });
-  const currentPosition = useRef<CursorPosition>({ x: 0, y: 0 });
-  const animationId = useRef<number | undefined>(undefined);
+  const targetPos = useRef({ x: 0, y: 0 });
+  const currentPos = useRef({ x: 0, y: 0 });
+  const rafId = useRef<number | undefined>(undefined);
+  const visible = useRef(false);
+  const clicking = useRef(false);
+  const hoverTarget = useRef<HoverTarget>('default');
 
   useEffect(() => {
     setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
   }, []);
 
-  // Smooth animation loop
-  const animate = useCallback(() => {
-    if (!cursorRef.current || !cursorDotRef.current) return;
-
-    // Linear interpolation for smooth movement
-    const lerp = (start: number, end: number, factor: number) => start + (end - start) * factor;
-    
-    currentPosition.current.x = lerp(currentPosition.current.x, targetPosition.current.x, 0.15);
-    currentPosition.current.y = lerp(currentPosition.current.y, targetPosition.current.y, 0.15);
-
-    // Update cursor position with transform for better performance
-    const transform = `translate3d(${currentPosition.current.x - 20}px, ${currentPosition.current.y - 20}px, 0)`;
-    cursorRef.current.style.transform = transform;
-    
-    const dotTransform = `translate3d(${currentPosition.current.x - 4}px, ${currentPosition.current.y - 4}px, 0)`;
-    cursorDotRef.current.style.transform = dotTransform;
-
-    animationId.current = requestAnimationFrame(animate);
-  }, []);
-
   useEffect(() => {
     if (isTouchDevice) return;
 
-    const handleMouseMove = (e: MouseEvent) => {
-      targetPosition.current = { x: e.clientX, y: e.clientY };
-      
-      if (!cursorState.isVisible) {
-        setCursorState(prev => ({ ...prev, isVisible: true }));
+    const ring = cursorRef.current;
+    const dot = dotRef.current;
+    if (!ring || !dot) return;
+
+    // Initialise styles once
+    ring.style.cssText = `
+      position:fixed;pointer-events:none;z-index:9999;border-radius:50%;
+      width:36px;height:36px;
+      background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.22);
+      transition:width .2s ease,height .2s ease,background-color .2s ease,border-color .2s ease,opacity .25s ease;
+      will-change:transform;opacity:0;
+    `;
+    dot.style.cssText = `
+      position:fixed;pointer-events:none;z-index:10000;border-radius:50%;
+      width:6px;height:6px;background:#fff;
+      transition:opacity .25s ease,transform .12s ease;
+      will-change:transform;opacity:0;
+    `;
+
+    const applyRingStyle = (t: HoverTarget, isClicking: boolean) => {
+      if (!ring) return;
+      const scale = isClicking ? 'scale(0.82)' : 'scale(1)';
+      switch (t) {
+        case 'project':
+          ring.style.width = '60px'; ring.style.height = '60px';
+          ring.style.background = 'rgba(203,183,251,0.14)';
+          ring.style.border = '1.5px solid rgba(203,183,251,0.65)';
+          ring.style.boxShadow = '0 0 16px rgba(203,183,251,0.22)';
+          break;
+        case 'link':
+          ring.style.width = '46px'; ring.style.height = '46px';
+          ring.style.background = 'rgba(203,183,251,0.09)';
+          ring.style.border = '1.5px solid rgba(203,183,251,0.50)';
+          ring.style.boxShadow = '0 0 10px rgba(203,183,251,0.18)';
+          break;
+        case 'button':
+          ring.style.width = '42px'; ring.style.height = '42px';
+          ring.style.background = 'rgba(233,229,221,0.11)';
+          ring.style.border = '1.5px solid rgba(233,229,221,0.40)';
+          ring.style.boxShadow = '';
+          break;
+        case 'text':
+          ring.style.width = '2px'; ring.style.height = '34px';
+          ring.style.borderRadius = '2px';
+          ring.style.background = '#cbb7fb';
+          ring.style.border = 'none';
+          ring.style.boxShadow = '';
+          break;
+        default:
+          ring.style.width = '36px'; ring.style.height = '36px';
+          ring.style.borderRadius = '50%';
+          ring.style.background = 'rgba(255,255,255,0.04)';
+          ring.style.border = '1px solid rgba(255,255,255,0.22)';
+          ring.style.boxShadow = '';
+      }
+      // Apply scale directly without touching the translate
+      ring.dataset.scale = scale;
+    };
+
+    const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+
+    const tick = () => {
+      // lerp factor 0.55 — tight follow, still slightly eased
+      currentPos.current.x = lerp(currentPos.current.x, targetPos.current.x, 0.55);
+      currentPos.current.y = lerp(currentPos.current.y, targetPos.current.y, 0.55);
+
+      const hw = ring.offsetWidth / 2;
+      const hh = ring.offsetHeight / 2;
+      const scale = ring.dataset.scale ?? 'scale(1)';
+      ring.style.transform = `translate3d(${currentPos.current.x - hw}px,${currentPos.current.y - hh}px,0) ${scale}`;
+      dot.style.transform = `translate3d(${currentPos.current.x - 3}px,${currentPos.current.y - 3}px,0)`;
+
+      rafId.current = requestAnimationFrame(tick);
+    };
+
+    const onMove = (e: MouseEvent) => {
+      targetPos.current.x = e.clientX;
+      targetPos.current.y = e.clientY;
+      if (!visible.current) {
+        visible.current = true;
+        ring.style.opacity = '1';
+        dot.style.opacity = '1';
       }
     };
 
-    const handleMouseDown = () => {
-      setCursorState(prev => ({ ...prev, isClicking: true }));
+    const onDown = () => {
+      clicking.current = true;
+      ring.dataset.scale = 'scale(0.82)';
+      dot.style.transform = dot.style.transform.replace(/scale\([^)]*\)/, '') + ' scale(0.5)';
     };
 
-    const handleMouseUp = () => {
-      setCursorState(prev => ({ ...prev, isClicking: false }));
+    const onUp = () => {
+      clicking.current = false;
+      ring.dataset.scale = 'scale(1)';
     };
 
-    const handleMouseEnter = () => {
-      setCursorState(prev => ({ ...prev, isVisible: true }));
+    const onLeave = () => {
+      visible.current = false;
+      ring.style.opacity = '0';
+      dot.style.opacity = '0';
     };
 
-    const handleMouseLeave = () => {
-      setCursorState(prev => ({ ...prev, isVisible: false }));
+    const onEnter = () => {
+      visible.current = true;
+      ring.style.opacity = '1';
+      dot.style.opacity = '1';
     };
 
-    const handleMouseOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      let hoverTarget: CursorState['hoverTarget'] = 'default';
-
-      // Check for project cards first (highest priority)
-      if (target.closest('[data-project-card]') || target.closest('.project-card')) {
-        hoverTarget = 'project';
-      } 
-      // Check for navigation links and route links
-      else if (
-        target.tagName.toLowerCase() === 'a' || 
-        target.closest('a') ||
-        target.closest('[href]') ||
-        target.closest('nav a') ||
-        target.closest('.nav-link') ||
-        target.closest('[data-nav-link]') ||
-        // Next.js Link component detection
-        target.closest('[data-nextjs-link]') ||
-        // Check for common navigation patterns
-        (target.closest('nav') && (target.tagName.toLowerCase() === 'span' || target.tagName.toLowerCase() === 'div')) ||
-        // Check for elements with href attribute
-        target.getAttribute('href') ||
-        // Check for clickable navigation elements
-        (target.closest('header') && target.classList.contains('cursor-pointer')) ||
-        // Check for menu items
-        target.closest('[role="menuitem"]') ||
-        target.closest('.menu-item')
+    const onOver = (e: MouseEvent) => {
+      const t = e.target as HTMLElement;
+      let next: HoverTarget = 'default';
+      if (t.closest('[data-project-card]') || t.closest('.project-card')) {
+        next = 'project';
+      } else if (t.tagName === 'A' || t.closest('a') || t.getAttribute('href')) {
+        next = 'link';
+      } else if (
+        t.tagName === 'BUTTON' || t.closest('button') ||
+        t.closest('[role="button"]') ||
+        t.getAttribute('type') === 'submit'
       ) {
-        hoverTarget = 'link';
-      } 
-      // Check for buttons
-      else if (
-        target.tagName.toLowerCase() === 'button' || 
-        target.closest('button') || 
-        target.closest('[role="button"]') ||
-        target.classList.contains('btn') ||
-        target.classList.contains('button') ||
-        target.getAttribute('type') === 'button' ||
-        target.getAttribute('type') === 'submit' ||
-        target.closest('[data-button]') ||
-        target.closest('.cursor-pointer') && (
-          target.textContent?.toLowerCase().includes('click') ||
-          target.textContent?.toLowerCase().includes('submit') ||
-          target.textContent?.toLowerCase().includes('send') ||
-          target.textContent?.toLowerCase().includes('view') ||
-          target.getAttribute('aria-label')?.toLowerCase().includes('button')
-        )
+        next = 'button';
+      } else if (
+        t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' ||
+        t.contentEditable === 'true'
       ) {
-        hoverTarget = 'button';
-      } 
-      // Check for text inputs
-      else if (
-        target.tagName.toLowerCase() === 'input' || 
-        target.tagName.toLowerCase() === 'textarea' || 
-        target.contentEditable === 'true'
-      ) {
-        hoverTarget = 'text';
+        next = 'text';
       }
-
-      setCursorState(prev => ({ ...prev, hoverTarget }));
+      if (next !== hoverTarget.current) {
+        hoverTarget.current = next;
+        // Reset border-radius for non-text targets
+        if (next !== 'text') ring.style.borderRadius = '50%';
+        applyRingStyle(next, clicking.current);
+        dot.style.opacity = (visible.current && next !== 'text') ? '1' : '0';
+      }
     };
 
-    // Add event listeners
-    document.addEventListener('mousemove', handleMouseMove, { passive: true });
-    document.addEventListener('mousedown', handleMouseDown, { passive: true });
-    document.addEventListener('mouseup', handleMouseUp, { passive: true });
-    document.addEventListener('mouseenter', handleMouseEnter, { passive: true });
-    document.addEventListener('mouseleave', handleMouseLeave, { passive: true });
-    document.addEventListener('mouseover', handleMouseOver, { passive: true });
+    document.addEventListener('mousemove', onMove, { passive: true });
+    document.addEventListener('mousedown', onDown, { passive: true });
+    document.addEventListener('mouseup', onUp, { passive: true });
+    document.addEventListener('mouseleave', onLeave, { passive: true });
+    document.addEventListener('mouseenter', onEnter, { passive: true });
+    document.addEventListener('mouseover', onOver, { passive: true });
 
-    // Start animation loop
-    animationId.current = requestAnimationFrame(animate);
+    rafId.current = requestAnimationFrame(tick);
 
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mousedown', handleMouseDown);
-      document.removeEventListener('mouseup', handleMouseUp);
-      document.removeEventListener('mouseenter', handleMouseEnter);
-      document.removeEventListener('mouseleave', handleMouseLeave);
-      document.removeEventListener('mouseover', handleMouseOver);
-      
-      if (animationId.current) {
-        cancelAnimationFrame(animationId.current);
-      }
+      document.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mousedown', onDown);
+      document.removeEventListener('mouseup', onUp);
+      document.removeEventListener('mouseleave', onLeave);
+      document.removeEventListener('mouseenter', onEnter);
+      document.removeEventListener('mouseover', onOver);
+      if (rafId.current) cancelAnimationFrame(rafId.current);
     };
-  }, [isTouchDevice, animate, cursorState.isVisible]);
+  }, [isTouchDevice]);
 
   if (isTouchDevice) return null;
 
-  const getCursorStyle = () => {
-    const baseStyle = {
-      position: 'fixed' as const,
-      pointerEvents: 'none' as const,
-      zIndex: 9999,
-      transition: 'width 0.3s ease, height 0.3s ease, opacity 0.3s ease',
-      borderRadius: '50%',
-      mixBlendMode: 'difference' as const,
-    };
-
-    switch (cursorState.hoverTarget) {
-      case 'project':
-        return {
-          ...baseStyle,
-          width: '60px',
-          height: '60px',
-          backgroundColor: 'rgba(126, 140, 224, 0.8)',
-          border: '2px solid rgba(126, 140, 224, 1)',
-          backdropFilter: 'blur(10px)',
-        };
-      case 'link':
-        return {
-          ...baseStyle,
-          width: '50px',
-          height: '50px',
-          backgroundColor: 'rgba(6, 182, 212, 0.8)',
-          border: '2px solid rgba(6, 182, 212, 1)',
-          boxShadow: '0 0 20px rgba(6, 182, 212, 0.4)',
-          backdropFilter: 'blur(8px)',
-        };
-      case 'button':
-        return {
-          ...baseStyle,
-          width: '45px',
-          height: '45px',
-          backgroundColor: 'rgba(34, 197, 94, 0.8)',
-          border: '2px solid rgba(34, 197, 94, 1)',
-          boxShadow: '0 0 15px rgba(34, 197, 94, 0.4)',
-          backdropFilter: 'blur(6px)',
-        };
-      case 'text':
-        return {
-          ...baseStyle,
-          width: '4px',
-          height: '40px',
-          backgroundColor: 'rgba(239, 68, 68, 0.8)',
-          borderRadius: '2px',
-        };
-      default:
-        return {
-          ...baseStyle,
-          width: '40px',
-          height: '40px',
-          backgroundColor: 'rgba(255, 255, 255, 0.1)',
-          border: '1px solid rgba(255, 255, 255, 0.3)',
-        };
-    }
-  };
-
-  const getDotStyle = () => {
-    return {
-      position: 'fixed' as const,
-      width: '8px',
-      height: '8px',
-      backgroundColor: cursorState.hoverTarget === 'text' ? 'transparent' : '#ffffff',
-      borderRadius: '50%',
-      pointerEvents: 'none' as const,
-      zIndex: 10000,
-      transition: 'transform 0.15s ease, opacity 0.3s ease',
-      transform: cursorState.isClicking ? 'scale(0.5)' : 'scale(1)',
-      opacity: cursorState.hoverTarget === 'text' ? 0 : 1,
-    };
-  };
-
   return (
     <>
-      {/* Main cursor ring */}
-      <div
-        ref={cursorRef}
-        style={{
-          ...getCursorStyle(),
-          opacity: cursorState.isVisible ? 1 : 0,
-          transform: cursorState.isClicking ? 'scale(0.8)' : 'scale(1)',
-        }}
-      />
-      
-      {/* Cursor dot */}
-      <div
-        ref={cursorDotRef}
-        style={{
-          ...getDotStyle(),
-          opacity: cursorState.isVisible ? 1 : 0,
-        }}
-      />
-
-      {/* Hover label */}
-      {cursorState.hoverTarget !== 'default' && cursorState.isVisible && (
-        <div
-          style={{
-            position: 'fixed',
-            left: currentPosition.current.x + 25,
-            top: currentPosition.current.y - 25,
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            color: 'white',
-            padding: '4px 8px',
-            borderRadius: '4px',
-            fontSize: '12px',
-            fontFamily: 'monospace',
-            pointerEvents: 'none',
-            zIndex: 10001,
-            opacity: cursorState.isVisible ? 1 : 0,
-            transition: 'opacity 0.3s ease',
-          }}
-        >
-          {cursorState.hoverTarget === 'project' && '🎯 PROJECT'}
-          {cursorState.hoverTarget === 'link' && '🧭 NAVIGATE'}
-          {cursorState.hoverTarget === 'button' && '👆 CLICK'}
-          {cursorState.hoverTarget === 'text' && '✏️ TYPE'}
-        </div>
-      )}
+      <div ref={cursorRef} />
+      <div ref={dotRef} />
     </>
   );
 };
 
-export default CustomCursor; 
+export default CustomCursor;

@@ -153,8 +153,7 @@ const AboutDetailsPage = () => {
                   alt={profile.starAwardDetails.title || 'Star Award Image'}
                   width={700} 
                   height={450} 
-                  layout="responsive"
-                  objectFit="contain"
+                  style={{ objectFit: 'contain' }}
                   className="bg-neutral-900/30"
                 />
               </motion.div>

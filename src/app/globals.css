@@ -44,7 +44,40 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  cursor: none;
+}
+
+/* Grain texture for premium tactile depth */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* Marquee animations for Technologies section */
+@keyframes marquee-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marquee-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.marquee-track-left {
+  animation: marquee-left 30s linear infinite;
+}
+.marquee-track-right {
+  animation: marquee-right 28s linear infinite;
+}
+.marquee-wrapper:hover .marquee-track-left,
+.marquee-wrapper:hover .marquee-track-right {
+  animation-play-state: paused;
 }
 
 /* Keyframes for character stagger animation */
@@ -389,6 +422,7 @@ a:hover, button:hover {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background-color: #0D0F14;
   }
 }

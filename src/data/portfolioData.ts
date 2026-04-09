@@ -50,6 +50,7 @@ export interface ExperiencePoint {
   iconUrl: string;
   iconBg: string; // Background color for the icon container
   date: string;
+  impactHeadline?: string; // One-sentence headline impact for the role
   points: string[];
 }
 
@@ -164,8 +165,7 @@ export const profileData: ProfileData = {
   openTo: [
     { text: "New Project Collaborations", icon: "Briefcase" },
     { text: "Freelance Opportunities", icon: "DollarSign" },
-    { text: "Tech Chats & Brainstorming", icon: "MessageSquare" },
-    { text: "Open Source Contributions", icon: "Github" }
+    { text: "Technical Consulting", icon: "MessageSquare" },
   ],
   starAwardDetails: {
     imageUrl: "/images/starAward.jpg", // <<-- IMPORTANT: REPLACE THIS PATH
@@ -194,42 +194,34 @@ export const services: Service[] = [
 ];
 
 export const technologies: Technology[] = [
-  { name: "Flutter", iconUrl: "/images/flutter.jpg" }, 
+  // Core stack — displayed prominently
+  { name: "Flutter", iconUrl: "/images/flutter.jpg" },
   { name: "React JS", iconUrl: "/images/tech/react.svg" },
-
-  { name: "TypeScript", iconUrl: "/images/tech/typescript.png" }, // Uncomment if needed
-  { name: "Next", iconUrl: "/images/nextjs.png" },
+  { name: "Next.js", iconUrl: "/images/nextjs.png" },
+  { name: "TypeScript", iconUrl: "/images/tech/typescript.png" },
+  { name: "Node JS", iconUrl: "/images/tech/nodejs.svg" },
+  { name: "Tailwind CSS", iconUrl: "/images/tech/tailwind.svg" },
+  // AI & tooling
+  { name: "Dialogflow", iconUrl: "/images/tech/dialogflow.png" },
+  { name: "Figma", iconUrl: "/images/tech/figma.png" },
+  { name: "Git", iconUrl: "/images/tech/git.png" },
+  // Supporting
   { name: "JavaScript", iconUrl: "/images/tech/js.svg" },
-  // Uncomment if needed
-  { name: "HTML 5", iconUrl: "/images/tech/html.svg" },
-  { name: "CSS 3", iconUrl: "/images/tech/css.svg" },
-  { name: "Ruby", iconUrl: "/images/tech/ruby.svg" },
-  { name: "Ruby On Rails", iconUrl: "/images/tech/ror.png" },
   { name: "Redux Toolkit", iconUrl: "/images/tech/redux.svg" },
   { name: "Material UI", iconUrl: "/images/tech/MI.png" },
-  { name: "Tailwind CSS", iconUrl: "/images/tech/tailwind.svg" },
-  { name: "Node JS", iconUrl: "/images/tech/nodejs.svg" },
   { name: "SQL", iconUrl: "/images/tech/sql.png" },
-  { name: "JWT", iconUrl: "/images/tech/jwt.png" },
-  { name: "Git", iconUrl: "/images/tech/git.png" },
-  { name: "Figma", iconUrl: "/images/tech/figma.png" },
-  { name: "Dialog flow", iconUrl: "/images/tech/dialogflow.png" },
- // Note: path was /images/flutter.jpg
-  // { name: "Docker", iconUrl: "/images/tech/docker.png" }, // Uncomment if needed
-  // { name: "MongoDB", iconUrl: "/images/tech/mongodb.png" }, // Uncomment if needed
-
-  // { name: "Three JS", iconUrl: "/images/tech/threejs.svg" }, // Uncomment if needed
-  // { name: "Jira", iconUrl: "/images/tech/jira_logo.jpg.png" }, // Uncomment if needed
+  { name: "Ruby On Rails", iconUrl: "/images/tech/ror.png" },
 ];
 
 export const experiences: ExperiencePoint[] = [
 
    {
     title: "Full-Stack Website & Mobile App Developer",
-    companyName: "As A Freelancer",
-    iconUrl: "", // YOU MUST PROVIDE THIS IMAGE
+    companyName: "Independent Consultant",
+    iconUrl: "",
     iconBg: "#383E56",
     date: "April 2025 - Present",
+    impactHeadline: "Building end-to-end products for clients across fintech, government, and e-commerce — from idea to production.",
     points: [
       "Developing full-stack websites and cross-platform mobile applications for Android and iOS using modern technologies.",
       "Delivering end-to-end solutions including UI/UX design, frontend development, backend integration, and deployment.",
@@ -242,9 +234,10 @@ export const experiences: ExperiencePoint[] = [
   {
     title: "Flutter Developer | Front-end Developer",
     companyName: "AU Small Finance Bank",
-    iconUrl: "/images/ausmall.jpg", // YOU MUST PROVIDE THIS IMAGE
+    iconUrl: "/images/ausmall.jpg",
     iconBg: "#383E56",
     date: "Jun 2023 - Aug 2025",
+    impactHeadline: "Built the communication and compliance backbone of AU HUB — a platform used by 10,000+ employees across 50+ micro-apps. Star Award recipient.",
     points: [
       "Developed and maintained the AU HUB mobile application using Flutter, integrating 50+ micro-apps.",
       "Optimized and automated multiple business verticals, reducing dependencies and improving workflow efficiency.",
@@ -263,7 +256,8 @@ export const experiences: ExperiencePoint[] = [
   {
     title: "Freelance Web Developer",
     companyName: "Meghalaya Government | Tura Municipal Board",
-    iconUrl: "/images/fincare.png", // Note: icon was CommonStyle.fincare, check if this is correct for Tura
+    iconUrl: "/images/tmb_logo.jpeg",
+    impactHeadline: "Digitized the municipal portal for 50,000+ citizens — multi-level approval workflows, SBI ePay integration, 95% faster service delivery.",
     iconBg: "#E6DEDD",
     date: "Dec 2023 - Present",
     points: [
@@ -276,9 +270,10 @@ export const experiences: ExperiencePoint[] = [
   {
     title: "React.js Developer",
     companyName: "Schrocken Inc.",
-    iconUrl: "/images/company/schrocken.png", // YOU MUST PROVIDE THIS IMAGE
+    iconUrl: "/images/company/schrocken.png",
     iconBg: "#383E56",
     date: "May 2022 - April 2023",
+    impactHeadline: "Delivered supply-chain web applications with React + Redux; improved data visibility and cross-team collaboration for pharma clients.",
     points: [
       "Developed and maintained web applications using React.js and Material UI, enhancing user engagement.",
       "Implemented Redux for state management, improving application efficiency and scalability.",
@@ -289,9 +284,10 @@ export const experiences: ExperiencePoint[] = [
   {
     title: "Associate NodeJS Developer",
     companyName: "Celebal Technology",
-    iconUrl: "/images/company/ct.jpg", // YOU MUST PROVIDE THIS IMAGE
+    iconUrl: "/images/company/ct.jpg",
     iconBg: "#E6DEDD",
     date: "Sep 2021 - May 2022",
+    impactHeadline: "Built AI-powered chatbots on Dialogflow and Node.js — first exposure to conversational AI that shaped the current specialisation.",
     points: [
       "Developed and maintained AI-powered chatbots using Node.js and Google Dialogflow.",
       "Integrated third-party APIs for enhanced chatbot functionalities and real-time data processing.",
@@ -313,30 +309,31 @@ export const education: EducationEntry[] = [
   {
     title: "B.Tech",
     collegeName: "Greater Noida Institute Of Technology",
-    iconUrl: "/images/education/gniot.jpg",    // YOU MUST PROVIDE THIS IMAGE
+    iconUrl: "/images/education/gniot.jpg",
     iconBg: "#383E56",
     date: "May 2015 - May 2019",
     branch: 'Computer Science Engineering',
     percentage: '69.2%',
   },
   {
-    title: "Intermediate",
-    collegeName: "Jawahar Navodaya Vidyalaya RangaReddy Hyderabad",
-    iconUrl: "/images/education/JNV_Logo.jpg", // YOU MUST PROVIDE THIS IMAGE
-    iconBg: "#383E56",
-    date: "May 2012 - May 2015",
-    branch: 'Mathematics',
-    percentage: '82.2%',
+    title: "12th — Senior Secondary",
+    collegeName: "Jawahar Navodaya Vidyalaya",
+    iconUrl: "/images/education/jnv.png",
+    iconBg: "#1a5276",
+    date: "2014 - 2015",
+    branch: 'Science | Rangareddy, Telangana',
+    percentage: 'Completed',
   },
   {
-    title: "Matriculation",
-    collegeName: "Jawahar Navodaya Vidyalaya Supaul Bihar",
-    iconUrl: "/images/education/JNV_Logo.jpg", // YOU MUST PROVIDE THIS IMAGE (same as above, confirm if correct)
-    iconBg: "#383E56",
-    date: "May 2010 - May 2012",
-    branch: 'Mathematics',
-    percentage: '84.6%',
-  }
+    title: "10th — Secondary",
+    collegeName: "Jawahar Navodaya Vidyalaya",
+    iconUrl: "/images/education/jnv.png",
+    iconBg: "#1a5276",
+    date: "2012 - 2013",
+    branch: 'Supaul, Bihar',
+    percentage: 'Completed',
+  },
+
 ];
 
 export const projects: Project[] = [
@@ -345,7 +342,7 @@ export const projects: Project[] = [
     title: 'Vahaan Bazar - Heavy Vehicle Marketplace',
     category: 'Mobile',
     description: 'Comprehensive heavy vehicle marketplace mobile application built with Flutter. Features include vehicle auctions, buy & sell marketplace, spare parts catalog, insurance services, finance options, and dedicated service support. Serves as a one-stop solution for the heavy vehicle industry ecosystem.',
-    shortDescription: '🚛 Built a comprehensive heavy vehicle marketplace app serving 10,000+ users with integrated auction system, buy/sell platform, spare parts catalog, insurance & finance services - generating ₹50Cr+ in transactions and revolutionizing the heavy vehicle industry.',
+    shortDescription: 'Built a comprehensive heavy vehicle marketplace app serving 10,000+ users with integrated auction system, buy/sell platform, spare parts catalog, insurance & finance services - generating ₹50Cr+ in transactions and revolutionizing the heavy vehicle industry.',
     introduction: 'Vahaan Bazar is a revolutionary platform that digitizes the entire heavy vehicle ecosystem, connecting buyers, sellers, service providers, and financial institutions in one comprehensive mobile application.',
     problemStatement: 'The heavy vehicle industry lacked a unified digital platform for trading, financing, insurance, and maintenance services, leading to fragmented processes and inefficient transactions.',
     developmentJourney: 'Developed using Flutter for cross-platform compatibility, integrated multiple payment gateways, real-time auction systems, advanced search filters, and secure transaction processing while ensuring scalability for thousands of concurrent users.',
@@ -375,7 +372,7 @@ export const projects: Project[] = [
     title: "Dhirst Website",
     category: "Web",
     description: "Developed the front-end for AU Compliance Actionable Tracker as per RBI regulatory guidelines, implementing dynamic workflows, multi-role management, real-time compliance tracking, and confidential instruction processing. Built complex UI components for Makers, HODs, SPOCs, FPRs, Checkers, and Observers with role-based access and dynamic Excel-based actionable uploads. Ensured audit trails, notifications, and escalations are fully integrated into the responsive design.",
-    shortDescription: "📋 Engineered a comprehensive compliance tracking system for AU Small Finance Bank with role-based workflows, Excel integration, and real-time notifications - ensuring 100% RBI compliance while reducing audit time by 60%.",
+    shortDescription: "Engineered a comprehensive compliance tracking system for AU Small Finance Bank with role-based workflows, Excel integration, and real-time notifications - ensuring 100% RBI compliance while reducing audit time by 60%.",
     introduction: "The project aimed to build a centralized digital compliance tracking system for AU Small Finance Bank in alignment with RBI/2023-24/117 circular, eliminating manual Excel-based compliance tracking and improving transparency, auditability, and governance.",
     problemStatement: "The compliance team manually tracked regulatory obligations, leading to risks of data manipulation, regulatory penalties, and inefficient management across departments and regulators.",
     strugglesAndSolutions: "Built highly dynamic forms handling multiple user roles, confidential instruction flows, Excel file parsing for bulk actionables, and real-time notifications for each role. Complex workflows for deviations, approvals, and clarifications were mapped into front-end logic integrated with backend API flows.",
@@ -407,7 +404,7 @@ export const projects: Project[] = [
     title: 'LinkedIn AI Agent',
     category: 'AI',
     description: 'This AI agent logs into a LinkedIn account, browses the feed, identifies posts relevant to specific topics using NLP, and then autonomously posts pre-defined, relevant content as comments or posts.',
-    shortDescription: '🤖 Built an intelligent LinkedIn automation agent that uses NLP to identify relevant content and engage with 500+ posts daily, increasing social media presence and lead generation by 300% for professional networking.',
+    shortDescription: 'Built an intelligent LinkedIn automation agent that uses NLP to identify relevant content and engage with 500+ posts daily, increasing social media presence and lead generation by 300% for professional networking.',
     introduction: 'The LinkedIn AI Agent is designed to automate social media engagement for professionals, saving time and increasing visibility on the platform.',
     problemStatement: 'Manually browsing LinkedIn and engaging with relevant content is time-consuming. This agent automates the process, ensuring consistent activity.',
     developmentJourney: 'The agent was built using a modular architecture, with separate components for authentication, feed scraping, content analysis (NLP), and posting. This allowed for iterative development and testing.',
@@ -434,7 +431,7 @@ export const projects: Project[] = [
     title: 'Intelligent Email Agent for Banking',
     category: 'AI',
     description: 'Developed for a small finance bank, this email agent uses Llama3 and LangChain to analyze incoming emails. It identifies the user\'s intent, automatically creates a CRM ticket, notifies the assigned employee, and can even draft a reply by calling internal APIs to fetch necessary information.',
-    shortDescription: '📧 Revolutionized customer support for a finance bank with an AI-powered email agent that processes 1000+ emails daily, automatically creates CRM tickets, and drafts responses - reducing response time by 85% and improving customer satisfaction by 60%.',
+    shortDescription: 'Revolutionized customer support for a finance bank with an AI-powered email agent that processes 1000+ emails daily, automatically creates CRM tickets, and drafts responses - reducing response time by 85% and improving customer satisfaction by 60%.',
     introduction: 'This project was initiated to streamline customer support operations at a small finance bank by automating the initial stages of email-based queries.',
     problemStatement: 'The manual process of reading emails, identifying customer needs, creating CRM tickets, and routing them to the correct department was slow and prone to human error, leading to delayed responses.',
     developmentJourney: 'The development involved fine-tuning the Llama3 model for banking-specific intents, building a robust LangChain pipeline for processing emails, and integrating with the bank\'s existing CRM and internal APIs.',
@@ -462,7 +459,7 @@ export const projects: Project[] = [
     title: "Niyantaran",
     category: "Web",
     description: "Revamped Niyantran's front-end UI with complete redesign based on Figma prototypes. Built dynamic forms for role-based workflows, integrated draft management, and implemented responsive, user-friendly interfaces supporting complex rule configurations. Ensured seamless interaction with backend APIs for rule-driven request processing, role assignments, and real-time audit tracking.",
-    shortDescription: "🎨 Completely redesigned Niyantran's front-end with dynamic role-based workflows, real-time audit tracking, and responsive design - enabling 200+ Commercial Banking teams to process requests 3x faster with 90% fewer errors.",
+    shortDescription: "Completely redesigned Niyantran's front-end with dynamic role-based workflows, real-time audit tracking, and responsive design - enabling 200+ Commercial Banking teams to process requests 3x faster with 90% fewer errors.",
     introduction: "Modernized Niyantran's front-end to support flexible, rule-driven workflows while enhancing usability, responsiveness, and real-time process tracking.",
     problemStatement: "Existing static front-end lacked flexibility for dynamic roles, workflows, and draft management, creating rigid user experience and operational delays.",
     strugglesAndSolutions: "Implemented dynamic forms driven by backend rule configurations, built flexible UI components for sequential/parallel approvals, role-based filters, draft saving, and history visualization while ensuring full responsiveness and cross-browser compatibility.",
@@ -493,7 +490,7 @@ export const projects: Project[] = [
     title: "AU HUB | Zoom Call Feature and Recording",
     category: "Mobile",
     description: "Developed a Zoom Call feature module within the AU HUB application, enabling Business Correspondents (BCs) and employees to initiate, record, and playback Zoom video calls. The solution involved writing platform-specific code for Android and iOS using Zoom SDK integration. Key features include call recording, playback functionality, and Picture-in-Picture (PiP) mode for floating window support. Leveraging Flutter with GetX for state management, the module ensures seamless cross-platform experience. Utilized native integration for Zoom SDK, and packages like `flutter_zoom_sdk`, `flutter_pip`, and `video_player` for enhanced functionality.",
-    shortDescription: "🚀 Transformed AU HUB into a complete communication hub with seamless Zoom integration, enabling 10,000+ employees to conduct professional video calls, record meetings, and multitask with PiP mode - boosting productivity by 40%.",
+    shortDescription: "Transformed AU HUB into a complete communication hub with seamless Zoom integration, enabling 10,000+ employees to conduct professional video calls, record meetings, and multitask with PiP mode - boosting productivity by 40%.",
     introduction: "This project aimed to seamlessly integrate video conferencing capabilities into the existing AU HUB application, enhancing communication for BCs and employees.", // Placeholder
     problemStatement: "The primary challenge was to enable reliable video call functionality, including recording and easy playback, directly within the AU HUB ecosystem, which is used across diverse network conditions and devices. Ensuring a consistent user experience on both Android and iOS while managing SDK complexities was crucial.", // Example - you might already have this
     strugglesAndSolutions: "Integrating the Zoom SDK required careful handling of native modules for both Android (Java/Kotlin) and iOS (Swift/Objective-C). Managing permissions, call states, and background processes for PiP mode presented significant hurdles. These were overcome by creating specific Flutter platform channels and robust error handling.", // Example
@@ -524,7 +521,7 @@ export const projects: Project[] = [
     title: "Relationship Manager App (Sampark)",
     category: "Mobile",
     description: "Sampark is a mobile application designed for Relationship Managers (RMs) and Branch Officers (BOs) to efficiently track and manage leads, customer interactions, and task assignments. Built using Flutter and GetX, the app enables seamless task updates, real-time customer engagement, and streamlined lead management. A key feature of the app is Exotel integration, allowing RMs to initiate calls directly from the app, with automatic call logging and recording for compliance and review purposes. The app operates securely within an internal MDM-hosted environment, ensuring restricted access and data privacy. Its intuitive UI and offline functionality significantly boost on-field productivity, making it a crucial tool for managing day-to-day operations.",
-    shortDescription: "📱 Empowered 500+ Relationship Managers with a powerful mobile solution that streamlines lead management, automates call logging, and boosts field productivity by 60% - turning every customer interaction into a revenue opportunity.",
+    shortDescription: "Empowered 500+ Relationship Managers with a powerful mobile solution that streamlines lead management, automates call logging, and boosts field productivity by 60% - turning every customer interaction into a revenue opportunity.",
     introduction: "Briefly introduce the Sampark RM App project here.", // Placeholder
     problemStatement: "Describe the core problem Sampark RM App aimed to solve.", // Placeholder
     developmentJourney: "Share insights into the development process of Sampark RM App.", // Placeholder
@@ -558,7 +555,7 @@ export const projects: Project[] = [
     title: "Tura Municipal Board Website",
     category: "Web",
     description: "The Tura Municipal Board website is a government portal developed using Flutter, designed to streamline form submissions and approvals. The platform features a multi-step approval system where user-submitted forms undergo two rounds of validation before final approval. If a payment is required, users can securely complete transactions via the integrated SBI ePay gateway before printing the approved form. The website enhances administrative efficiency by automating workflows and providing a user-friendly interface for citizens and government officials.",
-    shortDescription: "🏛️ Built a comprehensive government portal for Tura Municipal Board with multi-level approval workflows, secure SBI ePay integration, and automated form processing - serving 50,000+ citizens with 95% faster service delivery.",
+    shortDescription: "Built a comprehensive government portal for Tura Municipal Board with multi-level approval workflows, secure SBI ePay integration, and automated form processing - serving 50,000+ citizens with 95% faster service delivery.",
     introduction: "Briefly introduce the Tura Municipal Board Website project here.", // Placeholder
     problemStatement: "Describe the core problem Tura Municipal Board Website aimed to solve.", // Placeholder
     developmentJourney: "Share insights into the development process of Tura Municipal Board Website.", // Placeholder
@@ -588,7 +585,7 @@ export const projects: Project[] = [
     title: "Relationship Manager Website (Sampark)",
     category: "Web",
     description: "Sampark is a web module designed for Relationship Managers (RMs) and Branch Officers (BOs) to efficiently manage tasks, leads, and customer interactions. The platform allows the Central Team (Admins) to assign tasks, oversee lead management, and streamline customer mapping. Built using Flutter, the website provides an intuitive interface for RMs to track and engage with leads, enhancing operational efficiency. The system ensures seamless communication and data synchronization while offering a private and secure deployment on internal MDM hosting.",
-    shortDescription: "💼 Developed a centralized web platform for 300+ RMs and BOs to manage tasks, leads, and customer interactions with real-time data synchronization - improving operational efficiency by 45% and customer response time by 70%.",
+    shortDescription: "Developed a centralized web platform for 300+ RMs and BOs to manage tasks, leads, and customer interactions with real-time data synchronization - improving operational efficiency by 45% and customer response time by 70%.",
     introduction: "Briefly introduce the Sampark RM Website project here.", // Placeholder
     problemStatement: "Describe the core problem Sampark RM Website aimed to solve.", // Placeholder
     developmentJourney: "Share insights into the development process of Sampark RM Website.", // Placeholder
@@ -643,7 +640,7 @@ export const projects: Project[] = [
     title: "FincareOne | CrossSell",
     category: "Mobile",
     description: "The Cross-Sell v3.0 module is an advanced lead management system integrated within the Fincare One application. It empowers branch employees, including Branch Managers (BMs), Branch Operations Managers (BOMs), and Relationship Managers (RMs), to seamlessly manage the entire lead lifecycle. The module features role-based user flows for lead submission, assignment, and actioning. BMs/BOMs can assign leads from a central queue, while RMs can act on their assigned leads by calling customers and updating statuses. All employees can submit new leads through a dedicated form with product selection. The system is designed to enhance sales productivity, streamline lead tracking, and improve customer conversion rates through an intuitive, role-specific UI.",
-    shortDescription: "🎯 Revolutionized lead management for 200+ bank branches with role-based workflows that streamline lead submission, assignment, and conversion - driving 25% increase in cross-selling success rates.",
+    shortDescription: "Revolutionized lead management for 200+ bank branches with role-based workflows that streamline lead submission, assignment, and conversion - driving 25% increase in cross-selling success rates.",
     introduction: "The FincareOne Cross-Sell project was initiated to overhaul the existing lead management process within the Fincare One super-app. The goal was to create a centralized, efficient, and user-friendly module that caters to the specific needs of different employee roles, from lead creation to conversion, ultimately boosting the bank's cross-selling capabilities.",
     problemStatement: "The previous lead management system was fragmented and lacked clear, role-based workflows. Branch Managers struggled with efficiently distributing leads to their teams, and Relationship Managers lacked a streamlined interface to act upon and track their assigned leads. There was no unified process for all employees to submit potential leads, leading to missed opportunities and inefficient tracking. The lack of a centralized system made it difficult to monitor lead status and measure conversion effectiveness across the branch network.",
     developmentJourney: "The development of Cross-Sell v3.0 was guided by detailed user stories and Figma designs. The process began with building the core UI components in Flutter, such as the dynamic lead card widgets and the new landing page. We implemented distinct user flows for BMs/BOMs and RMs, focusing on state management with GetX to handle queues like 'Yet to assign' and 'In Progress'. A key part of the journey was creating the lead submission form with client-side validation and integrating it with the existing 'Create Lead' backend API. The final phase involved linking all screens and ensuring smooth navigation as per the new design.",
@@ -667,7 +664,7 @@ export const projects: Project[] = [
     id: "mosymphony-cgt",
     title: "Mosymphony-CGT",
     category: "Web",
-    shortDescription: "🔬 Built a comprehensive Cell-Gene Therapy collaboration platform with secure role-based access, two-factor authentication, and organization management - enabling 100+ research organizations to collaborate securely while maintaining 99.9% data integrity.",
+    shortDescription: "Built a comprehensive Cell-Gene Therapy collaboration platform with secure role-based access, two-factor authentication, and organization management - enabling 100+ research organizations to collaborate securely while maintaining 99.9% data integrity.",
     description: "Mosymphony-CGT is an advanced web platform designed to facilitate and streamline Cell-Gene Therapy research and collaboration. The system implements a robust user management system with role-based access control, secure authentication, and comprehensive organization management capabilities.",
     imageUrl: '/images/cgt.png',
     galleryImages: [
@@ -713,7 +710,7 @@ export const projects: Project[] = [
     title: "Mosymphony | Quality Event Module",
     category: "Web",
     description: "Mosymphony is a cutting-edge application designed to streamline contract manufacturing processes for enterprises in the pharmaceutical industry. The platform fosters transparency and communication between Pharma sponsors and CMOs, while the quality event module tracks and records every event and quality control to ensure accountability. By providing secure communication channels, reliable data sharing, and real-time updates, Mosymphony builds trust and guarantees smooth manufacturing and distribution processes.",
-    shortDescription: "💊 Developed a pharmaceutical contract manufacturing platform with quality event tracking and sponsor-CMO communication - streamlining processes for 50+ pharma companies and reducing quality incidents by 75%.",
+    shortDescription: "Developed a pharmaceutical contract manufacturing platform with quality event tracking and sponsor-CMO communication - streamlining processes for 50+ pharma companies and reducing quality incidents by 75%.",
     introduction: "Briefly introduce the Mosymphony QEM project here.", // Placeholder
     problemStatement: "Describe the core problem Mosymphony QEM aimed to solve.", // Placeholder
     developmentJourney: "Share insights into the development process of Mosymphony QEM.", // Placeholder
@@ -740,7 +737,7 @@ export const projects: Project[] = [
     title: "Netflix Clone",
     category: "Web",
     description: "The Netflix Clone project is aimed at creating a replica of the popular streaming platform, Netflix, using React and GraphQL. The project will allow users to browse and watch movies and TV shows, just like on the original platform.",
-    shortDescription: "🎬 Created a Netflix replica with React and GraphQL featuring movie browsing, streaming capabilities, and responsive design - demonstrating full-stack development skills with modern technologies and user experience best practices.",
+    shortDescription: "Created a Netflix replica with React and GraphQL featuring movie browsing, streaming capabilities, and responsive design - demonstrating full-stack development skills with modern technologies and user experience best practices.",
     introduction: "Briefly introduce the Netflix Clone project here.", // Placeholder
     problemStatement: "Describe the core problem Netflix Clone aimed to solve.", // Placeholder
     developmentJourney: "Share insights into the development process of Netflix Clone.", // Placeholder
@@ -765,7 +762,7 @@ export const projects: Project[] = [
     title: "Node Mailer Application",
     category: "Web",
     description: "The project is aimed at building an application that enables users to send a large number of emails using Node.js and the nodemailer library. The application will allow users to compose and send personalized emails to a large number of recipients with ease.",
-    shortDescription: "📧 Engineered a bulk email automation system using Node.js and Nodemailer that processes 10,000+ personalized emails daily with 99.9% delivery success rate - revolutionizing email marketing campaigns for businesses.",
+    shortDescription: "Engineered a bulk email automation system using Node.js and Nodemailer that processes 10,000+ personalized emails daily with 99.9% delivery success rate - revolutionizing email marketing campaigns for businesses.",
     introduction: "Briefly introduce the Node Mailer Application project here.", // Placeholder
     problemStatement: "Describe the core problem Node Mailer Application aimed to solve.", // Placeholder
     developmentJourney: "Share insights into the development process of Node Mailer Application.", // Placeholder
@@ -796,7 +793,7 @@ export const socialMediaLinks: SocialMediaLink[] = [
   {
     name: 'instagram',
     iconUrl: "/images/instagram.png",
-    url: 'https://www.instagram.com/infamous_fluky/',
+    url: 'https://www.instagram.com/thefreeguy.dev/',
   },
   {
     name: 'facebook',
@@ -852,6 +849,33 @@ export const clientTestimonials: ClientTestimonial[] = [
     projectImpact: 'Scalable architecture supporting 1000+ concurrent users',
     date: 'January 2024',
     featured: true
+  },
+  {
+    id: 'the-pets-garden-testimonial',
+    clientName: 'The Pets Garden Team',
+    clientTitle: 'Founder',
+    clientOrganization: 'The Pets Garden',
+    clientImage: '/images/company/tpg_logo.png',
+    testimonialText: 'Arun built our pet e-commerce platform from scratch and it exceeded every expectation. The website is clean, fast, and easy to navigate — our customers love it. He understood our vision right away and translated it into a fully functional online store. Product listings, filters, and the checkout experience all work seamlessly. The platform went live on schedule and we started receiving orders immediately. Highly recommend Arun for anyone looking to build a professional e-commerce website.',
+    rating: 5,
+    projectName: 'The Pets Garden Platform',
+    projectCategory: 'Pet E-Commerce',
+    projectImpact: 'Live e-commerce platform generating orders from day one',
+    date: 'March 2025',
+    featured: true
+  },
+  {
+    id: 'learn-with-nibesh-testimonial',
+    clientName: 'Nibesh',
+    clientTitle: 'Founder & Educator',
+    clientOrganization: 'Learn with Nibesh',
+    testimonialText: 'Arun delivered my online teaching platform exactly the way I envisioned it. He built a clean, responsive website where I can host my courses and students can easily enroll and learn. The whole process was smooth — he was responsive, understood my requirements without long back-and-forths, and delivered on time. The platform looks professional and my students have been giving great feedback on how easy it is to use. I will definitely work with Arun again for future upgrades.',
+    rating: 5,
+    projectName: 'Learn with Nibesh LMS',
+    projectCategory: 'EdTech · Online Learning',
+    projectImpact: 'Students enrolling and learning from day one of launch',
+    date: 'April 2025',
+    featured: true
   }
 ];
 
@@ -860,7 +884,7 @@ export const clients: Client[] = [
     id: 'strenva',
     name: 'Strenva Technologies',
     logoUrl: '/images/strenva.png',
-    websiteUrl: 'https://strenva.com/',
+    websiteUrl: '#',
     description: 'Technology solutions provider'
   },
   {
@@ -868,7 +892,8 @@ export const clients: Client[] = [
     name: 'Vahaan Bazar Private Limited',
     logoUrl: '/images/vb_logo.png',
     websiteUrl: 'https://www.vahaanbazar.in/',
-    description: 'E-commerce platform for vehicles',
+    description: 'Flutter app (iOS & Android) + Next.js admin panel',
+
     appLinks: {
       android: 'https://play.google.com/store/apps/details?id=com.vahaanbazar.app',
       ios: 'https://apps.apple.com/in/app/vahaanbazar/id6753955870'
@@ -880,6 +905,20 @@ export const clients: Client[] = [
     logoUrl: '/images/tmb_logo.jpeg',
     websiteUrl: 'http://turamunicipalboard.com/',
     description: 'Government portal for citizen services'
+  },
+  {
+    id: 'the-pets-garden',
+    name: 'The Pets Garden',
+    logoUrl: '/images/company/tpg_logo.png',
+    websiteUrl: 'https://thepetsgardens.netlify.app/',
+    description: 'Pet e-commerce platform'
+  },
+  {
+    id: 'learn-with-nibesh',
+    name: 'Learn with Nibesh',
+    logoUrl: '',
+    websiteUrl: 'https://learnwithnibesh.netlify.app/',
+    description: 'Online teaching and learning platform'
   }
 ];
 

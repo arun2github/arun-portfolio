@@ -1,136 +1,230 @@
 'use client';
 
 import React from 'react';
-import CodeRainBackground from './CodeRainBackground';
-import { Github, Instagram, Linkedin } from 'lucide-react';
+import Image from 'next/image';
+import { motion, useMotionValue, animate } from 'framer-motion';
+import { Github, Instagram, Linkedin, ArrowRight, CalendarCheck, ChevronRight } from 'lucide-react';
+import { Parallax } from 'react-scroll-parallax';
+import dynamic from 'next/dynamic';
+
+const HeroBackground = dynamic(() => import('./HeroBackground'), { ssr: false });
+
+const socialLinks = {
+  linkedin: "https://www.linkedin.com/in/imarunjnv/",
+  instagram: "https://www.instagram.com/thefreeguy.dev/",
+  github: "https://github.com/arun2github",
+};
+
+const headlineVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.09, delayChildren: 0.1 } },
+};
+const wordVariants = {
+  hidden: { opacity: 0, y: 28, rotateX: -30 },
+  visible: { opacity: 1, y: 0, rotateX: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
+};
 
 const Hero = () => {
-  const headline = "Hello, I'm Arun";
-  const tagline = "Mobile App & Web Developer | AI Agent Specialist | n8n Automation Expert | Strategic Technology Partner | Delivering Scalable Solutions Across Platforms";
+  const magnetX = useMotionValue(0);
+  const magnetY = useMotionValue(0);
 
-  const devCharacters = 
-    "const function async await => {} [] () : Widget build StatelessWidget StatefulWidget Future<void> " +
-    "import export default class interface type new return if else for while true false null undefined " +
-    "React.FC useState useEffect useRef useCallback useMemo useContext useReducer <div/> <span/> <p/> " +
-    "NextPage GetServerSideProps GetStaticProps App Router API Route Middleware Edge Functions " +
-    "TailwindCSS @apply theme extend plugins JIT AOT Flutter Dart Material Cupertino BLoC Provider Riverpod " +
-    "setState build(BuildContext context) Scaffold AppBar Text Center Column Row Stack Padding Image.asset " +
-    "010101011100101010111101010101010000111101010101010101<λ> ()=> γ Σ α β ƒ π ∞ ≠ ≤ ≥ ≈ Δ";
-
-  // Placeholder URLs - replace with your actual links
-  const socialLinks = {
-    linkedin: "https://www.linkedin.com/in/imarunjnv/",
-    instagram: "https://www.instagram.com/infamous_fluky?igsh=MWQ4MTUzbjFibTM2MA==",
-    github: "https://github.com/arun2github",
+  const handleMagnetMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    magnetX.set((e.clientX - (rect.left + rect.width / 2)) * 0.35);
+    magnetY.set((e.clientY - (rect.top + rect.height / 2)) * 0.35);
+  };
+  const handleMagnetLeave = () => {
+    animate(magnetX, 0, { type: 'spring', stiffness: 300, damping: 28 });
+    animate(magnetY, 0, { type: 'spring', stiffness: 300, damping: 28 });
   };
 
   return (
-    <section 
+    <section
       id="hero"
-      className="relative h-screen flex flex-col items-center justify-center overflow-hidden text-white bg-[#1A1D24]" // New dark background
+      className="relative min-h-screen flex items-center overflow-hidden text-white"
+      style={{ background: 'linear-gradient(175deg, #1b1938 0%, #130f2a 35%, #0D0F14 65%)' }}
     >
-      <CodeRainBackground 
-        textColor="#535C91" // Updated CodeRainBackground text color
-        trailColor="rgba(26, 29, 36, 0.1)" // Trail color based on new bg, slightly more opaque for subtlety
-        fontSize={15} // Slightly increased font size
-        characters={devCharacters}
-        animationFPS={20} // Slower animation (20 frames per second)
-      />
-      
-      {/* <Hero3DScene 
-        numShapes={35}          // Number of small 3D shapes
-        spread={7}              // How far out the shapes can spread
-        baseColor="#4FD1C5"     // Color for the wireframes and subtle lighting
-        baseRotationSpeed={0.0015} // Base speed for individual shape rotation
-      /> */} {/* Removed */}
+      {/* 3D Background */}
+      <HeroBackground />
 
-      <div className="relative z-20 flex flex-col items-center text-center p-4 sm:p-8 max-w-4xl mx-auto">
-        <div className="mb-6 animate-fadeInUp delay-100 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold whitespace-pre">
-          {(() => {
-            const beforeName = "Hello, I'm";
-            const nameToStyle = "Arun";
-            
-            const elements = [];
-            let charIndex = 0;
-            
-            // Part before the name
-            for (let i = 0; i < beforeName.length; i++) {
-              elements.push(
-                <span 
-                  key={`before-${i}`} 
-                  className="inline-block char-animate"
-                  style={{ animationDelay: `${charIndex * 0.05}s` }}
-                >
-                  {beforeName[i] === ' ' ? ' ' : beforeName[i]}
-                </span>
-              );
-              charIndex++;
-            }
+      {/* Ambient glows (kept on top of 3D canvas) */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute -top-60 -left-40 w-[700px] h-[700px] rounded-full blur-[150px]" style={{background:'rgba(203,183,251,0.05)'}} />
+        <div className="absolute -bottom-40 right-0 w-[600px] h-[600px] rounded-full blur-[150px]" style={{background:'rgba(203,183,251,0.03)'}} />
+      </div>
 
-            // Add extra space with margin
-            elements.push(
-              <span 
-                key="extra-space"
-                className="inline-block char-animate"
-                style={{ 
-                  animationDelay: `${charIndex * 0.05}s`,
-                  marginRight: '0.5rem'
-                }}
-              >
-                {' '}
-              </span>
-            );
-            charIndex++;
+      <div className="relative z-10 w-full container mx-auto px-6 lg:px-14 py-28 lg:py-0 min-h-screen flex items-center">
+        <div className="w-full grid lg:grid-cols-2 gap-16 lg:gap-12 items-center">
 
-            // Styled name part
-            elements.push(
-              <span key="namePart" className="inline-block">
-                {nameToStyle.split("").map((nameChar, nameCharIndex) => (
-                  <span 
-                    key={`name-${nameCharIndex}`} 
-                    className="char-animate bg-clip-text text-transparent bg-gradient-to-r from-violet-200 via-fuchsia-300 to-indigo-300 drop-shadow-lg"
-                    style={{ animationDelay: `${(charIndex + nameCharIndex) * 0.05}s` }}
+          {/* ── LEFT ─────────────────────────────── */}
+          <motion.div
+            className="flex flex-col items-center lg:items-start text-center lg:text-left"
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+          >
+            {/* Available badge */}
+            <motion.div
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-[8px] text-xs font-bold tracking-wide mb-8"
+              style={{background:'rgba(203,183,251,0.08)', border:'1px solid rgba(203,183,251,0.20)', color:'#cbb7fb'}}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{background:'#cbb7fb'}} />
+              Available for new projects
+            </motion.div>
+
+            {/* Headline — word-by-word stagger */}
+            <motion.h1
+              className="text-[2.75rem] sm:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold mb-5"
+              style={{ lineHeight: 0.96, letterSpacing: '-0.02em', perspective: '800px' }}
+              variants={headlineVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              <span className="inline-block">
+                {['I', 'ship', 'products'].map((word) => (
+                  <motion.span
+                    key={word}
+                    variants={wordVariants}
+                    className="inline-block text-white"
+                    style={{ marginRight: '0.28em' }}
                   >
-                    {nameChar}
-                  </span>
+                    {word}
+                  </motion.span>
                 ))}
               </span>
-            );
+              <br />
+              <span className="inline-block">
+                {['startups', 'scale', 'on.'].map((word) => (
+                  <motion.span
+                    key={word}
+                    variants={wordVariants}
+                    className="inline-block"
+                    style={{ marginRight: '0.28em', color: '#cbb7fb' }}
+                  >
+                    {word}
+                  </motion.span>
+                ))}
+              </span>
+            </motion.h1>
 
-            return elements;
-          })()}
+            {/* Value prop */}
+  <p className="text-white/50 text-base md:text-lg leading-relaxed mb-8 max-w-[480px]">
+  Not for hire — for outcomes. A product partner with 5+ years building in high-stakes environments: banking, government, healthcare, supply chain, and e-commerce. I take products from spec to production without hand-holding.
+</p>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row items-center lg:items-start gap-3 mb-10 w-full sm:w-auto">
+              <motion.a
+                href="#contact"
+                className="group inline-flex items-center gap-2 px-7 py-3.5 text-[#1b1938] font-bold rounded-[8px] text-sm w-full sm:w-auto justify-center"
+                style={{ background: '#e9e5dd', x: magnetX, y: magnetY }}
+                onMouseMove={handleMagnetMove}
+                onMouseLeave={handleMagnetLeave}
+                onMouseEnter={(e) => (e.currentTarget.style.background = '#fff')}
+              >
+                <CalendarCheck size={15} />
+                Start a Project
+                <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform duration-300" />
+              </motion.a>
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-2 px-7 py-3.5 text-white/60 hover:text-white font-semibold rounded-[8px] text-sm transition-all duration-200 hover:bg-[rgba(203,183,251,0.05)] w-full sm:w-auto justify-center"
+                style={{border:'1px solid rgba(255,255,255,0.10)'}}
+              >
+                View Case Studies
+                <ChevronRight size={14} />
+              </a>
+            </div>
+
+            {/* Social */}
+            <div className="flex items-center gap-5">
+              <span className="text-[#1E2330] text-xs">─</span>
+              {[
+                { href: socialLinks.linkedin, label: 'LinkedIn', icon: <Linkedin size={18} /> },
+                { href: socialLinks.github,   label: 'GitHub',   icon: <Github size={18} /> },
+                { href: socialLinks.instagram,label: 'Instagram',icon: <Instagram size={18} /> },
+              ].map(({ href, label, icon }) => (
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
+                  className="text-[#8892B0] hover:text-[#A5B0FF] transition-colors duration-300">
+                  {icon}
+                </a>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* ── RIGHT — Photo ────────────────────── */}
+          <motion.div
+            className="flex items-center justify-center lg:justify-end"
+            initial={{ opacity: 0, scale: 0.94 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.65, ease: 'easeOut', delay: 0.15 }}
+          >
+            <Parallax translateY={[-8, 8]}>
+              <div className="relative">
+                {/* Glow */}
+                <div className="absolute -inset-8 rounded-3xl blur-2xl pointer-events-none" style={{background:'radial-gradient(ellipse at center, rgba(203,183,251,0.08), transparent 70%)'}} />
+
+              {/* Portrait card */}
+              <div className="relative w-[280px] sm:w-[320px] lg:w-[360px] rounded-3xl overflow-hidden border border-[#1E2330] shadow-2xl">
+                <Image
+                  src="/images/pic1.jpeg"
+                  alt="Arun Kumar — Flutter & AI Engineer"
+                  width={400}
+                  height={520}
+                  className="w-full h-auto object-cover object-center"
+                  priority
+                />
+                {/* Name overlay */}
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#0D0F14] via-[#0D0F14]/50 to-transparent px-5 py-5">
+                <p className="text-white font-bold text-base">Arun Kumar</p>
+                {/* <p className="text-white/40 text-xs mt-0.5">Flutter & AI · IIT Patna · ★ Star Award</p> */}
+                </div>
+              </div>
+
+              {/* Chip — top left */}
+              <motion.div
+                className="absolute -top-4 -left-6 bg-[#13161D] border border-[#1E2330] rounded-2xl px-4 py-2.5 shadow-2xl"
+                initial={{ opacity: 0, x: -12 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.7 }}
+              >
+                <p className="font-bold text-2xl leading-none" style={{color:'#cbb7fb'}}>20+</p>
+                <p className="text-white/40 text-xs mt-1">Project Shipped</p>
+              </motion.div>
+
+              {/* Chip — bottom right */}
+              <motion.div
+                className="absolute -bottom-4 -right-6 bg-[#13161D] border border-[#1E2330] rounded-2xl px-4 py-2.5 shadow-2xl"
+                initial={{ opacity: 0, x: 12 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.85 }}
+              >
+                <p className="font-bold text-2xl leading-none" style={{color:'#cbb7fb'}}>50K+</p>
+                <p className="text-white/40 text-xs mt-1">Daily Users</p>
+              </motion.div>
+              </div>
+            </Parallax>
+          </motion.div>
+
         </div>
-        <p 
-          className="text-xl sm:text-2xl md:text-3xl text-neutral-300 mb-10 animate-fadeInUp" // Brighter text for tagline
-          style={{ animationDelay: `${headline.length * 0.05 + 0.4}s` }}
-        >
-          {tagline}
-        </p>
-        <a 
-          href="#projects"
-          className="group relative px-8 py-3 bg-[#535C91] text-white font-semibold rounded-lg text-lg 
-                     overflow-hidden shadow-lg transform transition-all duration-300 
-                     hover:shadow-2xl hover:scale-105 
-                     animate-fadeInUp"
-          style={{ animationDelay: `${headline.length * 0.05 + 0.9}s` }}
-        >
-          <span className="absolute inset-0 w-0 bg-[#7E8CE0] transition-all duration-[350ms] ease-out group-hover:w-full"></span>
-          <span className="relative group-hover:text-white transition-colors duration-300">View My Work</span>
-        </a>
       </div>
 
-      {/* Social Icons - Bottom Right */}
-      <div className="absolute bottom-8 right-8 z-30 flex space-x-4">
-        <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-white transition-colors duration-300">
-          <Linkedin size={28} />
-        </a>
-        <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-white transition-colors duration-300">
-          <Instagram size={28} />
-        </a>
-        <a href={socialLinks.github} target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-white transition-colors duration-300">
-          <Github size={28} />
-        </a>
-      </div>
+      {/* Scroll cue */}
+      <motion.a
+        href="#about"
+        className="absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-white/25 hover:text-white/50 transition-colors duration-300"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2 }}
+      >
+        <span className="text-[9px] tracking-[0.25em] uppercase">Scroll</span>
+        <motion.div animate={{ y: [0, 5, 0] }} transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}>
+          <ArrowRight size={13} className="rotate-90" />
+        </motion.div>
+      </motion.a>
     </section>
   );
 };

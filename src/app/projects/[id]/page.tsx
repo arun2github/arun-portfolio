@@ -51,7 +51,7 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
     };
 
     const config = detailedSectionConfig[title] || {};
-    const IconComponent = config.icon;
+    const IconComponent = config.icon as React.ComponentType<{ size?: number; className?: string }> | undefined;
 
     const baseContainerClass = "mb-10 p-6 md:p-8 rounded-xl shadow-xl transition-all duration-300 ease-out";
     const specificContainerClass = config.containerClass || "bg-[#2D3748]/30";
@@ -111,8 +111,8 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
                       <Image
                         src={project.imageUrl}
                         alt={project.title}
-                        layout="fill"
-                        objectFit="contain"
+                        fill
+                        style={{ objectFit: 'contain' }}
                         className="transition-transform duration-700 group-hover:scale-110"
                       />
                     </div>
@@ -255,8 +255,8 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
                         <Image
                           src={img.url}
                           alt={img.alt}
-                          layout="fill"
-                          objectFit="contain"
+                          fill
+                          style={{ objectFit: 'contain' }}
                           className="transition-transform duration-700 group-hover:scale-110"
                         />
                       </div>
@@ -290,7 +290,7 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
             {project.category && <p className="text-xl text-neutral-400 mb-6">{project.category}</p>}
             {project.imageUrl && (
               <div className="relative w-full h-64 md:h-96 rounded-lg overflow-hidden shadow-2xl mb-8">
-                <Image src={project.imageUrl} alt={`${project.title} main image`} layout="fill" objectFit="cover" />
+                <Image src={project.imageUrl} alt={`${project.title} main image`} fill style={{ objectFit: 'cover' }} />
               </div>
             )}
           </header>
@@ -362,7 +362,7 @@ const ProjectDetailPage = async ({ params }: ProjectDetailPageProps) => {
                   <div className="grid grid-cols-2 gap-4">
                     {project.galleryImages.map((img, index) => (
                       <div key={index} className="relative aspect-square rounded overflow-hidden shadow-md hover:opacity-80 transition-opacity">
-                        <Image src={img.url} alt={img.alt} layout="fill" objectFit="cover" />
+                        <Image src={img.url} alt={img.alt} fill style={{ objectFit: 'cover' }} />
                       </div>
                     ))}
                   </div>

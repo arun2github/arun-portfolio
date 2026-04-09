@@ -110,10 +110,9 @@ const DetailedAboutModal: React.FC<DetailedAboutModalProps> = ({ isOpen, onClose
                     <Image 
                       src={profile.starAwardDetails.imageUrl}
                       alt={profile.starAwardDetails.title || 'Star Award Image'}
-                      width={600} // Adjust as needed, but maintain aspect ratio
-                      height={400} // Adjust as needed
-                      layout="responsive"
-                      objectFit="contain"
+                      width={600}
+                      height={400}
+                      style={{ objectFit: 'contain' }}
                       className="bg-neutral-700/30"
                     />
                   </div>
