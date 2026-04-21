@@ -70,7 +70,7 @@ const Technologies = () => {
       </div>
 
       {/* Row 1 — scrolls left */}
-      <div className="marquee-wrapper overflow-hidden mb-4" style={{ maskImage: 'linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)' }}>
+      <div className="marquee-wrapper overflow-hidden mb-4" style={{ maskImage: 'linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)', paddingLeft: '20%', paddingRight: '20%' }}>
         <div className="marquee-track-left flex gap-4">
           {[...row1, ...row1].map((tech, i) => (
             <MarqueeCard key={`r1-${i}`} tech={tech} />
@@ -79,7 +79,7 @@ const Technologies = () => {
       </div>
 
       {/* Row 2 — scrolls right */}
-      <div className="marquee-wrapper overflow-hidden" style={{ maskImage: 'linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)' }}>
+      <div className="marquee-wrapper overflow-hidden" style={{ maskImage: 'linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)', paddingLeft: '20%', paddingRight: '20%' }}>
         <div className="marquee-track-right flex gap-4">
           {[...row2, ...row2].map((tech, i) => (
             <MarqueeCard key={`r2-${i}`} tech={tech} />
