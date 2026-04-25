@@ -61,9 +61,14 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-16">
 
             {/* Logo / Name */}
-            <a href="#hero" className="flex items-center gap-2 group">
+            <a href="#hero" className="flex items-center gap-2 group" aria-label="Arun Dev Studio - Home">
+              <img
+                src="/images/arun_dev_stuido_logo.png"
+                alt="Arun Dev Studio"
+                className="h-16 w-auto"
+              />
               <span className="text-white font-extrabold text-lg tracking-tight group-hover:text-[#cbb7fb] transition-colors duration-300">
-                Arun<span style={{color:'#cbb7fb'}}>.</span>
+                Arun Dev Studio<span style={{color:'#cbb7fb'}}>.</span>
               </span>
             </a>
 

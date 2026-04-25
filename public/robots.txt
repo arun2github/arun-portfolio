@@ -1,0 +1,22 @@
+# Robots.txt for Arun Dev Studio
+# https://arundevstudio.com
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://arundevstudio.com/sitemap.xml
+
+# Disallow admin/api routes
+Disallow: /api/
+Disallow: /_next/
+
+# Allow all search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
