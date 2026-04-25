@@ -64,7 +64,7 @@ const Hero = () => {
             transition={{ duration: 0.6, ease: 'easeOut' }}
           >
             {/* Studio name badge */}
-            <motion.div
+            {/* <motion.div
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-[8px] text-xs font-bold tracking-wide mb-4"
               style={{background:'rgba(203,183,251,0.08)', border:'1px solid rgba(203,183,251,0.20)', color:'#cbb7fb'}}
               initial={{ opacity: 0 }}
@@ -72,7 +72,7 @@ const Hero = () => {
               transition={{ delay: 0.15 }}
             >
               Arun Dev Studio — Software Development Company
-            </motion.div>
+            </motion.div> */}
 
             {/* Available badge */}
             <motion.div
