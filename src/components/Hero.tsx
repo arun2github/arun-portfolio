@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion, useMotionValue, animate } from 'framer-motion';
-import { Github, Instagram, Linkedin, ArrowRight, CalendarCheck, ChevronRight } from 'lucide-react';
+import { Github, Instagram, Linkedin, ArrowRight, CalendarCheck, ChevronRight, Sparkles } from 'lucide-react';
 import { Parallax } from 'react-scroll-parallax';
 import dynamic from 'next/dynamic';
 
@@ -47,10 +47,44 @@ const Hero = () => {
       {/* 3D Background */}
       <HeroBackground />
 
-      {/* Ambient glows (kept on top of 3D canvas) */}
+      {/* Premium Ambient Glows */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-60 -left-40 w-[700px] h-[700px] rounded-full blur-[150px]" style={{background:'rgba(203,183,251,0.05)'}} />
-        <div className="absolute -bottom-40 right-0 w-[600px] h-[600px] rounded-full blur-[150px]" style={{background:'rgba(203,183,251,0.03)'}} />
+        {/* Primary brand orb — top left */}
+        <div
+          className="absolute -top-60 -left-40 w-[800px] h-[800px] rounded-full float-orb"
+          style={{
+            background: 'radial-gradient(circle, rgba(203,183,251,0.07), transparent 60%)',
+            filter: 'blur(80px)',
+          }}
+        />
+        {/* Secondary orb — bottom right */}
+        <div
+          className="absolute -bottom-40 right-0 w-[600px] h-[600px] rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(129,140,248,0.04), transparent 60%)',
+            filter: 'blur(100px)',
+            animation: 'float-orb 8s ease-in-out infinite reverse',
+          }}
+        />
+        {/* Accent orb — center */}
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(203,183,251,0.03), transparent 60%)',
+            filter: 'blur(60px)',
+          }}
+        />
+        {/* Grid overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.015]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(203,183,251,0.3) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(203,183,251,0.3) 1px, transparent 1px)
+            `,
+            backgroundSize: '80px 80px',
+          }}
+        />
       </div>
 
       <div className="relative z-10 w-full container mx-auto px-6 lg:px-14 py-28 lg:py-0 min-h-screen flex items-center">
@@ -63,26 +97,23 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
           >
-            {/* Studio name badge */}
-            {/* <motion.div
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-[8px] text-xs font-bold tracking-wide mb-4"
-              style={{background:'rgba(203,183,251,0.08)', border:'1px solid rgba(203,183,251,0.20)', color:'#cbb7fb'}}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.15 }}
-            >
-              Arun Dev Studio — Software Development Company
-            </motion.div> */}
-
             {/* Available badge */}
             <motion.div
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-[8px] text-xs font-bold tracking-wide mb-8"
-              style={{background:'rgba(203,183,251,0.05)', border:'1px solid rgba(203,183,251,0.12)', color:'rgba(203,183,251,0.7)'}}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full text-xs font-bold tracking-wide mb-8"
+              style={{
+                background: 'rgba(203,183,251,0.06)',
+                border: '1px solid rgba(203,183,251,0.12)',
+                color: 'rgba(203,183,251,0.8)',
+                boxShadow: '0 0 20px rgba(203,183,251,0.05)',
+              }}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{background:'#cbb7fb'}} />
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ background: '#cbb7fb' }} />
+                <span className="relative inline-flex rounded-full h-2 w-2" style={{ background: '#cbb7fb' }} />
+              </span>
               Available for new projects
             </motion.div>
 
@@ -112,8 +143,8 @@ const Hero = () => {
                   <motion.span
                     key={word}
                     variants={wordVariants}
-                    className="inline-block"
-                    style={{ marginRight: '0.28em', color: '#cbb7fb' }}
+                    className="inline-block text-gradient-brand"
+                    style={{ marginRight: '0.28em' }}
                   >
                     {word}
                   </motion.span>
@@ -122,15 +153,15 @@ const Hero = () => {
             </motion.h1>
 
             {/* Value prop */}
-  <p className="text-white/50 text-base md:text-lg leading-relaxed mb-8 max-w-[480px]">
-  Not for hire — for outcomes. A product partner with 5+ years building in high-stakes environments: banking, government, healthcare, supply chain, and e-commerce. I take products from spec to production without hand-holding.
-</p>
+            <p className="text-white/45 text-base md:text-lg leading-relaxed mb-8 max-w-[480px]">
+              Not for hire — for outcomes. A product partner with 5+ years building in high-stakes environments: banking, government, healthcare, supply chain, and e-commerce. I take products from spec to production without hand-holding.
+            </p>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center lg:items-start gap-3 mb-10 w-full sm:w-auto">
               <motion.a
                 href="#contact"
-                className="group inline-flex items-center gap-2 px-7 py-3.5 text-[#1b1938] font-bold rounded-[8px] text-sm w-full sm:w-auto justify-center"
+                className="magnetic-btn group inline-flex items-center gap-2 px-7 py-3.5 text-[#1b1938] font-bold rounded-[12px] text-sm w-full sm:w-auto justify-center transition-all duration-300 hover:shadow-[0_0_30px_rgba(203,183,251,0.2)]"
                 style={{ background: '#e9e5dd', x: magnetX, y: magnetY }}
                 onMouseMove={handleMagnetMove}
                 onMouseLeave={handleMagnetLeave}
@@ -142,8 +173,8 @@ const Hero = () => {
               </motion.a>
               <a
                 href="#projects"
-                className="inline-flex items-center gap-2 px-7 py-3.5 text-white/60 hover:text-white font-semibold rounded-[8px] text-sm transition-all duration-200 hover:bg-[rgba(203,183,251,0.05)] w-full sm:w-auto justify-center"
-                style={{border:'1px solid rgba(255,255,255,0.10)'}}
+                className="inline-flex items-center gap-2 px-7 py-3.5 text-white/50 hover:text-white font-semibold rounded-[12px] text-sm transition-all duration-300 hover:bg-[rgba(203,183,251,0.05)] w-full sm:w-auto justify-center"
+                style={{ border: '1px solid rgba(255,255,255,0.08)' }}
               >
                 View Case Studies
                 <ChevronRight size={14} />
@@ -152,14 +183,20 @@ const Hero = () => {
 
             {/* Social */}
             <div className="flex items-center gap-5">
-              <span className="text-[#1E2330] text-xs">─</span>
+              <span className="text-white/10 text-xs">─</span>
               {[
                 { href: socialLinks.linkedin, label: 'LinkedIn', icon: <Linkedin size={18} /> },
-                { href: socialLinks.github,   label: 'GitHub',   icon: <Github size={18} /> },
-                { href: socialLinks.instagram,label: 'Instagram',icon: <Instagram size={18} /> },
+                { href: socialLinks.github, label: 'GitHub', icon: <Github size={18} /> },
+                { href: socialLinks.instagram, label: 'Instagram', icon: <Instagram size={18} /> },
               ].map(({ href, label, icon }) => (
-                <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
-                  className="text-[#8892B0] hover:text-[#A5B0FF] transition-colors duration-300">
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="text-white/30 hover:text-[#cbb7fb] transition-all duration-300 hover:scale-110"
+                >
                   {icon}
                 </a>
               ))}
@@ -175,47 +212,64 @@ const Hero = () => {
           >
             <Parallax translateY={[-8, 8]}>
               <div className="relative">
-                {/* Glow */}
-                <div className="absolute -inset-8 rounded-3xl blur-2xl pointer-events-none" style={{background:'radial-gradient(ellipse at center, rgba(203,183,251,0.08), transparent 70%)'}} />
-
-              {/* Portrait card */}
-              <div className="relative w-[280px] sm:w-[320px] lg:w-[360px] rounded-3xl overflow-hidden border border-[#1E2330] shadow-2xl">
-                <Image
-                  src="/images/pic1.jpeg"
-                  alt="Arun Kumar — Flutter & AI Engineer"
-                  width={400}
-                  height={520}
-                  className="w-full h-auto object-cover object-center"
-                  priority
+                {/* Ambient glow behind photo */}
+                <div
+                  className="absolute -inset-12 rounded-3xl pointer-events-none"
+                  style={{
+                    background: 'radial-gradient(ellipse at center, rgba(203,183,251,0.08), transparent 70%)',
+                    filter: 'blur(20px)',
+                  }}
                 />
-                {/* Name overlay */}
-                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#0D0F14] via-[#0D0F14]/50 to-transparent px-5 py-5">
-                <p className="text-white font-bold text-base">Arun Kumar</p>
-                {/* <p className="text-white/40 text-xs mt-0.5">Flutter & AI · IIT Patna · ★ Star Award</p> */}
+
+                {/* Portrait card */}
+                <div className="relative w-[280px] sm:w-[320px] lg:w-[360px] rounded-3xl overflow-hidden shadow-2xl pulse-glow">
+                  {/* Gradient border */}
+                  <div
+                    className="absolute inset-0 rounded-3xl pointer-events-none z-10"
+                    style={{
+                      border: '1px solid rgba(203,183,251,0.12)',
+                      boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.05)',
+                    }}
+                  />
+                  <Image
+                    src="/images/pic1.jpeg"
+                    alt="Arun Kumar — Flutter & AI Engineer"
+                    width={400}
+                    height={520}
+                    className="w-full h-auto object-cover object-center"
+                    priority
+                  />
+                  {/* Name overlay */}
+                  <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#0D0F14] via-[#0D0F14]/60 to-transparent px-5 py-6">
+                    <p className="text-white font-bold text-base">Arun Kumar</p>
+                    <p className="text-white/30 text-xs mt-0.5 flex items-center gap-1.5">
+                      <Sparkles size={10} style={{ color: '#cbb7fb' }} />
+                      Flutter & AI Engineer
+                    </p>
+                  </div>
                 </div>
-              </div>
 
-              {/* Chip — top left */}
-              <motion.div
-                className="absolute -top-4 -left-6 bg-[#13161D] border border-[#1E2330] rounded-2xl px-4 py-2.5 shadow-2xl"
-                initial={{ opacity: 0, x: -12 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.7 }}
-              >
-                <p className="font-bold text-2xl leading-none" style={{color:'#cbb7fb'}}>20+</p>
-                <p className="text-white/40 text-xs mt-1">Project Shipped</p>
-              </motion.div>
+                {/* Chip — top left */}
+                <motion.div
+                  className="absolute -top-4 -left-6 rounded-2xl px-4 py-2.5 shadow-2xl glass-card"
+                  initial={{ opacity: 0, x: -12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.7 }}
+                >
+                  <p className="font-bold text-2xl leading-none text-gradient-brand">20+</p>
+                  <p className="text-white/40 text-xs mt-1">Projects Shipped</p>
+                </motion.div>
 
-              {/* Chip — bottom right */}
-              <motion.div
-                className="absolute -bottom-4 -right-6 bg-[#13161D] border border-[#1E2330] rounded-2xl px-4 py-2.5 shadow-2xl"
-                initial={{ opacity: 0, x: 12 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.85 }}
-              >
-                <p className="font-bold text-2xl leading-none" style={{color:'#cbb7fb'}}>50K+</p>
-                <p className="text-white/40 text-xs mt-1">Daily Users</p>
-              </motion.div>
+                {/* Chip — bottom right */}
+                <motion.div
+                  className="absolute -bottom-4 -right-6 rounded-2xl px-4 py-2.5 shadow-2xl glass-card"
+                  initial={{ opacity: 0, x: 12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.85 }}
+                >
+                  <p className="font-bold text-2xl leading-none text-gradient-brand">50K+</p>
+                  <p className="text-white/40 text-xs mt-1">Daily Users</p>
+                </motion.div>
               </div>
             </Parallax>
           </motion.div>
@@ -226,13 +280,16 @@ const Hero = () => {
       {/* Scroll cue */}
       <motion.a
         href="#about"
-        className="absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-white/25 hover:text-white/50 transition-colors duration-300"
+        className="absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-white/20 hover:text-white/50 transition-colors duration-300"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
       >
-        <span className="text-[9px] tracking-[0.25em] uppercase">Scroll</span>
-        <motion.div animate={{ y: [0, 5, 0] }} transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}>
+        <span className="text-[9px] tracking-[0.25em] uppercase font-medium">Scroll</span>
+        <motion.div
+          animate={{ y: [0, 5, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+        >
           <ArrowRight size={13} className="rotate-90" />
         </motion.div>
       </motion.a>
