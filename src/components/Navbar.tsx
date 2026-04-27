@@ -1,15 +1,15 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
 const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Work', href: '#projects' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Process', href: '#process' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About', href: '#about', icon: '◆' },
+  { label: 'Work', href: '#projects', icon: '◇' },
+  { label: 'Experience', href: '#experience', icon: '○' },
+  { label: 'Process', href: '#process', icon: '□' },
+  { label: 'Contact', href: '#contact', icon: '△' },
 ];
 
 /* ── Magnetic Nav Link ────────────────────────── */
@@ -52,11 +52,10 @@ const MagneticNavLink = ({
       style={{ x: springX, y: springY }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`relative px-4 py-2 text-sm font-medium rounded-[10px] transition-all duration-300 ${
-        isActive
-          ? 'text-white'
-          : 'text-white/45 hover:text-white/80'
-      }`}
+      className={
+        'relative px-4 py-2 text-sm font-medium rounded-[10px] transition-all duration-300 ' +
+        (isActive ? 'text-white' : 'text-white/45 hover:text-white/80')
+      }
     >
       {isActive && (
         <motion.div
@@ -83,11 +82,266 @@ const MagneticNavLink = ({
   );
 };
 
+/* ── Radial Mobile Menu ───────────────────────── */
+const RadialMobileMenu = ({
+  isOpen,
+  onClose,
+  activeSection,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  activeSection: string;
+}) => {
+  const [touchStart, setTouchStart] = useState<{ x: number; y: number } | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart({ x: e.touches[0].clientX, y: e.touches[0].clientY });
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!touchStart) return;
+    const dx = e.changedTouches[0].clientX - touchStart.x;
+    if (dx > 100) onClose();
+    setTouchStart(null);
+  };
+
+  const radius = 140;
+  const startAngle = -Math.PI;
+  const endAngle = 0;
+  const angleStep = (endAngle - startAngle) / (navLinks.length - 1);
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          ref={containerRef}
+          className="fixed inset-0 z-40 md:hidden"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          <motion.div
+            className="absolute inset-0"
+            style={{
+              background: 'rgba(13, 15, 20, 0.92)',
+              backdropFilter: 'blur(30px)',
+            }}
+            onClick={onClose}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          />
+
+          <div className="absolute inset-0 flex items-center justify-center">
+            {/* Center hub */}
+            <motion.div
+              className="absolute w-20 h-20 rounded-full flex items-center justify-center z-10"
+              style={{
+                background: 'rgba(203, 183, 251, 0.08)',
+                border: '1px solid rgba(203, 183, 251, 0.15)',
+                boxShadow: '0 0 60px rgba(203, 183, 251, 0.1)',
+              }}
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+            >
+              <span className="text-[#cbb7fb] text-xl font-bold">A</span>
+            </motion.div>
+
+            {/* Orbital ring */}
+            <motion.div
+              className="absolute rounded-full"
+              style={{
+                width: radius * 2 + 80,
+                height: radius * 2 + 80,
+                border: '1px solid rgba(203, 183, 251, 0.06)',
+              }}
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0, opacity: 0 }}
+              transition={{ delay: 0.1, duration: 0.5 }}
+            />
+
+            {/* Nav items in circular layout */}
+            {navLinks.map((link, i) => {
+              const angle = startAngle + angleStep * i;
+              const posX = Math.cos(angle) * radius;
+              const posY = Math.sin(angle) * radius;
+              const isActive = activeSection === link.href.replace('#', '');
+              const borderColor = isActive
+                ? 'rgba(203, 183, 251, 0.3)'
+                : 'rgba(255, 255, 255, 0.08)';
+
+              return (
+                <motion.a
+                  key={link.label}
+                  href={link.href}
+                  onClick={onClose}
+                  className="absolute flex flex-col items-center gap-2 z-10"
+                  style={{ x: posX, y: posY }}
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0, opacity: 0 }}
+                  transition={{
+                    delay: i * 0.06 + 0.15,
+                    type: 'spring',
+                    stiffness: 300,
+                    damping: 20,
+                  }}
+                  onMouseEnter={() => setHoveredIndex(i)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                >
+                  <motion.div
+                    className="w-14 h-14 rounded-full flex items-center justify-center relative"
+                    style={{
+                      background: isActive
+                        ? 'rgba(203, 183, 251, 0.15)'
+                        : 'rgba(255, 255, 255, 0.04)',
+                      border: '1px solid ' + borderColor,
+                      boxShadow: isActive
+                        ? '0 0 30px rgba(203, 183, 251, 0.15)'
+                        : 'none',
+                    }}
+                    whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <span
+                      className="text-lg"
+                      style={{
+                        color: isActive ? '#cbb7fb' : 'rgba(255,255,255,0.5)',
+                      }}
+                    >
+                      {link.icon}
+                    </span>
+
+                    {isActive && (
+                      <motion.div
+                        className="absolute inset-0 rounded-full"
+                        style={{
+                          border: '1px solid rgba(203, 183, 251, 0.3)',
+                        }}
+                        animate={{
+                          scale: [1, 1.4],
+                          opacity: [0.5, 0],
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: 'easeOut',
+                        }}
+                      />
+                    )}
+                  </motion.div>
+
+                  <motion.span
+                    className="text-xs font-medium tracking-wider uppercase"
+                    style={{
+                      color: isActive ? '#cbb7fb' : 'rgba(255,255,255,0.4)',
+                    }}
+                    animate={{
+                      opacity: hoveredIndex === i ? 1 : isActive ? 0.9 : 0.5,
+                    }}
+                  >
+                    {link.label}
+                  </motion.span>
+                </motion.a>
+              );
+            })}
+
+            {/* Connecting lines */}
+            <svg
+              className="absolute pointer-events-none"
+              width={radius * 2 + 100}
+              height={radius * 2 + 100}
+              style={{ overflow: 'visible' }}
+            >
+              {navLinks.map((link, i) => {
+                const angle = startAngle + angleStep * i;
+                const lx = Math.cos(angle) * radius + (radius + 50);
+                const ly = Math.sin(angle) * radius + (radius + 50);
+                const isActive = activeSection === link.href.replace('#', '');
+
+                return (
+                  <motion.line
+                    key={i}
+                    x1={radius + 50}
+                    y1={radius + 50}
+                    x2={lx}
+                    y2={ly}
+                    stroke={isActive ? 'rgba(203,183,251,0.2)' : 'rgba(255,255,255,0.04)'}
+                    strokeWidth={1}
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ delay: i * 0.05 + 0.2, duration: 0.4 }}
+                  />
+                );
+              })}
+            </svg>
+
+            {/* Bottom actions */}
+            <div className="absolute bottom-12 flex gap-4">
+              <motion.a
+                href="/ARUN_RESUME.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={onClose}
+                className="px-6 py-3 rounded-full text-sm font-bold"
+                style={{
+                  border: '1px solid rgba(203,183,251,0.15)',
+                  color: 'rgba(255,255,255,0.6)',
+                }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Resume
+              </motion.a>
+              <motion.a
+                href="#contact"
+                onClick={onClose}
+                className="px-6 py-3 rounded-full text-sm font-bold"
+                style={{ background: '#e9e5dd', color: '#1b1938' }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Hire Me
+              </motion.a>
+            </div>
+
+            <motion.p
+              className="absolute bottom-6 text-xs"
+              style={{ color: 'rgba(255,255,255,0.2)' }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+            >
+              Swipe right to close
+            </motion.p>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [scrollProgress, setScrollProgress] = useState(0);
+
+  const handleMobileLink = () => setMobileOpen(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -116,8 +370,6 @@ const Navbar = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handleMobileLink = () => setMobileOpen(false);
-
   return (
     <>
       {/* Scroll Progress Bar */}
@@ -126,7 +378,7 @@ const Navbar = () => {
           className="h-full origin-left"
           style={{
             background: 'linear-gradient(90deg, #cbb7fb, #a78bfa, #818cf8)',
-            width: `${scrollProgress}%`,
+            width: scrollProgress + '%',
           }}
         />
       </div>
@@ -150,7 +402,7 @@ const Navbar = () => {
       >
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-[72px]">
-            {/* Logo / Name */}
+            {/* Logo */}
             <a
               href="#hero"
               className="flex items-center gap-2.5 group"
@@ -238,115 +490,12 @@ const Navbar = () => {
         </div>
       </header>
 
-      {/* Mobile menu overlay */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            className="fixed inset-0 z-40 md:hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            {/* Backdrop with blur */}
-            <motion.div
-              className="absolute inset-0"
-              style={{
-                background: 'rgba(13, 15, 20, 0.85)',
-                backdropFilter: 'blur(20px)',
-              }}
-              onClick={() => setMobileOpen(false)}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            />
-
-            {/* Drawer */}
-            <motion.div
-              className="absolute top-0 right-0 h-full w-80 flex flex-col pt-24 pb-10 px-8"
-              style={{
-                background:
-                  'linear-gradient(135deg, rgba(13,15,20,0.98), rgba(20,22,30,0.98))',
-                borderLeft: '1px solid rgba(203, 183, 251, 0.08)',
-                boxShadow: '-20px 0 60px rgba(0,0,0,0.5)',
-              }}
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-            >
-              {/* Decorative orb */}
-              <div
-                className="absolute top-20 right-10 w-32 h-32 rounded-full pointer-events-none opacity-30"
-                style={{
-                  background:
-                    'radial-gradient(circle, rgba(203,183,251,0.15), transparent 70%)',
-                  filter: 'blur(30px)',
-                }}
-              />
-
-              <div className="space-y-1">
-                {navLinks.map((link, i) => (
-                  <motion.a
-                    key={link.label}
-                    href={link.href}
-                    onClick={handleMobileLink}
-                    className="block py-3.5 text-lg font-medium transition-colors duration-200 border-b"
-                    style={{
-                      color:
-                        activeSection === link.href.replace('#', '')
-                          ? '#cbb7fb'
-                          : 'rgba(255,255,255,0.45)',
-                      borderColor: 'rgba(255,255,255,0.04)',
-                    }}
-                    initial={{ opacity: 0, x: 30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.06 + 0.15, duration: 0.3 }}
-                  >
-                    <span
-                      className="text-xs font-mono mr-3"
-                      style={{ color: 'rgba(203,183,251,0.3)' }}
-                    >
-                      0{i + 1}
-                    </span>
-                    {link.label}
-                  </motion.a>
-                ))}
-              </div>
-
-              <div className="mt-auto flex flex-col gap-3">
-                <motion.a
-                  href="/ARUN_RESUME.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={handleMobileLink}
-                  className="text-center py-3.5 rounded-[10px] text-sm font-bold transition-colors duration-200"
-                  style={{
-                    border: '1px solid rgba(203,183,251,0.15)',
-                    color: 'rgba(255,255,255,0.6)',
-                  }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                >
-                  Download Resume
-                </motion.a>
-                <motion.a
-                  href="#contact"
-                  onClick={handleMobileLink}
-                  className="text-center py-3.5 rounded-[10px] text-sm font-bold"
-                  style={{ background: '#e9e5dd', color: '#1b1938' }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                >
-                  Hire Me
-                </motion.a>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Radial Mobile Menu */}
+      <RadialMobileMenu
+        isOpen={mobileOpen}
+        onClose={() => setMobileOpen(false)}
+        activeSection={activeSection}
+      />
     </>
   );
 };
