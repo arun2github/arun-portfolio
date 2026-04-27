@@ -127,7 +127,7 @@ export const metadata: Metadata = {
     // google: "your-google-verification-code",
   },
   other: {
-    "google-site-verification": "", // Will be filled after Google Search Console setup
+    "google-site-verification": "sOdYz3Jg0kbWnhuks9sZNKU9djtk7H8tgCjelUsNhM8",
   },
 };
 
